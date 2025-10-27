@@ -1,3 +1,4 @@
+import Header from "./components/header/Header";
 import Nav from "./components/nav/Nav";
 import "./i18n";
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <div>
         <Nav />
+        <Header />
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 .header {
-  margin-top: 50px;
+  margin-top: 70px;
 
   &__box {
     display: flex;
@@ -12,13 +12,13 @@
     height: 550px;
     background: url(7.png) no-repeat center/cover;
     border-radius: 30px;
-    position: relative; 
+    position: relative;
     z-index: 0;
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow:  0 1px 0 rgba(255, 255, 255, 0.06),
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06),
       0 8px 26px rgba(0, 0, 0, 0.28);
     overflow: hidden;
 
@@ -137,6 +137,9 @@
     z-index: -1;
     width: 450px;
     height: 550px;
+    padding: 20px;
+    position: relative;
+    z-index: 0;
     background: radial-gradient(
         300px 150px at 50% 0%,
         rgba(255, 255, 255, 0.08),
@@ -155,5 +158,147 @@
       0 8px 26px rgba(0, 0, 0, 0.28);
     overflow: hidden;
     border-radius: 30px;
+  }
+
+  &__left-title {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    position: relative;
+  }
+
+  &__form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+  }
+
+  &__form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    row-gap: 10px;
+  }
+
+  &__form-title {
+    font-size: 16px;
+    padding-left: 5px;
+    color: #e2e2e2;
+  }
+
+  &__form-input {
+    cursor: pointer;
+    width: 100%;
+    margin-top: 0px;
+    height: 45px;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #e9eef6;
+    font-size: 15px;
+    padding: 0 12px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &::placeholder {
+      color: #9aa3ad;
+    }
+    &:focus {
+      border-color: #6aa9ff;
+      box-shadow: 0 0 0 4px rgba(106, 169, 255, 0.15);
+    }
+  }
+
+  .check-in {
+    width: 50%;
+  }
+
+  .header__form-input::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(1.1) contrast(1.1) opacity(1);
+    cursor: pointer;
+    width: 22px;
+    margin-right: -10px;
+  }
+
+  &__select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 44px;
+    background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+<path fill='%23A7B3C6' d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+
+    color-scheme: dark;
+  }
+
+  &__select::-ms-expand {
+    display: none;
+  }
+
+  &__select option {
+    background-color: #0b0e12;
+    color: #e9eef6;
+  }
+
+  &__select:focus {
+    border-color: transparent;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .header__form-input[type="date"] {
+    color-scheme: dark;
+  }
+  .header__form-input[type="time"] {
+    color-scheme: dark;
+  }
+
+  .header__form-input::-webkit-calendar-picker-indicator {
+    filter: invert(1) opacity(0.8);
+    cursor: pointer;
+  }
+
+  &__form-flex {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+  }
+
+  &__left-link {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__link-box {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 35px;
+    transition: 0.3s;
+    background: linear-gradient(
+        180deg,
+        rgba(47, 134, 255, 0.25),
+        rgba(47, 134, 255, 0.12)
+      ),
+      rgba(255, 255, 255, 0.1);
+    &:hover {
+      background: linear-gradient(
+          180deg,
+          rgba(47, 134, 255, 0.32),
+          rgba(47, 134, 255, 0.16)
+        ),
+        rgba(255, 255, 255, 0.14);
+    }
   }
 }

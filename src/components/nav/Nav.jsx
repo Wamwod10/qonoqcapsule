@@ -21,9 +21,9 @@ export default function Nav() {
 
   // Languages (emoji+label)
   const LANGS = [
-    { code: "en", label: "English" },
-    { code: "ru", label: "Русский" },
-    { code: "uz", label: "O'zbek" },
+    { code: "en", label: "English",  },
+    { code: "ru", label: "Русский",  },
+    { code: "uz", label: "O'zbek",  },
   ];
   const [lang, setLang] = useState(() => {
     const code = (i18n.language || "en").split("-")[0];
@@ -112,6 +112,9 @@ export default function Nav() {
     i18n.changeLanguage(l.code);
   };
 
+  // >>> Joriy tanlangan tilni menyudan yashirish (asosiy talab)
+  const VISIBLE_LANGS = LANGS.filter((l) => l.code !== lang.code);
+
   return (
     <div className="nav">
       <div className="container">
@@ -150,7 +153,10 @@ export default function Nav() {
                 className={`nav__link ${active === 1 ? "is-active" : ""}`}
                 role="tab"
                 aria-selected={active === 1}
-                onClick={() => setActive(1)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActive(1);
+                }}
               >
                 <TbBedFilled /> {t("capsules")}
               </a>
@@ -162,7 +168,10 @@ export default function Nav() {
                 className={`nav__link ${active === 2 ? "is-active" : ""}`}
                 role="tab"
                 aria-selected={active === 2}
-                onClick={() => setActive(2)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActive(2);
+                }}
               >
                 <TbHelpHexagon /> {t("services")}
               </a>
@@ -174,7 +183,10 @@ export default function Nav() {
                 className={`nav__link ${active === 3 ? "is-active" : ""}`}
                 role="tab"
                 aria-selected={active === 3}
-                onClick={() => setActive(3)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActive(3);
+                }}
               >
                 <BsFillBookmarksFill /> {t("rules")}
               </a>
@@ -186,7 +198,10 @@ export default function Nav() {
                 className={`nav__link ${active === 4 ? "is-active" : ""}`}
                 role="tab"
                 aria-selected={active === 4}
-                onClick={() => setActive(4)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActive(4);
+                }}
               >
                 <IoCall />
                 {t("contact")}
@@ -199,7 +214,10 @@ export default function Nav() {
                 className={`nav__link ${active === 5 ? "is-active" : ""}`}
                 role="tab"
                 aria-selected={active === 5}
-                onClick={() => setActive(5)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActive(5);
+                }}
               >
                 <PiNotebook />
                 {t("my_booking")}
@@ -212,7 +230,10 @@ export default function Nav() {
               <a
                 href="#"
                 className={`nav__lang-toggle ${openLang ? "is-open" : ""}`}
-                onClick={() => setOpenLang((v) => !v)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpenLang((v) => !v);
+                }}
                 onKeyDown={onLangKey}
                 aria-haspopup="listbox"
                 aria-expanded={openLang}
@@ -233,22 +254,19 @@ export default function Nav() {
                 role="listbox"
                 tabIndex={-1}
               >
-                {LANGS.map((l) => (
-                  <li
-                    key={l.code}
-                    role="option"
-                    aria-selected={lang.code === l.code}
-                  >
+                {VISIBLE_LANGS.map((l) => (
+                  <li key={l.code} role="option" aria-selected={false}>
                     <a
                       href="#"
-                      className={`nav__lang-item ${
-                        lang.code === l.code ? "is-active" : ""
-                      }`}
-                      onClick={() => changeLang(l)}
+                      className={`nav__lang-item`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        changeLang(l);
+                      }}
                     >
                       <div className="nav__lang-chip">
-                        <span className="nav__lang-flag" aria-hidden="true">
-                          {l.flag}
+                        <span className="nav__lang-flag" aria-hidden="false">
+                          {/* {l.flag} */}
                         </span>
                         <span className="nav__lang-text">{l.label}</span>
                       </div>

@@ -1,5 +1,6 @@
 {
   "brand": "Qo'noq",
+  "brand_full": "Qo'noq Capsule",
   "home": "Home",
   "capsules": "Capsules",
   "services": "Services",
@@ -7,5 +8,29 @@
   "contact": "Contact",
   "my_booking": "My Booking",
   "contact_now": "Contact Now",
-  "change_lang": "Change language"
+  "change_lang": "Change language",
+
+  "hero_title": "Calm, comfortable rest — capsules for your journey, with <bold>{{brand}}</bold>",
+  "hero_subtitle": "No long lines, 24/7 access, fast check-in, and recharge in clean, safe capsules.",
+  "cta_see_capsules": "See Capsules",
+  "cta_book_now": "Book Now",
+  "founder_label": "Founder:",
+  "founder_name": "Abdukayum Abdullayev Abdusattarovich",
+
+  "book_your_stay": "Book Your Stay",
+  "check_in": "Check-in",
+  "check_in_time": "Check-in Time",
+  "capsules_label": "Capsules",
+  "capsule_standard": "Standard Capsule",
+  "capsule_family": "Family Capsule",
+  "duration_label": "Duration",
+  "duration_2h": "Up to 2 hours",
+  "duration_4h": "Up to 4 hours",
+  "duration_10h": "Up to 10 hours",
+  "duration_1d": "1 day",
+  "select_location": "Select Location",
+  "loc_tas": "Tashkent Airport",
+  "loc_buh": "Bukhara",
+  "loc_ind": "India",
+  "check_availability": "Check Availability"
 }

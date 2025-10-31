@@ -212,6 +212,37 @@
       border-color: #6aa9ff;
       box-shadow: 0 0 0 4px rgba(106, 169, 255, 0.15);
     }
+
+    animation: scale 1s alternate;
+
+    @keyframes scale {
+      0% {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      15% {
+        transform: scale(1.1);
+      }
+      30% {
+        transform: scale(1);
+      }
+      45% {
+        transform: scale(1.05);
+      }
+      60% {
+        transform: scale(1);
+      }
+      75% {
+        transform: scale(1.03);
+      }
+      90% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
   }
 
   .check-in {
@@ -284,7 +315,7 @@
     border-radius: 12px;
     text-align: center;
     cursor: pointer;
-    margin-top: 35px;
+    margin-top: 45px;
     transition: 0.3s;
     background: linear-gradient(
         180deg,

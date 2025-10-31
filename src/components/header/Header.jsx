@@ -1,41 +1,47 @@
 import React from "react";
+import { useTranslation, Trans } from "react-i18next";
 import "./header.scss";
 
 const Header = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="header">
       <div className="container">
         <div className="header__box">
           <div className="header__right">
             <h1 className="header__title">
-              Calm, comfortable rest — capsules for your journey, with{" "}
-              <span>Qo'noq Capsule</span>
+              <Trans
+                i18nKey="hero_title"
+                components={{ bold: <span /> }}
+                values={{ brand: t("brand_full") }}
+              />
             </h1>
-            <p className="header__text">
-              No long lines, 24/7 access, fast check-in, and recharge in clean,
-              safe capsules.
-            </p>
+
+            <p className="header__text">{t("hero_subtitle")}</p>
+
             <div className="header__box-link">
               <a href="/capsules" className="header__link">
-                See Capsules
+                {t("cta_see_capsules")}
               </a>
               <a href="/capsules" className="header__link">
-                Book Now
+                {t("cta_book_now")}
               </a>
             </div>
+
             <p className="header__founder">
-              Founder: <span>Abdukayum Abdullayev Abdusattarovich</span>
+              {t("founder_label")} <span>{t("founder_name")}</span>
             </p>
           </div>
 
           <div className="header__left">
-            <h2 className="header__left-title">Book Your Stay</h2>
+            <h2 className="header__left-title">{t("book_your_stay")}</h2>
 
             <form className="header__form" onSubmit={(e) => e.preventDefault()}>
               <div className="header__form-flex">
                 <div className="header__form-box check-in">
                   <label htmlFor="checkin" className="header__form-title">
-                    Check-in
+                    {t("check_in")}
                   </label>
                   <input
                     className="header__form-input"
@@ -43,12 +49,13 @@ const Header = () => {
                     id="checkin"
                     name="check_in"
                     required
-                    aria-label="Check-in date"
+                    aria-label={t("check_in")}
                   />
                 </div>
+
                 <div className="header__form-box check-in">
                   <label htmlFor="checkinTime" className="header__form-title">
-                    Check-in Time
+                    {t("check_in_time")}
                   </label>
                   <input
                     className="header__form-input"
@@ -56,62 +63,66 @@ const Header = () => {
                     id="checkinTime"
                     name="check_in_time"
                     required
-                    aria-label="Check-in time"
+                    aria-label={t("check_in_time")}
                   />
                 </div>
               </div>
+
               <div className="header__form-box">
-                <label htmlFor="duration" className="header__form-title">
-                  Capsules
+                <label htmlFor="capsuleType" className="header__form-title">
+                  {t("capsules_label")}
                 </label>
                 <select
-                  id="duration"
-                  name="duration"
+                  id="capsuleType"
+                  name="capsule_type"
                   className="header__form-input header__select"
-                  defaultValue="type"
-                  aria-label="Duration"
+                  aria-label={t("capsules_label")}
+                  defaultValue="standard"
                 >
-                  <option value="Standard">Standard Capsule</option>
-                  <option value="Family">Family Capsule</option>
+                  <option value="standard">{t("capsule_standard")}</option>
+                  <option value="family">{t("capsule_family")}</option>
                 </select>
               </div>
+
               <div className="header__form-box">
-                <label htmlFor="duration" className="header__form-title">
-                  Duration
+                <label htmlFor="stayDuration" className="header__form-title">
+                  {t("duration_label")}
                 </label>
                 <select
-                  id="duration"
+                  id="stayDuration"
                   name="duration"
                   className="header__form-input header__select"
-                  defaultValue="3h"
-                  aria-label="Duration"
+                  aria-label={t("duration_label")}
+                  defaultValue="2h"
                 >
-                  <option value="3h">Up to 2 hours</option>
-                  <option value="10h">Up to 4 hours</option>
-                  <option value="1d">Up to 10 hours</option>
-                  <option value="1d">1 day</option>
+                  <option value="2h">{t("duration_2h")}</option>
+                  <option value="4h">{t("duration_4h")}</option>
+                  <option value="10h">{t("duration_10h")}</option>
+                  <option value="1d">{t("duration_1d")}</option>
                 </select>
               </div>
+
               <div className="header__form-box">
-                <label htmlFor="duration" className="header__form-title">
-                  Select Location
+                <label htmlFor="location" className="header__form-title">
+                  {t("select_location")}
                 </label>
                 <select
-                  id="duration"
-                  name="duration"
+                  id="location"
+                  name="location"
                   className="header__form-input header__select"
-                  defaultValue="Capsule"
-                  aria-label="Duration"
+                  aria-label={t("select_location")}
+                  defaultValue="tas"
                 >
-                  <option value="1">Tashkent Airport</option>
-                  <option value="2">Bukhara</option>
-                  <option value="3">India</option>
+                  <option value="tas">{t("loc_tas")}</option>
+                  <option value="buh">{t("loc_buh")}</option>
+                  <option value="ind">{t("loc_ind")}</option>
                 </select>
               </div>
             </form>
+
             <div className="header__link-box">
               <a href="" className="header__left-link">
-                Check Availability
+                {t("check_availability")}
               </a>
             </div>
           </div>

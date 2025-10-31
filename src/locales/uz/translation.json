@@ -1,11 +1,36 @@
 {
   "brand": "Qo'noq",
+  "brand_full": "Qo'noq Capsule",
   "home": "Bosh sahifa",
   "capsules": "Kapsulalar",
   "services": "Xizmatlar",
   "rules": "Qoidalar",
   "contact": "Aloqa",
   "my_booking": "Mening bronim",
-  "contact_now": "Bog'lanish",
-  "change_lang": "Tilni o'zgartirish"
+  "contact_now": "Hozir bog'lanish",
+  "change_lang": "Tilni almashtirish",
+
+  "hero_title": "Tinch, qulay dam — safaringiz uchun kapsulalar, <bold>{{brand}}</bold> bilan",
+  "hero_subtitle": "Navbatlarsiz, 24/7 kirish, tezkor check-in va toza, xavfsiz kapsulalarda quvvat to‘plash.",
+  "cta_see_capsules": "Kapsulalarni ko‘rish",
+  "cta_book_now": "Hozir bron qiling",
+  "founder_label": "Asoschi:",
+  "founder_name": "Abduqayum Abdullayev Abdusattorovich",
+
+  "book_your_stay": "Bron qiling",
+  "check_in": "Check-in",
+  "check_in_time": "Check-in vaqti",
+  "capsules_label": "Kapsulalar",
+  "capsule_standard": "Standart kapsula",
+  "capsule_family": "Oila uchun kapsula",
+  "duration_label": "Davomiylik",
+  "duration_2h": "2 soatgacha",
+  "duration_4h": "4 soatgacha",
+  "duration_10h": "10 soatgacha",
+  "duration_1d": "1 kun",
+  "select_location": "Joylashuvni tanlang",
+  "loc_tas": "Toshkent aeroporti",
+  "loc_buh": "Buxoro",
+  "loc_ind": "Hindiston",
+  "check_availability": "Mavjudligini tekshirish"
 }

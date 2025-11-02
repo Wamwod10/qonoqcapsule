@@ -1,0 +1,118 @@
+.qonoq {
+  &__title {
+    font-size: 40px;
+    text-align: center;
+    font-weight: 600;
+    color: transparent;
+    background: linear-gradient(
+        180deg,
+        rgb(47, 134, 255),
+        rgba(47, 134, 255, 0.417)
+      ),
+      rgba(255, 255, 255, 0.202);
+    background-clip: text;
+  }
+
+  &__text {
+    font-size: 18px;
+    color: rgb(101, 101, 101);
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+
+  &__small-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 50px;
+  }
+
+  &__small-card {
+    width: 300px;
+    height: fit-content;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff25;
+    border-radius: 25px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 10px 20px rgba(6, 6, 6, 0.653);
+    transition: 0.3s;
+    transform: scale(1);
+
+    &:hover {
+      transform: scale(1.03);
+      cursor: pointer;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.195),
+        0 10px 20px rgba(21, 21, 21, 0.405);
+    }
+  }
+
+  &__small-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid #ffffff25;
+    box-shadow: 0 5px 15px #39393925;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 25px;
+
+    & svg {
+      fill: rgb(47, 134, 255);
+      animation: svg 2s infinite linear alternate;
+    }
+
+    @keyframes svg {
+      from {
+        transform: rotate(-30deg);
+      }
+      to {
+        transform: rotate(30deg);
+      }
+    }
+  }
+
+  &__small-title {
+    font-size: 18px;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  &__small-text {
+    font-size: 16px;
+    color: #6f6f6f;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  &__big-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__big-card {
+    max-width: 600px;
+    width: 100%;
+    height: fit-content;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff25;
+    border-radius: 25px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 10px 20px rgba(6, 6, 6, 0.653);
+  }
+}

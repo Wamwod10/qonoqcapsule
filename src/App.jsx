@@ -10,8 +10,8 @@ function App() {
       <div>
         <Nav />
         <Header />
-        <Capsules />
         <Qonoq />
+        <Capsules />
       </div>
     </>
   );

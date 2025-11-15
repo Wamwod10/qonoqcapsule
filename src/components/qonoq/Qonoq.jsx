@@ -11,125 +11,132 @@ import {
 import { GiPillow } from "react-icons/gi";
 import { TbWindmillFilled } from "react-icons/tb";
 import { WiThermometer } from "react-icons/wi";
+import { useTranslation, Trans } from "react-i18next";
 
 const Qonoq = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="qonoq">
       <div className="container">
-        <h2 className="qonoq__title">Trusted by travelers worldwide</h2>
-        <p className="qonoq__text">
-          Qonoq capsules provide private and quiet rest with fast check-in
-          hourly rates fresh linens charging alarm and 24/7 service
-        </p>
+        <h2 className="qonoq__title">{t("trusted_by_travelers_worldwide")}</h2>
+        <p className="qonoq__text">{t("intro_paragraph")}</p>
+
         <div className="qonoq__small-box">
           <div className="qonoq__small-card">
             <div className="qonoq__small-icon">
               <BsFillStarFill />
             </div>
-            <h2 className="qonoq__small-title">Customer Rating</h2>
-            <p className="qonoq__small-text">
-              Highly rated by guests on major platforms
-            </p>
+            <h2 className="qonoq__small-title">{t("customer_rating_title")}</h2>
+            <p className="qonoq__small-text">{t("customer_rating_text")}</p>
           </div>
+
           <div className="qonoq__small-card">
             <div className="qonoq__small-icon">
               <FaRegClock />
             </div>
-            <h2 className="qonoq__small-title">Open 24/7</h2>
-            <p className="qonoq__small-text">
-              Round-the-clock service with fast check-in
-            </p>
+            <h2 className="qonoq__small-title">{t("open_247_title")}</h2>
+            <p className="qonoq__small-text">{t("open_247_text")}</p>
           </div>
+
           <div className="qonoq__small-card">
             <div className="qonoq__small-icon">
               <MdOutlineBedtime />
             </div>
-            <h2 className="qonoq__small-title">On-site Availability</h2>
+            <h2 className="qonoq__small-title">
+              {t("on_site_availability_title")}
+            </h2>
             <p className="qonoq__small-text">
-              Private, quiet capsules ready anytime
+              {t("on_site_availability_text")}
             </p>
           </div>
+
           <div className="qonoq__small-card">
             <div className="qonoq__small-icon">
               <FaRegBell />
             </div>
-            <h2 className="qonoq__small-title">Wake-up Service</h2>
-            <p className="qonoq__small-text">
-              Smart wake-up so you never oversleep
-            </p>
+            <h2 className="qonoq__small-title">{t("wake_up_service_title")}</h2>
+            <p className="qonoq__small-text">{t("wake_up_service_text")}</p>
           </div>
         </div>
+
         <div className="qonoq__big-box">
           <div className="qonoq__big-card">
-            <h1 className="qonoq__card-title">Amenities inside the capsule</h1>
+            <h1 className="qonoq__card-title">{t("amenities_inside_title")}</h1>
             <div className="qonoq__big-div">
-              <div className="qonoq__cardd">
+              <div className="qonoq__cardd qonoq__first-cardd">
                 <div className="qonoq__card-div">
                   <div className="qonoq__big-icon">
                     <GiPillow className="big-icon" />
                   </div>
-                  <h2 className="qonoq__big-title">Bedding</h2>
-                  <p className="qonoq__big-text">
-                    A soft mattress and a clean pillow
-                  </p>
+                  <h2 className="qonoq__big-title">{t("bedding_title")}</h2>
+                  <p className="qonoq__big-text">{t("bedding_text")}</p>
                 </div>
+
                 <div className="qonoq__card-div">
                   <div className="qonoq__big-icon">
                     <TbWindmillFilled className="big-icon" />
                   </div>
-                  <h2 className="qonoq__big-title">Ventilation</h2>
-                  <p className="qonoq__big-text">
-                    Constant air circulation and clean
-                  </p>
+                  <h2 className="qonoq__big-title">{t("ventilation_title")}</h2>
+                  <p className="qonoq__big-text">{t("ventilation_text")}</p>
                 </div>
+
                 <div className="qonoq__card-div">
                   <div className="qonoq__big-icon">
                     <MdPowerSettingsNew className="big-icon" />
                   </div>
-                  <h2 className="qonoq__big-title">Charging point</h2>
-                  <p className="qonoq__big-text">
-                    A soft mattress and a clean pillow
-                  </p>
+                  <h2 className="qonoq__big-title">
+                    {t("charging_point_title")}
+                  </h2>
+                  <p className="qonoq__big-text">{t("charging_point_text")}</p>
                 </div>
               </div>
+
               <div className="qonoq__cardd">
                 <div className="qonoq__card-div">
                   <div className="qonoq__big-icon">
                     <MdLight className="big-icon" />
                   </div>
-                  <h2 className="qonoq__big-title">LED lighting</h2>
-                  <p className="qonoq__big-text">Adjustable LED light</p>
+                  <h2 className="qonoq__big-title">
+                    {t("led_lighting_title")}
+                  </h2>
+                  <p className="qonoq__big-text">{t("led_lighting_text")}</p>
                 </div>
+
                 <div className="qonoq__card-div">
                   <div className="qonoq__big-icon">
                     <WiThermometer className="big-icon" />
                   </div>
-                  <h2 className="qonoq__big-title">Temperature</h2>
-                  <p className="qonoq__big-text">Temperature control</p>
+                  <h2 className="qonoq__big-title">{t("temperature_title")}</h2>
+                  <p className="qonoq__big-text">{t("temperature_text")}</p>
                 </div>
+
                 <div className="qonoq__card-div">
                   <div className="qonoq__big-icon">
                     <MdWifi className="big-icon" />
                   </div>
-                  <h2 className="qonoq__big-title">Wi-Fi</h2>
-                  <p className="qonoq__big-text">Fast and free Wi-Fi</p>
+                  <h2 className="qonoq__big-title">{t("wifi_title")}</h2>
+                  <p className="qonoq__big-text">{t("wifi_text")}</p>
                 </div>
               </div>
             </div>
           </div>
+
           <div className="qonoq__big-card big-card">
-            <img className="qonoq__big-img" src="/public/9.png" alt="" />
-            <h2 className="qonoq__big-exp">Experience Comfort & Privacy</h2>
-            <p className="qonoq__big-about">
-              Our capsules provide a peaceful and clean private space designed
-              for travelers who need rest between flights. Equipped with modern
-              amenities and secure access, each unit offers the perfect
-              environment to relax, recharge, or work quietly before your next
-              journey
-            </p>
+            <img
+              className="qonoq__big-img"
+              src="/public/9.png"
+              alt={t("image_alt")}
+            />
+            <h2 className="qonoq__big-exp">{t("experience_title")}</h2>
+            <p className="qonoq__big-about">{t("experience_paragraph")}</p>
             <div className="qonoq__big-links">
-                <a href="" className="qonoq__big-link">Contact Now</a>
-                <a href="" className="qonoq__big-link">Booking Now</a>
+              <a href="#" className="qonoq__big-link">
+                {t("contact_now")}
+              </a>
+              <a href="#" className="qonoq__big-link">
+                {t("booking_now")}
+              </a>
             </div>
           </div>
         </div>

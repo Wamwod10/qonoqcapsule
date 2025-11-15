@@ -2,12 +2,20 @@
   margin-top: 100px;
 
   &__title {
-    color: rgb(255, 255, 255);
+    font-size: 40px;
     font-weight: 600;
+    color: transparent;
+    background: linear-gradient(
+        180deg,
+        rgb(47, 134, 255),
+        rgba(47, 134, 255, 0.417)
+      ),
+      rgba(255, 255, 255, 0.202);
+    background-clip: text;
+    text-align: center;
   }
 
   &__card {
-    
     background: radial-gradient(
         300px 150px at 50% 0%,
         rgba(255, 255, 255, 0.08),
@@ -21,7 +29,7 @@
       rgba(16, 16, 16, 0.55);
     backdrop-filter: saturate(170%) blur(14px);
     -webkit-backdrop-filter: saturate(170%) blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    // border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
       0 8px 26px rgba(0, 0, 0, 0.28);
     overflow: hidden;

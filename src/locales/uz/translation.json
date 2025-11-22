@@ -60,5 +60,47 @@
   "image_alt": "Kapsula rasmi",
   "experience_title": "Qulaylik va Maxfiylikni his eting",
   "experience_paragraph": "Kapsulalarimiz parvozlar oralig‘ida dam olishni istagan sayohatchilar uchun tinch va toza shaxsiy makon yaratadi. Zamonaviy qulayliklar va xavfsiz kirish har bir birlikni dam olish, qayta zaryadlash yoki keyingi safardan oldin tinch ishlash uchun ideal qiladi",
-  "booking_now": "Hozir bron qiling"
+  "booking_now": "Hozir bron qiling",
+
+  "capsules_page_title": "Quiet Capsules — tinch zona, qulay uyqu",
+  "capsules_standard_title": "Standart kapsulalar",
+  "capsules_standard_guests": "1 mehmon",
+  "capsules_standard_size": "1.2m x 2m",
+  "capsules_family_title": "Family kapsulalar",
+  "capsules_family_guests": "2 mehmon",
+  "capsules_family_size": "2.4m x 2m",
+  "capsules_location_tashkent_airport": "Toshkent xalqaro aeroporti",
+
+  "capsules_standard_description": "Standart kapsula — aeroportda qisqa dam olish uchun mo'ljallangan shaxsiy, tinch va xavfsiz mini-hudud. Unda ortopedik karavot, shamollatish tizimi, sozlanadigan yoritish va quvvatlash portlari mavjud.",
+  "capsules_family_description": "Family kapsula — aeroportda ikki kishi uchun qulay dam olishga mo'ljallangan keng, shaxsiy va xavfsiz mini-hudud. Unda kattaroq ortopedik karavot, alohida shamollatish, sozlanadigan yoritish va quvvatlash portlari mavjud.",
+
+  "capsules_features_title": "Qulayliklar:",
+  "capsules_feature_bed": "Karavot",
+  "capsules_feature_lighting": "Yoritish",
+  "capsules_feature_outlet": "Rozetka",
+  "capsules_feature_airflow": "Havo aylanishi",
+  "capsules_feature_wifi": "Wi-Fi",
+  "capsules_feature_safe": "Seyf",
+  "capsules_feature_power": "Quvvat tugmasi",
+  "capsules_feature_climate": "Iqlim nazorati",
+  "capsules_feature_mirror": "Oyna",
+  "capsules_feature_soundproof": "Shovqinga chidamli",
+  "capsules_feature_reading_lamps": "O'qish chiroqlari",
+
+  "capsules_btn_gallery": "Galereyani ko'rish",
+  "capsules_btn_booking": "Hoziroq bron qiling",
+
+  "capsules_standard_duration_4h": "4 soatgacha",
+  "capsules_standard_duration_6h": "6 soatgacha",
+  "capsules_standard_duration_8h": "8 soatgacha",
+  "capsules_standard_price_4h": "400 000 so'm",
+  "capsules_standard_price_6h": "600 000 so'm",
+  "capsules_standard_price_8h": "800 000 so'm",
+
+  "capsules_family_duration_4h": "4 soatgacha",
+  "capsules_family_duration_6h": "6 soatgacha",
+  "capsules_family_duration_10h": "10 soatgacha",
+  "capsules_family_price_4h": "600 000 so'm",
+  "capsules_family_price_6h": "800 000 so'm",
+  "capsules_family_price_10h": "1 000 000 so'm"
 }

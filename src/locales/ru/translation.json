@@ -60,5 +60,47 @@
   "image_alt": "Изображение капсулы",
   "experience_title": "Комфорт и приватность",
   "experience_paragraph": "Наши капсулы предлагают спокойное и чистое пространство для путешественников, которым нужен отдых между рейсами. С удобствами и безопасным доступом они обеспечивают идеальные условия для отдыха, зарядки или работы",
-  "booking_now": "Забронировать сейчас"
+  "booking_now": "Забронировать сейчас",
+
+  "capsules_page_title": "Quiet Capsules — тихая зона, комфортный сон",
+  "capsules_standard_title": "Стандартные капсулы",
+  "capsules_standard_guests": "1 гость",
+  "capsules_standard_size": "1.2 м x 2 м",
+  "capsules_family_title": "Семейные капсулы",
+  "capsules_family_guests": "2 гостя",
+  "capsules_family_size": "2.4 м x 2 м",
+  "capsules_location_tashkent_airport": "Международный аэропорт Ташкента",
+
+  "capsules_standard_description": "Стандартная капсула — это приватное и безопасное мини-пространство для отдыха в аэропорту. Внутри есть ортопедическая кровать, вентиляция, освещение и зарядные розетки",
+  "capsules_family_description": "Семейная капсула — это просторное и безопасное мини-пространство для отдыха двух человек в аэропорту. Внутри есть большая ортопедическая кровать, вентиляция, освещение и зарядные розетки",
+
+  "capsules_features_title": "Удобства:",
+  "capsules_feature_bed": "Кровать",
+  "capsules_feature_lighting": "Освещение",
+  "capsules_feature_outlet": "Розетка",
+  "capsules_feature_airflow": "Вентиляция",
+  "capsules_feature_wifi": "Wi-Fi",
+  "capsules_feature_safe": "Сейф",
+  "capsules_feature_power": "Питание",
+  "capsules_feature_climate": "Климат-контроль",
+  "capsules_feature_mirror": "Зеркало",
+  "capsules_feature_soundproof": "Шумоизоляция",
+  "capsules_feature_reading_lamps": "Лампы для чтения",
+
+  "capsules_btn_gallery": "Смотреть галерею",
+  "capsules_btn_booking": "Забронировать",
+
+  "capsules_standard_duration_4h": "До 4 часов",
+  "capsules_standard_duration_6h": "До 6 часов",
+  "capsules_standard_duration_8h": "До 8 часов",
+  "capsules_standard_price_4h": "400 000 сум",
+  "capsules_standard_price_6h": "600 000 сум",
+  "capsules_standard_price_8h": "800 000 сум",
+
+  "capsules_family_duration_4h": "До 4 часов",
+  "capsules_family_duration_6h": "До 6 часов",
+  "capsules_family_duration_10h": "До 10 часов",
+  "capsules_family_price_4h": "600 000 сум",
+  "capsules_family_price_6h": "800 000 сум",
+  "capsules_family_price_10h": "1 000 000 сум"
 }

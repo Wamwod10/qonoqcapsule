@@ -55,7 +55,7 @@
   }
 
   &__card-title {
-    color: #004cfff4;
+    color: rgb(47, 134, 255);
     font-size: 27px;
     font-weight: 600;
   }
@@ -161,101 +161,99 @@
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45),
       0 0 0 1px rgba(255, 255, 255, 0.04);
 
-      &::after{
-         content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50px;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.15),
-      rgba(0, 0, 0, 0.5)
-    );
-    z-index: 0;
-      }
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.5)
+      );
+      z-index: 0;
+    }
   }
 
   &__imgsec-card > * {
     position: relative;
     z-index: 1;
   }
-}
-.caps {
-  &__img-card {
-    position: relative;
-    background: url(/public/10.jpg) no-repeat center/cover;
 
-    max-width: 590px;
-    height: 420px;
-    width: 100%;
+  .caps {
+    &__img-card {
+      position: relative;
+      background: url(/public/10.jpg) no-repeat center/cover;
+      max-width: 590px;
+      height: 420px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      row-gap: 22px;
+      padding: 16px 24px;
+      border-radius: 50px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+    &__img-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.5)
+      );
+      z-index: 0;
+    }
+    &__img-card > * {
+      position: relative;
+      z-index: 1;
+    }
+    &__price-div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      column-gap: 24px;
+      width: 80%;
+      padding: 10px 20px;
+      padding-right: 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(5px) saturate(150%);
+      -webkit-backdrop-filter: blur(12px) saturate(150%);
+      box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.1),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.45);
+    }
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: 22px;
+    &__duration {
+      color: #00a2ff;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
 
-    padding: 16px 24px;
-    border-radius: 50px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45),
-      0 0 0 1px rgba(255, 255, 255, 0.04);
-  }
-  &__img-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50px;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.15),
-      rgba(0, 0, 0, 0.5)
-    );
-    z-index: 0;
-  }
-  &__img-card > * {
-    position: relative;
-    z-index: 1;
-  }
-  &__price-div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    column-gap: 24px;
-    width: 80%;
-    padding: 10px 20px;
-    padding-right: 10px;
-    border-radius: 999px;
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(12px) saturate(150%);
-    -webkit-backdrop-filter: blur(12px) saturate(150%);
-    box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.1),
-      inset 0 -2px 4px rgba(0, 0, 0, 0.45);
-  }
-
-  &__duration {
-    color: #00a2ff;
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-  }
-
-  &__price {
-    font-size: 18px;
-    padding: 8px 20px;
-    border-radius: 999px;
-    color: #ffffff;
-    white-space: nowrap;
-    cursor: pointer;
-    background: rgba(20, 20, 20, 0.35);
-    backdrop-filter: blur(14px) saturate(150%);
-    -webkit-backdrop-filter: blur(14px) saturate(150%);
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25),
-      inset 0 -2px 3px rgba(0, 0, 0, 0.4);
-    transition: all 0.25s ease;
-  }
-  &__price:hover {
-    transform: translateY(-1px);
-    color: #00a2ff;
+    &__price {
+      font-size: 18px;
+      padding: 8px 20px;
+      border-radius: 999px;
+      color: #ffffff;
+      white-space: nowrap;
+      cursor: pointer;
+      background: rgba(20, 20, 20, 0.35);
+      backdrop-filter: blur(14px) saturate(150%);
+      -webkit-backdrop-filter: blur(14px) saturate(150%);
+      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25),
+        inset 0 -2px 3px rgba(0, 0, 0, 0.4);
+      transition: all 0.25s ease;
+    }
+    &__price:hover {
+      transform: translateY(-1px);
+      color: #00a2ff;
+    }
   }
 }

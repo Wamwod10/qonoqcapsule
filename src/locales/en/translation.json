@@ -60,5 +60,47 @@
   "image_alt": "Capsule image",
   "experience_title": "Experience Comfort & Privacy",
   "experience_paragraph": "Our capsules provide a peaceful and clean private space designed for travelers who need rest between flights. Equipped with modern amenities and secure access, each unit offers the perfect environment to relax, recharge, or work quietly before your next journey.",
-  "booking_now": "Booking Now"
+  "booking_now": "Booking Now",
+
+  "capsules_page_title": "Quiet Capsules — calm zone, comfort sleep",
+  "capsules_standard_title": "Standard Capsules",
+  "capsules_standard_guests": "1 Guest",
+  "capsules_standard_size": "1.2m x 2m",
+  "capsules_family_title": "Family Capsules",
+  "capsules_family_guests": "2 Guests",
+  "capsules_family_size": "2.4m x 2m",
+  "capsules_location_tashkent_airport": "Tashkent International Airport",
+
+  "capsules_standard_description": "The standard capsule is a private, quiet, and secure mini-space designed for short rest at the airport. It includes an orthopedic bed, ventilation, adjustable lighting, and charging ports.",
+  "capsules_family_description": "The family capsule is a spacious, private, and secure mini-space designed for two people to rest comfortably at the airport. It includes a larger orthopedic bed, individual ventilation, adjustable lighting, and charging ports.",
+
+  "capsules_features_title": "Features:",
+  "capsules_feature_bed": "Bed",
+  "capsules_feature_lighting": "Lighting",
+  "capsules_feature_outlet": "Outlet",
+  "capsules_feature_airflow": "Airflow",
+  "capsules_feature_wifi": "Wi-Fi",
+  "capsules_feature_safe": "Safe",
+  "capsules_feature_power": "Power",
+  "capsules_feature_climate": "Climate",
+  "capsules_feature_mirror": "Mirror",
+  "capsules_feature_soundproof": "Soundproof Panels",
+  "capsules_feature_reading_lamps": "Reading Lamps",
+
+  "capsules_btn_gallery": "See Gallery",
+  "capsules_btn_booking": "Booking Now",
+
+  "capsules_standard_duration_4h": "Up to 4 hours",
+  "capsules_standard_duration_6h": "Up to 6 hours",
+  "capsules_standard_duration_8h": "Up to 8 hours",
+  "capsules_standard_price_4h": "400 000 UZS",
+  "capsules_standard_price_6h": "600 000 UZS",
+  "capsules_standard_price_8h": "800 000 UZS",
+
+  "capsules_family_duration_4h": "Up to 4 hours",
+  "capsules_family_duration_6h": "Up to 6 hours",
+  "capsules_family_duration_10h": "Up to 10 hours",
+  "capsules_family_price_4h": "600 000 UZS",
+  "capsules_family_price_6h": "800 000 UZS",
+  "capsules_family_price_10h": "1 000 000 UZS"
 }

@@ -1,0 +1,163 @@
+.gallery {
+//   padding-block: 72px;
+
+  @media (max-width: 768px) {
+    padding-block: 48px;
+  }
+
+  .qonoq__title {
+    text-align: center;
+    margin-bottom: 50px;
+
+    @media (max-width: 768px) {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.gallery__box {
+  position: relative;
+  overflow: hidden;
+  padding-block: 10px;
+}
+
+.gallery__fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 2;
+  width: 100%;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+  opacity: 0.9;
+
+  @media (max-width: 576px) {
+    width: clamp(16px, 8vw, 40px);
+    opacity: 0.8;
+  }
+}
+
+.gallery__row {
+  position: relative;
+  width: 100%;
+
+  &:not(:last-child) {
+    margin-bottom: 18px;
+  }
+}
+
+.gallery__track {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  width: max-content;
+  animation: gallery-scroll-left 100s linear infinite;
+
+  @media (max-width: 1024px) {
+    gap: 18px;
+    animation-duration: 36s;
+  }
+
+  @media (max-width: 768px) {
+    gap: 14px;
+    animation-duration: 30s;
+  }
+
+  @media (max-width: 480px) {
+    gap: 10px;
+    animation-duration: 26s;
+  }
+}
+
+.gallery__row--bottom {
+  .gallery__track {
+    animation-direction: reverse;
+  }
+}
+
+.gallery__item {
+  flex: 0 0 auto;
+  width: clamp(220px, 26vw, 400px);
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: stretch;
+}
+
+.gallery__card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+
+  background: radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.08),
+      transparent 55%
+    ),
+    rgba(255, 255, 255, 0.03);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+//   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35),
+//     0 0 0 1px rgba(255, 255, 255, 0.03);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease,
+    border-color 0.35s ease, background 0.35s ease;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: inherit;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: translateY(-4px);
+
+
+      border-color: rgba(255, 255, 255, 0.1);
+
+      background: radial-gradient(
+          circle at top left,
+          rgba(255, 255, 255, 0.12),
+          transparent 55%
+        ),
+        rgba(255, 255, 255, 0.04);
+    }
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 16px;
+
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35),
+      0 0 0 1px rgba(255, 255, 255, 0.03);
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 14px;
+
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35),
+      0 0 0 1px rgba(255, 255, 255, 0.02);
+  }
+}
+
+@keyframes gallery-scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

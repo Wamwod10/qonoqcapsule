@@ -1,0 +1,94 @@
+.capstype {
+  margin-top: 50px;
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    margin-top: 50px;
+  }
+
+  &__card {
+    background: radial-gradient(
+        300px 150px at 0% 5%,
+        rgba(255, 255, 255, 0.08),
+        transparent 60%
+      ),
+      radial-gradient(
+        300px 150px at 100% 100%,
+        rgba(255, 255, 255, 0.08),
+        transparent 60%
+      ),
+      rgba(16, 16, 16, 0.55);
+    backdrop-filter: saturate(170%) blur(14px);
+    -webkit-backdrop-filter: saturate(170%) blur(14px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 8px 26px rgba(0, 0, 0, 0.28);
+    overflow: hidden;
+    border-radius: 30px;
+    width: 100%;
+    height: fit-content;
+    border: 1px solid #cccccc87;
+    padding: 15px 15px 5px 15px;
+    display: flex;
+    align-items: start;
+    column-gap: 30px;
+  }
+
+  &__img {
+    width: 530px;
+    border-radius: 15px;
+    position: relative;
+  }
+
+  &__title {
+    font-size: 27px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  &__price-link {
+    font-size: 18px;
+    padding: 8px 20px;
+    border-radius: 999px;
+    color: #ffffff;
+    white-space: nowrap;
+    cursor: pointer;
+    background: rgba(20, 20, 20, 0.35);
+    backdrop-filter: blur(2px) saturate(200%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25),
+      inset 0 -2px 3px rgba(0, 0, 0, 0.4);
+    transition: all 0.25s ease;
+  }
+
+  &__prices {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 10px;
+  }
+
+  &__location {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #d0d0d0;
+  }
+
+  & .caps__card-guest {
+    color: #d0d0d0;
+  }
+
+  &__text {
+    font-size: 15px;
+    line-height: 28px;
+    margin-top: 15px;
+    color: #d0d0d0;
+  }
+
+  &__link-div {
+    margin-top: 50px;
+  }
+}

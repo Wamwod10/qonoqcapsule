@@ -125,7 +125,7 @@ const Qonoq = () => {
           <div className="qonoq__big-card big-card">
             <img
               className="qonoq__big-img"
-              src="/public/9.png"
+              src="/9.png"
               alt={t("image_alt")}
             />
             <h2 className="qonoq__big-exp">{t("experience_title")}</h2>

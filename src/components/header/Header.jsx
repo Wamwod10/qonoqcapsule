@@ -1,9 +1,87 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation, Trans } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import "./header.scss";
 
 const Header = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  // Controlled form state
+  const [checkIn, setCheckIn] = useState("");
+  const [checkInTime, setCheckInTime] = useState("");
+  const [capsuleType, setCapsuleType] = useState("standard");
+  const [duration, setDuration] = useState("2h");
+  const [locationValue, setLocationValue] = useState("tas");
+
+  // Optional: basic validation state
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const newErrors = {};
+    if (!checkIn)
+      newErrors.checkIn = t("required", { defaultValue: "Required" });
+    if (!checkInTime)
+      newErrors.checkInTime = t("required", { defaultValue: "Required" });
+    if (!duration)
+      newErrors.duration = t("required", { defaultValue: "Required" });
+    if (!capsuleType)
+      newErrors.capsuleType = t("required", { defaultValue: "Required" });
+    if (!locationValue)
+      newErrors.location = t("required", { defaultValue: "Required" });
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validate()) return;
+
+    // Prepare label keys and localized labels
+    const durationLabelKey = `duration_${duration}`; // e.g. duration_2h
+    const capsuleTypeLabelKey =
+      capsuleType === "standard" ? "capsule_standard" : "capsule_family";
+    const locationLabelKey = (() => {
+      switch (locationValue) {
+        case "tas":
+          return "loc_tas";
+        case "buh":
+          return "loc_buh";
+        case "ind":
+          return "loc_ind";
+        default:
+          return locationValue;
+      }
+    })();
+
+    const bookingState = {
+      // raw values
+      checkIn,
+      checkInTime,
+      durationValue: duration,
+      capsuleTypeValue: capsuleType,
+      locationValue,
+      // localized labels for display on Capsule page
+      durationLabel: t(durationLabelKey, { defaultValue: duration }),
+      capsuleTypeLabel: t(capsuleTypeLabelKey, { defaultValue: capsuleType }),
+      locationLabel: t(locationLabelKey, { defaultValue: locationValue }),
+      // meta
+      createdAt: new Date().toISOString(),
+    };
+
+    // Save to sessionStorage (so data persists for the session and page reloads)
+    try {
+      sessionStorage.setItem("qonoq_booking", JSON.stringify(bookingState));
+    } catch (err) {
+      // ignore storage errors silently
+      // optionally: console.warn("Could not save booking to sessionStorage", err);
+    }
+
+    // Navigate to /capsule with booking state (so immediate navigation provides state too)
+    navigate("/capsule", { state: bookingState });
+  };
 
   return (
     <div className="header">
@@ -37,7 +115,7 @@ const Header = () => {
           <div className="header__left">
             <h2 className="header__left-title">{t("book_your_stay")}</h2>
 
-            <form className="header__form" onSubmit={(e) => e.preventDefault()}>
+            <form className="header__form" onSubmit={handleSubmit}>
               <div className="header__form-flex">
                 <div className="header__form-box check-in">
                   <label htmlFor="checkin" className="header__form-title">
@@ -50,7 +128,12 @@ const Header = () => {
                     name="check_in"
                     required
                     aria-label={t("check_in")}
+                    value={checkIn}
+                    onChange={(e) => setCheckIn(e.target.value)}
                   />
+                  {errors.checkIn && (
+                    <small className="form-error">{errors.checkIn}</small>
+                  )}
                 </div>
 
                 <div className="header__form-box check-in">
@@ -64,7 +147,12 @@ const Header = () => {
                     name="check_in_time"
                     required
                     aria-label={t("check_in_time")}
+                    value={checkInTime}
+                    onChange={(e) => setCheckInTime(e.target.value)}
                   />
+                  {errors.checkInTime && (
+                    <small className="form-error">{errors.checkInTime}</small>
+                  )}
                 </div>
               </div>
 
@@ -77,11 +165,15 @@ const Header = () => {
                   name="capsule_type"
                   className="header__form-input header__select"
                   aria-label={t("capsules_label")}
-                  defaultValue="standard"
+                  value={capsuleType}
+                  onChange={(e) => setCapsuleType(e.target.value)}
                 >
                   <option value="standard">{t("capsule_standard")}</option>
                   <option value="family">{t("capsule_family")}</option>
                 </select>
+                {errors.capsuleType && (
+                  <small className="form-error">{errors.capsuleType}</small>
+                )}
               </div>
 
               <div className="header__form-box">
@@ -93,13 +185,17 @@ const Header = () => {
                   name="duration"
                   className="header__form-input header__select"
                   aria-label={t("duration_label")}
-                  defaultValue="2h"
+                  value={duration}
+                  onChange={(e) => setDuration(e.target.value)}
                 >
                   <option value="2h">{t("duration_2h")}</option>
                   <option value="4h">{t("duration_4h")}</option>
                   <option value="10h">{t("duration_10h")}</option>
                   <option value="1d">{t("duration_1d")}</option>
                 </select>
+                {errors.duration && (
+                  <small className="form-error">{errors.duration}</small>
+                )}
               </div>
 
               <div className="header__form-box">
@@ -111,20 +207,24 @@ const Header = () => {
                   name="location"
                   className="header__form-input header__select"
                   aria-label={t("select_location")}
-                  defaultValue="tas"
+                  value={locationValue}
+                  onChange={(e) => setLocationValue(e.target.value)}
                 >
                   <option value="tas">{t("loc_tas")}</option>
                   <option value="buh">{t("loc_buh")}</option>
                   <option value="ind">{t("loc_ind")}</option>
                 </select>
+                {errors.location && (
+                  <small className="form-error">{errors.location}</small>
+                )}
+              </div>
+
+              <div className="header__link-box">
+                <button type="submit" className="header__left-link">
+                  {t("check_availability")}
+                </button>
               </div>
             </form>
-
-            <div className="header__link-box">
-              <a href="" className="header__left-link">
-                {t("check_availability")}
-              </a>
-            </div>
           </div>
         </div>
       </div>

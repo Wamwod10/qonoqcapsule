@@ -307,6 +307,10 @@
   &__left-link {
     font-size: 20px;
     font-weight: 500;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
   }
 
   &__link-box {

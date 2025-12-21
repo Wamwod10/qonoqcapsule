@@ -18,12 +18,12 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 150px;
+    gap: 100px;
   }
 
   &__card {
-    width: 350px;
-    height: 450px;
+    width: 100%;
+    height: fit-content;
     padding: 30px;
     background: radial-gradient(
         300px 150px at 50% 0%,
@@ -55,12 +55,12 @@
     font-size: 18px;
     margin-top: 20px;
     line-height: 30px;
-    color: rgb(194, 194, 194);
+    color: rgb(231, 231, 231);
     text-align: center;
   }
 
   &__card-line {
-    width: 90%;
+    width: 20%;
     height: 3px;
     background: #5a5a5a;
     border-radius: 20px;
@@ -71,20 +71,40 @@
 
   @keyframes line {
     from {
-        width: 80%;
-    } to {
-        width: 90%;
+      width: 18%;
+    }
+    to {
+      width: 20%;
     }
   }
 
   &__socials {
     column-gap: 20px;
     margin-top: 20px;
-    position: absolute;
     bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     left: 25%;
+  }
+
+  &__span-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    row-gap: 10px;
+    margin-top: 20px;
+
+    & span {
+      color: transparent;
+      background: linear-gradient(
+          180deg,
+          rgb(47, 134, 255),
+          rgba(47, 134, 255, 0.417)
+        ),
+        rgba(255, 255, 255, 0.202);
+      background-clip: text;
+    }
   }
 }

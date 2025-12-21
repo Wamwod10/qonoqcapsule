@@ -9,6 +9,8 @@ import Qonoq from "./components/qonoq/Qonoq";
 import "./i18n";
 import Capsule from "./pages/capsule/Capsule";
 import Rules from "./pages/rules/Rules";
+import Service from "./pages/service/Service";
+import Contact from "./pages/contact/Contact";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         />
         <Route path="/capsule" element={<Capsule />} />
         <Route path="/rules" element={<Rules />} />
+        <Route path="/services" element={<Service />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
 
       <Footer />

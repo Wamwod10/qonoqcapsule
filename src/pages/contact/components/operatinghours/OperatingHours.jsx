@@ -5,21 +5,21 @@ import {
   MdOutlineAttachMoney,
   MdOutlineLogin,
 } from "react-icons/md";
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const OperatingHours = () => {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
 
   const services = [
     {
-      title: "Shuttle Service",
-      time: "5:00 - 23:30",
+      title: t("hours_shuttle"),
+      time: t("hours_shuttle_time"),
       icon: <MdOutlineAirportShuttle className="hours__icon" />,
       className: "shuttle",
     },
     {
-      title: "Express Check-In",
-      time: "Always Open",
+      title: t("hours_checkin"),
+      time: t("hours_always_open"),
       icon: <MdOutlineLogin className="hours__icon" />,
       className: "checkin",
     },
@@ -31,16 +31,16 @@ const OperatingHours = () => {
           rel="noopener noreferrer"
           className="hours__link"
         >
-          Luggage Storage
+          {t("hours_luggage")}
         </a>
       ),
-      time: "05:00 – 23:00",
+      time: t("hours_luggage_time"),
       icon: <MdOutlineLuggage className="hours__icon" />,
       className: "luggage",
     },
     {
-      title: "Currency Exchange",
-      time: "Always Open",
+      title: t("hours_currency"),
+      time: t("hours_always_open"),
       icon: <MdOutlineAttachMoney className="hours__icon" />,
       className: "currency",
     },
@@ -50,7 +50,10 @@ const OperatingHours = () => {
     <div className="hours">
       <div className="container">
         <div className="emergency__phone-box">
-          <h2 className="emergency__phone-title hours__title">Quick Services in Airport</h2>
+          <h2 className="emergency__phone-title hours__title">
+            {t("hours_title")}
+          </h2>
+
           <div className="hours__list">
             {services.map((service, index) => (
               <div className={`hours__item ${service.className}`} key={index}>

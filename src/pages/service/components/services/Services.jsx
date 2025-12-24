@@ -1,6 +1,6 @@
 import React from "react";
 import "./services.scss";
-import { FaChargingStation, FaCommentDots, FaShower } from "react-icons/fa";
+import { FaChargingStation } from "react-icons/fa";
 import {
   MdAccessTime,
   MdAir,
@@ -12,80 +12,80 @@ import {
   MdOutlineTouchApp,
   MdVolumeOff,
 } from "react-icons/md";
-
-const servicesData = [
-  {
-    icon: <MdOutlineTouchApp />,
-    title: "Smart LED Control Panel",
-    desc: "Touch-enabled LED control panel inside the capsule to manage lighting and basic functions.",
-    tag: "Touch Enabled",
-  },
-  {
-    icon: <MdVolumeOff />,
-    title: "Soundproof Capsule System",
-    desc: "Advanced sound-insulated walls reduce airport noise for deep rest and privacy.",
-    tag: "Smart System",
-  },
-  {
-    icon: <MdLightbulbOutline />,
-    title: "Ambient LED Lighting",
-    desc: "Soft ambient LED lighting designed for relaxation and eye comfort.",
-    tag: "Smart Control",
-  },
-  {
-    icon: <MdAir />,
-    title: "Private Ventilation Flow",
-    desc: "Individual air circulation system inside each capsule for fresh airflow.",
-    tag: "Tech Powered",
-  },
-  {
-    icon: <MdOutlineDoNotDisturb />,
-    title: "Quiet Zone Design",
-    desc: "Capsule area is designed as a quiet zone with minimal movement and noise.",
-    tag: "Sleep Optimized",
-  },
-  {
-    icon: <MdAccessTime />,
-    title: "Digital Time Display",
-    desc: "Built-in digital clock to keep track of time while resting.",
-    tag: "Designed for Comfort",
-  },
-  {
-    icon: <FaChargingStation />,
-    title: "Device Charging Hub",
-    desc: "Multiple USB and Type-C ports for fast charging of personal devices.",
-    tag: "Smart System",
-  },
-  {
-    icon: <MdOutlineSanitizer />,
-    title: "Hygienic Interior Materials",
-    desc: "Antibacterial and easy-to-clean interior materials for maximum hygiene.",
-    tag: "Guest Safety",
-  },
-  {
-    icon: <MdOutlineLock />,
-    title: "Privacy Lock System",
-    desc: "Secure lock system from inside the capsule ensuring full privacy.",
-    tag: "Designed for Comfort",
-  },
-  {
-    icon: <MdFlightTakeoff />,
-    title: "Airport-Integrated Location",
-    desc: "Capsules are located directly inside the airport for fast and easy access.",
-    tag: "On-Site Location",
-  }
-];
+import { useTranslation } from "react-i18next";
 
 const Services = () => {
+  const { t } = useTranslation();
+
+  const servicesData = [
+    {
+      icon: <MdOutlineTouchApp />,
+      title: t("service_1_title"),
+      desc: t("service_1_desc"),
+      tag: t("service_1_tag"),
+    },
+    {
+      icon: <MdVolumeOff />,
+      title: t("service_2_title"),
+      desc: t("service_2_desc"),
+      tag: t("service_2_tag"),
+    },
+    {
+      icon: <MdLightbulbOutline />,
+      title: t("service_3_title"),
+      desc: t("service_3_desc"),
+      tag: t("service_3_tag"),
+    },
+    {
+      icon: <MdAir />,
+      title: t("service_4_title"),
+      desc: t("service_4_desc"),
+      tag: t("service_4_tag"),
+    },
+    {
+      icon: <MdOutlineDoNotDisturb />,
+      title: t("service_5_title"),
+      desc: t("service_5_desc"),
+      tag: t("service_5_tag"),
+    },
+    {
+      icon: <MdAccessTime />,
+      title: t("service_6_title"),
+      desc: t("service_6_desc"),
+      tag: t("service_6_tag"),
+    },
+    {
+      icon: <FaChargingStation />,
+      title: t("service_7_title"),
+      desc: t("service_7_desc"),
+      tag: t("service_7_tag"),
+    },
+    {
+      icon: <MdOutlineSanitizer />,
+      title: t("service_8_title"),
+      desc: t("service_8_desc"),
+      tag: t("service_8_tag"),
+    },
+    {
+      icon: <MdOutlineLock />,
+      title: t("service_9_title"),
+      desc: t("service_9_desc"),
+      tag: t("service_9_tag"),
+    },
+    {
+      icon: <MdFlightTakeoff />,
+      title: t("service_10_title"),
+      desc: t("service_10_desc"),
+      tag: t("service_10_tag"),
+    },
+  ];
+
   return (
     <section className="services">
       <div className="container">
         <div className="services__header">
-          <h2>Capsule Services</h2>
-          <p>
-            Everything you need for a calm, safe and comfortable capsule stay —
-            designed with care.
-          </p>
+          <h2>{t("services_title")}</h2>
+          <p>{t("services_subtitle")}</p>
         </div>
 
         <div className="services__grid">

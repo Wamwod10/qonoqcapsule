@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./capstype.scss";
 import {
-  FaBed,
   FaFan,
   FaLocationArrow,
   FaLock,
@@ -21,7 +20,7 @@ const Capstype = () => {
     <>
       <div className="capstype">
         <div className="container">
-          <h2 className="qonoq__title">Hourly & Daily Room Options</h2>
+          <h2 className="qonoq__title">{t("capstype_title")}</h2>
 
           <div className="capstype__box">
             {/* ================= STANDARD CAPSULE ================= */}
@@ -30,39 +29,35 @@ const Capstype = () => {
 
               <div className="capstype__prices">
                 <a href="#!" className="capstype__price-link">
-                  Up to 4 hours / 400 000 UZS
+                  {t("standard_price_4h")}
                 </a>
                 <a href="#!" className="capstype__price-link">
-                  Up to 6 hours / 600 000 UZS
+                  {t("standard_price_6h")}
                 </a>
                 <a href="#!" className="capstype__price-link">
-                  Up to 8 hours / 800 000 UZS
+                  {t("standard_price_8h")}
                 </a>
               </div>
 
               <div className="capstype__div">
-                <h2 className="capstype__title">Standard Capsule</h2>
+                <h2 className="capstype__title">{t("standard_title")}</h2>
 
                 <div className="caps__info-card">
                   <p className="caps__card-guest">
-                    <FaUserAlt className="caps__icon" /> 1 Guest
+                    <FaUserAlt className="caps__icon" /> {t("standard_guests")}
                   </p>
                   <p className="caps__card-guest">
-                    <TbArrowAutofitHeight className="caps__icon" /> 1.2m x 2m
+                    <TbArrowAutofitHeight className="caps__icon" />{" "}
+                    {t("standard_size")}
                   </p>
                 </div>
 
                 <a href="#!" className="caps__card-guest capstype__location">
-                  <FaLocationArrow className="caps__icon" /> Tashkent Airport
-                  Qonoq Capsule
+                  <FaLocationArrow className="caps__icon" />{" "}
+                  {t("capsule_location")}
                 </a>
 
-                <p className="capstype__text">
-                  A practical and comfortable capsule designed for peace,
-                  simplicity, and privacy, featuring a cozy 1.2m x 2m bed —
-                  ideal for solo travelers seeking rest just a few minutes from
-                  Tashkent International Airport.
-                </p>
+                <p className="capstype__text">{t("standard_description")}</p>
 
                 <div className="caps__card-features">
                   <h2 className="caps__ft-title">
@@ -94,10 +89,10 @@ const Capstype = () => {
                       <MdPowerSettingsNew className="caps__ft-icon" />
                       {t("capsules_feature_power")}
                     </a>
-                    <a href="#!" className="caps__ft-link">
+                    {/* <a href="#!" className="caps__ft-link">
                       <MdAir className="caps__ft-icon" />
                       {t("capsules_feature_climate")}
-                    </a>
+                    </a> */}
                   </div>
 
                   <div className="capstype__link-div">
@@ -118,39 +113,35 @@ const Capstype = () => {
 
               <div className="capstype__prices">
                 <a href="#!" className="capstype__price-link">
-                  Up to 4 hours / 600 000 UZS
+                  {t("family_price_4h")}
                 </a>
                 <a href="#!" className="capstype__price-link">
-                  Up to 6 hours / 800 000 UZS
+                  {t("family_price_6h")}
                 </a>
                 <a href="#!" className="capstype__price-link">
-                  Up to 10 hours / 1 000 000 UZS
+                  {t("family_price_10h")}
                 </a>
               </div>
 
               <div className="capstype__div">
-                <h2 className="capstype__title">Family Capsule</h2>
+                <h2 className="capstype__title">{t("family_title")}</h2>
 
                 <div className="caps__info-card">
                   <p className="caps__card-guest">
-                    <FaUserAlt className="caps__icon" /> 2 Guest
+                    <FaUserAlt className="caps__icon" /> {t("family_guests")}
                   </p>
                   <p className="caps__card-guest">
-                    <TbArrowAutofitHeight className="caps__icon" /> 2.4m x 2m
+                    <TbArrowAutofitHeight className="caps__icon" />{" "}
+                    {t("family_size")}
                   </p>
                 </div>
 
                 <a href="#!" className="caps__card-guest capstype__location">
-                  <FaLocationArrow className="caps__icon" /> Tashkent Airport
-                  Qonoq Capsule
+                  <FaLocationArrow className="caps__icon" />{" "}
+                  {t("capsule_location")}
                 </a>
 
-                <p className="capstype__text">
-                  A spacious and comfortable family capsule offering privacy and
-                  relaxation, with a 2.4m x 2m bed — perfect for couples or
-                  small families just minutes from Tashkent International
-                  Airport.
-                </p>
+                <p className="capstype__text">{t("family_description")}</p>
 
                 <div className="caps__card-features">
                   <h2 className="caps__ft-title">
@@ -182,10 +173,10 @@ const Capstype = () => {
                       <MdPowerSettingsNew className="caps__ft-icon" />
                       {t("capsules_feature_power")}
                     </a>
-                    <a href="#!" className="caps__ft-link">
+                    {/* <a href="#!" className="caps__ft-link">
                       <MdAir className="caps__ft-icon" />
                       {t("capsules_feature_climate")}
-                    </a>
+                    </a> */}
                   </div>
 
                   <div className="capstype__link-div">
@@ -203,7 +194,6 @@ const Capstype = () => {
         </div>
       </div>
 
-      {/* ================= MODAL ================= */}
       {isModalOpen && <CapsModal onClose={() => setIsModalOpen(false)} />}
     </>
   );

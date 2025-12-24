@@ -4,34 +4,39 @@ import { BsCalendar3, BsHeadphones } from "react-icons/bs";
 import { IoCopyOutline } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa6";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const EmailAddresses = () => {
+  const { t } = useTranslation();
 
   const emails = [
     {
-      title: "General Inquiries",
+      title: t("email_general_title"),
       email: "qonoqhotel@mail.ru",
-      buttonText: "Send",
+      buttonText: t("email_button_send"),
       icon: <HiOutlineMail className="email__call-icon" />,
     },
     {
-      title: "Reservations",
+      title: t("email_reservations_title"),
       email: "qonoqhotel@mail.ru",
-      buttonText: "Send",
+      buttonText: t("email_button_send"),
       icon: <BsCalendar3 className="email__call-icon" />,
     },
     {
-      title: "Customer Support",
+      title: t("email_support_title"),
       email: "qonoqhotel@mail.ru",
-      buttonText: "Send",
+      buttonText: t("email_button_send"),
       icon: <BsHeadphones className="email__call-icon" />,
     },
   ];
 
-  const [copiedStates, setCopiedStates] = useState(Array(emails.length).fill(false));
+  const [copiedStates, setCopiedStates] = useState(
+    Array(emails.length).fill(false)
+  );
 
   const handleCopy = (email, index) => {
-    navigator.clipboard.writeText(email)
+    navigator.clipboard
+      .writeText(email)
       .then(() => {
         setCopiedStates((prev) => {
           const updated = [...prev];
@@ -56,7 +61,8 @@ const EmailAddresses = () => {
     <div className="email">
       <div className="container">
         <div className="email__phone-box">
-          <h2 className="emergency__phone-title">Email Addresses</h2>
+          <h2 className="emergency__phone-title">{t("email_section_title")}</h2>
+
           <div className="email__box-phone">
             {emails.map((item, index) => (
               <div className="email__phone-div" key={index}>
@@ -83,7 +89,10 @@ const EmailAddresses = () => {
                     )}
                   </button>
 
-                  <a href={`mailto:${item.email}`} className="emergency__phone-link">
+                  <a
+                    href={`mailto:${item.email}`}
+                    className="emergency__phone-link"
+                  >
                     <HiOutlineMail className="emergency__link-icon" />
                     {item.buttonText}
                   </a>

@@ -11,6 +11,7 @@ import Capsule from "./pages/capsule/Capsule";
 import Rules from "./pages/rules/Rules";
 import Service from "./pages/service/Service";
 import Contact from "./pages/contact/Contact";
+import MyBooking from "./pages/mybooking/MyBooking";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/rules" element={<Rules />} />
         <Route path="/services" element={<Service />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/my-booking" element={<MyBooking />} />
       </Routes>
 
       <Footer />

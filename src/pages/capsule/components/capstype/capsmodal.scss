@@ -1,3 +1,5 @@
+/* ================= MODAL OVERLAY ================= */
+
 .capsmodal {
   position: fixed;
   inset: 0;
@@ -7,18 +9,24 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   opacity: 0;
   animation: overlayIn 0.25s ease-out forwards;
+
+  &.closing {
+    animation: overlayOut 0.25s ease-in forwards;
+  }
 }
 
-.capsmodal__box {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+/* ================= MODAL BOX ================= */
 
-  width: 400px;
-  height: 400px;
+.capsmodal__box {
+  width: 420px;
+  max-width: 92%;
+  padding: 28px;
 
   background: radial-gradient(
       300px 150px at 0% 5%,
@@ -30,20 +38,146 @@
       rgba(255, 255, 255, 0.08),
       transparent 60%
     ),
-    rgba(16, 16, 16, 0.809);
+    rgba(16, 16, 16, 0.85);
 
-  backdrop-filter: saturate(170%) blur(16px);
-  -webkit-backdrop-filter: saturate(170%) blur(16px);
+  backdrop-filter: saturate(180%) blur(18px);
+  -webkit-backdrop-filter: saturate(180%) blur(18px);
 
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.25);
 
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 10px 40px rgba(0, 0, 0, 0.6);
+    0 20px 60px rgba(0, 0, 0, 0.65);
 
   opacity: 0;
-  animation: modalIn 0.35s ease-out forwards;
+  animation: modalIn 0.3s ease-out forwards;
+
+  &.closing {
+    animation: modalOut 0.3s ease-in forwards;
+  }
 }
+
+/* ================= TITLE ================= */
+
+.capsmodal__title {
+  color: #fff;
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ================= FORM ================= */
+
+.capsmodal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ===== Floating label input ===== */
+
+.input-group {
+  position: relative;
+  background: transparent !important;
+}
+
+.input-group input {
+  width: 100%;
+  height: 48px;
+  padding: 16px 14px 0;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  outline: none;
+}
+
+.input-group label {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+/* focus yoki value bo‘lsa */
+.input-group input:focus + label,
+.input-group input:valid + label {
+  top: 8px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ================= AUTOFILL FIX (ENG MUHIM) ================= */
+
+input,
+textarea,
+select {
+  background-color: transparent !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff;
+
+  -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.08) inset !important;
+  box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.08) inset !important;
+
+  transition: background-color 9999s ease-in-out 0s;
+  border-radius: 14px;
+}
+
+/* ================= PRICE ================= */
+
+.capsmodal__price {
+  margin-top: 18px;
+  font-size: 16px;
+  color: #ddd;
+  text-align: center;
+
+  span {
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+/* ================= ACTION BUTTONS ================= */
+
+.capsmodal__actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+
+  .btn {
+    flex: 1;
+    height: 44px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .confirm {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+  }
+
+  .cancel {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ccc;
+  }
+}
+
+/* ================= ANIMATIONS ================= */
 
 @keyframes overlayIn {
   from {
@@ -54,13 +188,33 @@
   }
 }
 
+@keyframes overlayOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes modalIn {
   from {
     opacity: 0;
-    transform: translate(-50%, -45%) scale(0.95);
+    transform: scale(0.95) translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes modalOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
   }
 }

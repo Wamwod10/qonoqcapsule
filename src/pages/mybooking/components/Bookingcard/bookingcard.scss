@@ -1,0 +1,77 @@
+.booking-card {
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(18px);
+  border-radius: 22px;
+  padding: 28px;
+  margin-bottom: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #eaeaea;
+
+  /* HEADER */
+  h3 {
+    color: #ffb347;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  h4 {
+    margin-top: 22px;
+    margin-bottom: 12px;
+    font-size: 17px;
+    color: #ffffff;
+  }
+
+  /* INFO ROWS */
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 0;
+    font-size: 15.5px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    span {
+      color: #9aa0a6;
+      font-weight: 500;
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+  /* GUEST INFO TITLE SEPARATOR */
+  h4 + .row {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* ACTION BUTTONS */
+  .actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 26px;
+
+    button {
+      flex: 1;
+      height: 48px; /* sal kattaroq */
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      font-size: 15.5px;
+      font-weight: 600;
+    }
+
+    .edit {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .delete {
+      background: rgba(255, 0, 0, 0.18);
+      color: #ff6b6b;
+    }
+  }
+}

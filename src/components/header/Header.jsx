@@ -40,7 +40,7 @@ const Header = () => {
     if (!validate()) return;
 
     // Prepare label keys and localized labels
-    const durationLabelKey = `duration_${duration}`; // e.g. duration_2h
+    const durationLabelKey = `duration_${duration}`; // e.g. duration_4h
     const capsuleTypeLabelKey =
       capsuleType === "standard" ? "capsule_standard" : "capsule_family";
     const locationLabelKey = (() => {
@@ -188,10 +188,9 @@ const Header = () => {
                   value={duration}
                   onChange={(e) => setDuration(e.target.value)}
                 >
-                  <option value="2h">{t("duration_2h")}</option>
                   <option value="4h">{t("duration_4h")}</option>
+                  <option value="6h">{t("duration_6h")}</option>
                   <option value="10h">{t("duration_10h")}</option>
-                  <option value="1d">{t("duration_1d")}</option>
                 </select>
                 {errors.duration && (
                   <small className="form-error">{errors.duration}</small>

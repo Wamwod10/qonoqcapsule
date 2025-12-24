@@ -104,7 +104,7 @@ const Capsules = () => {
             <div className="caps__img-card">
               <div className="caps__price-div">
                 <p className="caps__duration">
-                  {t("capsules_standard_duration_4h")}
+                  {t("capsules_standard_duration_6h")}
                 </p>
                 <p className="caps__price">{t("capsules_standard_price_4h")}</p>
               </div>
@@ -128,7 +128,7 @@ const Capsules = () => {
             <div className="caps__imgsec-card">
               <div className="caps__price-div">
                 <p className="caps__duration">
-                  {t("capsules_family_duration_4h")}
+                  {t("capsules_family_duration_6h")}
                 </p>
                 <p className="caps__price">{t("capsules_family_price_4h")}</p>
               </div>

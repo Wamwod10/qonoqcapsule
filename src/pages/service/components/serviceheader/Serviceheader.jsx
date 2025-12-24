@@ -1,37 +1,35 @@
 import React from "react";
 import "./serviceheader.scss";
+import { useTranslation } from "react-i18next";
 
 const Serviceheader = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="serviceheader">
       <div className="container">
         <div className="serviceheader__box">
           <div className="service__card-left">
             <h1 className="serviceheader__title">
-              Premium Services for Your Capsule Stay
+              {t("service_header_title")}
             </h1>
-            <p className="serviceheader__text1">
-              Experience essential comfort with services designed for a relaxing
-              capsule stay.
-            </p>
-            <p className="serviceheader__text2">
-              At Qonoq Capsule Hotel, we combine smart technology with
-              thoughtful amenities to create a peaceful and reliable
-              environment. From seamless check-in to well-maintained facilities,
-              every service is crafted to make your stay comfortable, secure,
-              and pleasantly memorable.
-            </p>
+
+            <p className="serviceheader__text1">{t("service_header_text1")}</p>
+
+            <p className="serviceheader__text2">{t("service_header_text2")}</p>
+
             <div className="serviceheader__big-links">
               <a href="#!" className="qonoq__big-link">
-                Booking Now
+                {t("service_header_booking")}
               </a>
               <a href="#!" className="qonoq__big-link">
-                Contact Now
+                {t("service_header_contact")}
               </a>
             </div>
           </div>
+
           <div className="serviceheader__img">
-            <img src="/public/26.jpg" alt="" />
+            <img src="/26.jpg" alt="" />
           </div>
         </div>
       </div>

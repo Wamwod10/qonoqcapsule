@@ -275,6 +275,7 @@
     pointer-events: auto;
     transform: translateY(0) scale(1);
     margin-top: 15px;
+    z-index: 9999 !important;
   }
 
   &__lang-item {
@@ -309,7 +310,7 @@
     padding: 0 10px;
     &__list {
       position: fixed;
-      bottom: 20px;
+      bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 9999;
@@ -322,7 +323,7 @@
     padding: 0 10px;
     &__list {
       position: fixed;
-      bottom: 20px;
+      bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 9999;
@@ -366,7 +367,7 @@
     padding: 0 10px;
     &__list {
       position: fixed;
-      bottom: 20px;
+      bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 9999;

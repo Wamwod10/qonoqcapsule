@@ -101,7 +101,7 @@
   }
 
   &__icon {
-    font-size: 1.4rem;
+    font-size: 1.4rem !important;
     color: #f89d1c;
     display: flex;
     align-items: center;
@@ -212,7 +212,7 @@
     }
 
     &__icon {
-      font-size: 1.2rem;
+      font-size: 1.2rem !important;
     }
   }
 }

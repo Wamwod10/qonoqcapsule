@@ -63,7 +63,7 @@
       }
 
       &__icon {
-        font-size: 1.5rem;
+        font-size: 1.5rem !important;
         color: rgb(255, 169, 48);
       }
 
@@ -72,7 +72,7 @@
 
         .contact-alert__main-text {
           font-weight: 500;
-          font-size: 18px;
+          font-size: 18px !important;
           color: rgb(255, 158, 23);
           margin-bottom: 0.25rem;
         }
@@ -131,7 +131,7 @@
       font-size: 36px !important;
     }
     .contact-alert__main-text {
-      font-size: 17px;
+      font-size: 17px !important;
     }
   }
 }
@@ -155,7 +155,7 @@
       gap: 0.75rem;
     }
     .contact-alert__main-text {
-      font-size: 14px;
+      font-size: 14px !important;
     }
   }
 }
@@ -163,7 +163,7 @@
 /* 1000px ↓ */
 @media (max-width: 1000px) {
   .contact-header {
-    .contact-header__title {
+    .contact-header .contact-header__title {
       font-size: 32px !important;
     }
     .contact-alert {
@@ -184,7 +184,7 @@
       font-size: 0.95rem;
     }
     .contact-alert__main-text {
-      font-size: 13px;
+      font-size: 13px !important;
     }
   }
 }
@@ -192,7 +192,7 @@
 /* 800px ↓ */
 @media (max-width: 800px) {
   .contact-header {
-    .contact-header__title {
+    .contact-header .contact-header__title {
       font-size: 28px !important;
     }
     .contact-alert__number {
@@ -204,7 +204,7 @@
 /* 700px ↓ */
 @media (max-width: 700px) {
   .contact-header {
-    .contact-header__title {
+    .contact-header .contact-header__title {
       font-size: 26px !important;
     }
     .contact-alert {
@@ -225,7 +225,7 @@
 
 /* 500px ↓ */
 @media (max-width: 500px) {
-  .contact-header__title {
+  .contact-header .contact-header__title {
     font-size: 24px !important;
   }
   .contact-header__subtitle {
@@ -236,7 +236,7 @@
 /* 400px ↓ */
 @media (max-width: 400px) {
   .contact-alert__main-text {
-    font-size: 12px;
+    font-size: 12px !important;
   }
   .contact-alert__button-icon {
     font-size: 16px;
@@ -246,7 +246,7 @@
 /* 300px ↓ */
 @media (max-width: 300px) {
   .contact-header {
-    .contact-header__title {
+    .contact-header .contact-header__title {
       font-size: 20px !important;
     }
     .contact-alert__button {

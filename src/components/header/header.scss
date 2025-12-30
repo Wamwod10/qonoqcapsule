@@ -30,7 +30,7 @@
       left: 0;
       top: 0;
       background: #0000006d;
-      border-radius: 30px;
+      border-radius: 25px;
       z-index: -1;
       pointer-events: none;
     }
@@ -350,6 +350,7 @@
   .header__right {
     width: 100%;
     height: 450px;
+    z-index: 0 !important;
   }
 
   .header__left {
@@ -387,6 +388,7 @@
   .header__right {
     border-radius: 25px;
     padding: 25px;
+    z-index: 0 !important;
   }
 
   .header__box-link {
@@ -401,6 +403,7 @@
 @media (max-width: 650px) {
   .header__right {
     height: 390px;
+    z-index: 0 !important;
   }
 
   .header__title {
@@ -678,6 +681,7 @@
   .header__right {
     height: 270px;
     padding: 16px;
+    z-index: -1 !important;
   }
 }
 

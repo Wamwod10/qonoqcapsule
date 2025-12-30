@@ -33,7 +33,7 @@
       ),
       rgba(255, 255, 255, 0.202);
     background-clip: text;
-    font-size: 22px;
+    font-size: 22px !important;
     font-weight: 600;
   }
 
@@ -163,15 +163,15 @@
 @media (max-width: 900px) {
   .alternative {
     &__title {
-      font-size: 20px;
+      font-size: 20px !important;
     }
 
     &__message-title {
-      font-size: 18px;
+      font-size: 18px !important;
     }
 
     &__message-text {
-      font-size: 15px;
+      font-size: 15px !important;
     }
   }
 }
@@ -213,11 +213,11 @@
 @media (max-width: 500px) {
   .alternative {
     &__title {
-      font-size: 18px;
+      font-size: 18px !important;
     }
 
     &__messages {
-      padding: 14px;
+      padding: 14px !important;
     }
   }
 }

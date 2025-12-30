@@ -25,7 +25,7 @@
   }
 
   &__phone-title {
-    font-size: 20px;
+    font-size: 20px !important;
     color: #2d3748;
     font-weight: 600;
   }
@@ -50,7 +50,7 @@
 
   &__numb-title {
     color: #2d3748;
-    font-size: 16px;
+    font-size: 16px !important;
   }
 
   &__numb-text {
@@ -137,7 +137,7 @@
 @media (max-width: 1300px) {
   .email {
     &__numb-title {
-      font-size: 15px;
+      font-size: 15px !important;
     }
 
     &__numb-text {
@@ -177,7 +177,7 @@
 @media (max-width: 1000px) {
   .email {
     &__numb-title {
-      font-size: 14px;
+      font-size: 14px !important;
     }
 
     &__numb-text {
@@ -220,7 +220,7 @@
     }
 
     &__phone-title {
-      font-size: 18px;
+      font-size: 18px !important;
     }
 
     &__box-phone {
@@ -233,7 +233,7 @@
 @media (max-width: 700px) {
   .email {
     &__numb-title {
-      font-size: 13px;
+      font-size: 13px !important;
     }
 
     &__numb-text {
@@ -250,7 +250,7 @@
 @media (max-width: 600px) {
   .email {
     &__phone-title {
-      font-size: 17px;
+      font-size: 17px !important;
     }
 
     &__copy-icon {
@@ -297,7 +297,7 @@
     }
 
     &__phone-title {
-      font-size: 16px;
+      font-size: 16px !important;
     }
 
     &__phone-div {
@@ -327,7 +327,7 @@
 
     &__numb-title,
     &__numb-text {
-      font-size: 12px;
+      font-size: 12px !important;
     }
   }
 }

@@ -2,13 +2,13 @@
 
 .contact-page {
   margin: 0 auto;
-  padding: 20px 15px;
+  padding: 20px 15px !important;
   margin-top: 10px;
 }
 
 .contact-main {
   display: flex;
-  gap: 30px;
+  gap: 30px !important;
   flex-wrap: nowrap;
   margin-top: 20px;
 }
@@ -19,13 +19,25 @@
   min-width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 0px;
+  gap: 10px;
 }
 
 /* FaqAccordion va AlternativeContacts uchun margin */
 .faq-accordion,
 .alternative-contacts {
   margin-top: 40px;
+}
+
+@media (max-width: 1024px) {
+  .contact-main {
+    row-gap: 30px !important;
+  }
+
+  .right-side {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+  }
 }
 
 /* Responsive uchun */

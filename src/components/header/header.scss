@@ -38,7 +38,7 @@
 
   &__title {
     z-index: 1;
-    font-size: 40px;
+    font-size: 40px !important;
     font-weight: 550;
     text-shadow: 0 2px 2px #c4c4c446;
     // font-style: italic;
@@ -162,7 +162,7 @@
 
   &__left-title {
     text-align: center;
-    font-size: 25px;
+    font-size: 25px !important;
     font-weight: 600;
     position: relative;
   }
@@ -404,12 +404,12 @@
   }
 
   .header__title {
-    font-size: 28px;
+    font-size: 28px !important;
   }
 
   .header__title {
     span {
-      font-size: 28px;
+      font-size: 28px !important;
     }
   }
 
@@ -471,12 +471,12 @@
   }
 
   .header__title {
-    font-size: 24px;
+    font-size: 24px !important;
   }
 
   .header__title {
     span {
-      font-size: 24px;
+      font-size: 24px !important;
     }
   }
 
@@ -534,7 +534,7 @@
 
 @media (max-width: 460px) {
   .header__title {
-    font-size: 20px;
+    font-size: 20px !important;
   }
 
   .header__title span {
@@ -568,11 +568,11 @@
 
 @media (max-width: 430px) {
   .header__title {
-    font-size: 18px;
+    font-size: 18px !important;
   }
 
   .header__title span {
-    font-size: 17px;
+    font-size: 17px !important;
   }
 
   .header__text {
@@ -653,7 +653,7 @@
   }
 
   .header__title {
-    font-size: 17px;
+    font-size: 17px !important;
   }
 
   .header__title span {

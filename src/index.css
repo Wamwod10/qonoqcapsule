@@ -40,3 +40,9 @@ p {
   padding: 15px 0px;
   margin: 0 auto;
 }
+
+@media (max-width: 425px) {
+  * {
+    font-size: 10px !important;
+  }
+}

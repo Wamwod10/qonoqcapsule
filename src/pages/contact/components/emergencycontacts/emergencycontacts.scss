@@ -17,7 +17,7 @@
   }
 
   &__title {
-    font-size: 18px;
+    font-size: 18px !important;
     color: #e53e3e;
     font-weight: 500;
   }
@@ -65,7 +65,7 @@
   }
 
   &__phone-title {
-    font-size: 20px;
+    font-size: 20px !important;
     color: #ffffffc4;
     font-weight: 600;
     padding-left: 5px;
@@ -105,7 +105,7 @@
       ),
       rgba(255, 255, 255, 0.202);
     background-clip: text;
-    font-size: 16px;
+    font-size: 16px !important;
   }
 
   &__numb-text {
@@ -201,7 +201,7 @@
     }
 
     &__title {
-      font-size: 17px;
+      font-size: 17px !important;
     }
   }
 }
@@ -238,7 +238,7 @@
   .emergency {
     &__numb-title,
     &__numb-text {
-      font-size: 14px;
+      font-size: 14px !important;
     }
 
     &__copy-icon,
@@ -288,7 +288,7 @@
     }
 
     &__title {
-      font-size: 16px;
+      font-size: 16px !important;
     }
 
     &__text-number {
@@ -319,7 +319,7 @@
     }
 
     &__phone-title {
-      font-size: 18px;
+      font-size: 18px !important;
     }
 
     &__box-phone {
@@ -344,11 +344,11 @@
 
     &__numb-title,
     &__numb-text {
-      font-size: 13px;
+      font-size: 13px !important;
     }
 
     &__title {
-      font-size: 15px;
+      font-size: 15px !important;
     }
 
     &__text-number {
@@ -372,7 +372,7 @@
     }
 
     &__phone-title {
-      font-size: 16px;
+      font-size: 16px !important;
     }
 
     &__link {
@@ -404,11 +404,11 @@
 
     &__numb-title,
     &__numb-text {
-      font-size: 12px;
+      font-size: 12px !important;
     }
 
     &__title {
-      font-size: 14px;
+      font-size: 14px !important;
     }
 
     &__text-number {

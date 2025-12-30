@@ -197,7 +197,7 @@ export default function Nav() {
                 aria-selected={active === 1}
                 onClick={() => setActive(1)}
               >
-                <TbBedFilled /> {t("capsules")}
+                <TbBedFilled className="nav__icon"  /> {t("capsules")}
               </NavLink>
             </li>
 
@@ -212,7 +212,7 @@ export default function Nav() {
                 aria-selected={active === 2}
                 onClick={() => setActive(2)}
               >
-                <TbHelpHexagon /> {t("rules")}
+                <TbHelpHexagon className="nav__icon"  /> {t("rules")}
               </NavLink>
             </li>
 
@@ -226,7 +226,7 @@ export default function Nav() {
                 aria-selected={active === 3}
                 onClick={() => setActive(3)}
               >
-                <BsFillBookmarksFill /> {t("services")}
+                <BsFillBookmarksFill className="nav__icon"  /> {t("services")}
               </NavLink>
             </li>
 
@@ -240,7 +240,7 @@ export default function Nav() {
                 aria-selected={active === 4}
                 onClick={() => setActive(4)}
               >
-                <IoCall />
+                <IoCall className="nav__icon"  />
                 {t("contact")}
               </NavLink>
             </li>
@@ -255,7 +255,7 @@ export default function Nav() {
                 aria-selected={active === 5}
                 onClick={() => setActive(5)}
               >
-                <PiNotebook />
+                <PiNotebook className="nav__icon"  />
                 {t("my_booking")}
               </NavLink>
             </li>

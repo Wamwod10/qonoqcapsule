@@ -29,7 +29,7 @@
   }
 
   &__title {
-    font-size: 22px;
+    font-size: 22px !important;
     color: transparent;
     background: linear-gradient(
         180deg,
@@ -290,7 +290,7 @@
 // === MOBILE LARGE (e.g. iPhone 14 Pro Max) ===
 @media (max-width: 576px) {
   .contactform__title {
-    font-size: 20px;
+    font-size: 20px !important;
   }
 
   .contactform__link {

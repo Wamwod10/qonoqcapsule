@@ -36,7 +36,7 @@
       ),
       rgba(255, 255, 255, 0.202);
     background-clip: text;
-    font-size: 26px;
+    font-size: 26px !important;
     font-weight: 600;
   }
 
@@ -243,7 +243,7 @@
 @media (max-width: 480px) {
   .sendmessage {
     &__title {
-      font-size: 22px;
+      font-size: 22px !important;
       text-align: center;
     }
 

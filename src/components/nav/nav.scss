@@ -303,3 +303,86 @@
     color: #2f86ff;
   }
 }
+
+@media (max-width: 1235px) {
+  .nav {
+    padding: 0 10px;
+    &__list {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+    }
+  }
+}
+
+@media (max-width: 810px) {
+  .nav {
+    padding: 0 10px;
+    &__list {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      gap: 6px;
+    }
+
+    &__link {
+      font-size: 14px !important;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .nav {
+    padding: 0 10px;
+    &__list {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      gap: 6px;
+      padding: 16px 12px;
+    }
+
+    &__link {
+      font-size: 14px !important;
+      display: flex;
+      flex-direction: column;
+      row-gap: 5px;
+    }
+
+    &__icon {
+      font-size: 14px !important;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .nav {
+    padding: 0 10px;
+    &__list {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      gap: 6px;
+      padding: 16px 12px;
+    }
+
+    &__link {
+      font-size: 0px !important;
+    }
+
+    &__icon {
+      font-size: 18px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

@@ -7,14 +7,12 @@ const Header = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  // Controlled form state
   const [checkIn, setCheckIn] = useState("");
   const [checkInTime, setCheckInTime] = useState("");
   const [capsuleType, setCapsuleType] = useState("standard");
-  const [duration, setDuration] = useState("2h");
+  const [duration, setDuration] = useState("4h");
   const [locationValue, setLocationValue] = useState("tas");
 
-  // Optional: basic validation state
   const [errors, setErrors] = useState({});
 
   const validate = () => {

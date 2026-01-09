@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BookingCard from "./components/Bookingcard/BookingCard";
 import "./mybooking.scss";
 import { useTranslation } from "react-i18next";
+import { TbMoodEmpty } from "react-icons/tb";
 
 const MyBooking = () => {
   const { t } = useTranslation();
@@ -21,14 +22,35 @@ const MyBooking = () => {
   return (
     <div className="mybooking">
       <div className="container">
-        <h1>{t("mybooking_title")}</h1>
+        <h1 className="mybooking__title">{t("mybooking_title")}</h1>
 
         {bookings.length === 0 ? (
-          <p>{t("mybooking_empty")}</p>
+          <>
+            <div className="mybooking__icon-wrap">
+              <TbMoodEmpty className="mybooking__icon" />
+            </div>
+            <p>{t("mybooking_empty")}</p>
+            <a href="/" className="qonoq__big-link mybooking__book-div">
+              {t("service_header_booking")}
+            </a>
+          </>
         ) : (
-          bookings.map((b) => (
-            <BookingCard key={b.id} booking={b} onDelete={deleteBooking} />
-          ))
+          <>
+            <a
+              href="/"
+              className="qonoq__big-link mybooking__book-div mybooking__extra"
+            >
+              Add a Booking +
+            </a>
+            {bookings.map((b) => (
+              <BookingCard key={b.id} booking={b} onDelete={deleteBooking} />
+            ))}
+            <div className="mybooking__button-div">
+              <a href="#!" className="mybooking__button">
+                Complete Your Purchase
+              </a>
+            </div>
+          </>
         )}
       </div>
     </div>

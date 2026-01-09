@@ -16,6 +16,15 @@ const Capstype = () => {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [selectedType, setSelectedType] = useState(null);
+
+  React.useEffect(() => {
+    const data = sessionStorage.getItem("qonoq_booking");
+    if (data) {
+      const parsed = JSON.parse(data);
+      setSelectedType(parsed.capsuleTypeValue); // "standard" yoki "family"
+    }
+  }, []);
   return (
     <>
       <div className="capstype">
@@ -98,6 +107,7 @@ const Capstype = () => {
                   <div className="capstype__link-div">
                     <button
                       className="qonoq__big-link capstype__link"
+                      disabled={selectedType === "family"}
                       onClick={() => setIsModalOpen(true)}
                     >
                       {t("capsules_btn_booking")}
@@ -182,6 +192,7 @@ const Capstype = () => {
                   <div className="capstype__link-div">
                     <button
                       className="qonoq__big-link capstype__link"
+                      disabled={selectedType === "standard"}
                       onClick={() => setIsModalOpen(true)}
                     >
                       {t("capsules_btn_booking")}

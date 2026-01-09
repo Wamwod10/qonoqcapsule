@@ -96,6 +96,12 @@
   &__link {
     cursor: pointer;
   }
+
+  .capstype__link:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
 
 .capstype {

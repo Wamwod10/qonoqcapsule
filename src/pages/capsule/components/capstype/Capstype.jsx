@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./capstype.scss";
 import {
   FaFan,
@@ -17,6 +17,7 @@ const Capstype = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [selectedType, setSelectedType] = useState(null);
+  const [hasBooking, setHasBooking] = useState(false);
 
   React.useEffect(() => {
     const data = sessionStorage.getItem("qonoq_booking");
@@ -25,6 +26,24 @@ const Capstype = () => {
       setSelectedType(parsed.capsuleTypeValue); // "standard" yoki "family"
     }
   }, []);
+
+  useEffect(() => {
+    const data = sessionStorage.getItem("qonoq_booking");
+
+    if (data) {
+      const parsed = JSON.parse(data);
+
+      if (parsed?.capsuleTypeValue) {
+        setSelectedType(parsed.capsuleTypeValue); // standard | family
+        setHasBooking(true);
+      } else {
+        setHasBooking(false);
+      }
+    } else {
+      setHasBooking(false);
+    }
+  }, []);
+
   return (
     <>
       <div className="capstype">
@@ -107,7 +126,7 @@ const Capstype = () => {
                   <div className="capstype__link-div">
                     <button
                       className="qonoq__big-link capstype__link"
-                      disabled={selectedType === "family"}
+                      disabled={!hasBooking || selectedType === "family"}
                       onClick={() => setIsModalOpen(true)}
                     >
                       {t("capsules_btn_booking")}
@@ -192,7 +211,7 @@ const Capstype = () => {
                   <div className="capstype__link-div">
                     <button
                       className="qonoq__big-link capstype__link"
-                      disabled={selectedType === "standard"}
+                      disabled={!hasBooking || selectedType === "standard"}
                       onClick={() => setIsModalOpen(true)}
                     >
                       {t("capsules_btn_booking")}

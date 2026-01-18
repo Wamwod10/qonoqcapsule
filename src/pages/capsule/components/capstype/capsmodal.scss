@@ -107,7 +107,7 @@
 /* focus yoki value bo‘lsa */
 .input-group input:focus + label,
 .input-group input:valid + label {
-  top: 8px;
+  top: 13px;
   font-size: 11px;
   color: rgba(255, 255, 255, 0.85);
 }
@@ -141,11 +141,25 @@ input:-webkit-autofill:active {
 .capsmodal__price {
   margin-top: 18px;
   font-size: 16px;
-  color: #ddd;
+  color: transparent;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    ),
+    rgb(0, 168, 84);
+  background-clip: text;
   text-align: center;
 
   span {
-    color: #fff;
+    color: transparent;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.16) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+      ),
+      rgb(0, 168, 84);
+    background-clip: text;
     font-weight: 600;
   }
 }
@@ -166,7 +180,7 @@ input:-webkit-autofill:active {
     font-weight: 600;
   }
 
-  .confirm {
+  .btn-confirm {
     background: rgba(255, 255, 255, 0.15);
     color: #fff;
   }

@@ -8,14 +8,12 @@
   margin-bottom: 60px;
 
   h2 {
-    font-size: 45px;
+    font-size: 45px !important;
     font-weight: 700;
     color: transparent;
-    background: linear-gradient(
-        180deg,
+    background: linear-gradient(180deg,
         rgb(47, 134, 255),
-        rgba(47, 134, 255, 0.417)
-      ),
+        rgba(47, 134, 255, 0.417)),
       rgba(255, 255, 255, 0.202);
     background-clip: text;
     text-align: center;
@@ -80,11 +78,9 @@
   font-size: 24px;
   color: #7aa2ff;
 
-  background: linear-gradient(
-    145deg,
-    rgba(122, 162, 255, 0.25),
-    rgba(122, 162, 255, 0.05)
-  );
+  background: linear-gradient(145deg,
+      rgba(122, 162, 255, 0.25),
+      rgba(122, 162, 255, 0.05));
   border: 1px solid rgba(122, 162, 255, 0.35);
 }
 
@@ -110,7 +106,7 @@
 
   .service__icon {
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
   }
 }
 
@@ -122,5 +118,38 @@
   p {
     font-size: 18px !important;
     max-width: 500px !important;
+  }
+
+  .services__header h2 {
+    font-size: 40px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .services__header h2 {
+    font-size: 40px !important;
+  }
+}
+
+@media (max-width: 550px) {
+  .services__header h2 {
+    font-size: 35px !important;
+  }
+
+  p {
+    font-size: 17px !important;
+    max-width: 500px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .services__header h2 {
+    font-size: 32px !important;
+  }
+
+  p {
+    font-size: 16px !important;
+    max-width: 500px !important;
+    width: 100%;
   }
 }

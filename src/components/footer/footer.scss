@@ -25,8 +25,9 @@
   }
 
   &__text {
-    width: 370px;
-    text-align: left;
+    max-width: 370px;
+    width: 100%;
+    text-align: center;
     color: rgb(153, 153, 153);
   }
 
@@ -56,11 +57,9 @@
     font-size: 25px !important;
     font-weight: 600;
     color: transparent;
-    background: linear-gradient(
-        180deg,
+    background: linear-gradient(180deg,
         rgb(47, 134, 255),
-        rgba(47, 134, 255, 0.417)
-      ),
+        rgba(47, 134, 255, 0.417)),
       rgba(255, 255, 255, 0.202);
     background-clip: text;
   }

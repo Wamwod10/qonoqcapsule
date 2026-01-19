@@ -90,7 +90,7 @@ const Header = () => {
               <Trans
                 i18nKey="hero_title"
                 components={{ bold: <span /> }}
-                values={{ brand: t("brand_full") }}
+                values={{ brand: "Qonoq Capsule" }}
               />
             </h1>
 

@@ -230,6 +230,9 @@
       0 12px 28px rgba(0, 0, 0, 0.34);
     z-index: 9999;
   }
+  button{
+    margin-top: 0 !important;
+  }
 
   &__lang-flag {
     font-size: 16px;
@@ -345,15 +348,15 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 9999;
-      gap: 6px;
-      padding: 16px 12px;
+       column-gap: 8px !important;
+      padding: 10px 12px !important;
     }
 
     &__link {
       font-size: 14px !important;
       display: flex;
       flex-direction: column;
-      row-gap: 5px;
+      row-gap: 5px !important;
     }
 
     &__icon {
@@ -371,7 +374,7 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 9999;
-      gap: 6px;
+      column-gap: 6px ;
       padding: 16px 12px;
     }
 

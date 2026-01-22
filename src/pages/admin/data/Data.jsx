@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import "./data.scss";
 
@@ -206,3 +207,14 @@ const Data = () => {
 };
 
 export default Data;
+=======
+import React from 'react'
+
+const Data = () => {
+  return (
+    <div></div>
+  )
+}
+
+export default Data
+>>>>>>> 7394a65e5d184348042a5154ab1e22463af714f1

@@ -24,8 +24,8 @@
   "capsule_standard": "Standart kapsula",
   "capsule_family": "Oila uchun kapsula",
   "duration_label": "Davomiylik",
-  "duration_2h": "2 soatgacha",
   "duration_4h": "4 soatgacha",
+  "duration_6h": "6 soatgacha",
   "duration_10h": "10 soatgacha",
   "duration_1d": "1 kun",
   "select_location": "Joylashuvni tanlang",
@@ -60,5 +60,308 @@
   "image_alt": "Kapsula rasmi",
   "experience_title": "Qulaylik va Maxfiylikni his eting",
   "experience_paragraph": "Kapsulalarimiz parvozlar oralig‘ida dam olishni istagan sayohatchilar uchun tinch va toza shaxsiy makon yaratadi. Zamonaviy qulayliklar va xavfsiz kirish har bir birlikni dam olish, qayta zaryadlash yoki keyingi safardan oldin tinch ishlash uchun ideal qiladi",
-  "booking_now": "Hozir bron qiling"
+  "booking_now": "Hozir bron qiling",
+
+  "capsules_page_title": "Quiet Capsules — tinch zona, qulay uyqu",
+  "capsules_standard_title": "Standart kapsulalar",
+  "capsules_standard_guests": "1 mehmon",
+  "capsules_standard_size": "1.2m x 2m",
+  "capsules_family_title": "Family kapsulalar",
+  "capsules_family_guests": "2 mehmon",
+  "capsules_family_size": "2.4m x 2m",
+  "capsules_location_tashkent_airport": "Toshkent xalqaro aeroporti",
+
+  "capsules_standard_description": "Standart kapsula — aeroportda qisqa dam olish uchun mo'ljallangan shaxsiy, tinch va xavfsiz mini-hudud. Unda ortopedik karavot, shamollatish tizimi, sozlanadigan yoritish va quvvatlash portlari mavjud.",
+  "capsules_family_description": "Family kapsula — aeroportda ikki kishi uchun qulay dam olishga mo'ljallangan keng, shaxsiy va xavfsiz mini-hudud. Unda kattaroq ortopedik karavot, alohida shamollatish, sozlanadigan yoritish va quvvatlash portlari mavjud.",
+
+  "capsules_features_title": "Qulayliklar:",
+  "capsules_feature_bed": "Karavot",
+  "capsules_feature_lighting": "Yoritish",
+  "capsules_feature_outlet": "Rozetka",
+  "capsules_feature_airflow": "Havo aylanishi",
+  "capsules_feature_wifi": "Wi-Fi",
+  "capsules_feature_safe": "Seyf",
+  "capsules_feature_power": "Quvvat tugmasi",
+  "capsules_feature_climate": "Iqlim nazorati",
+  "capsules_feature_mirror": "Oyna",
+  "capsules_feature_soundproof": "Shovqinga chidamli",
+  "capsules_feature_reading_lamps": "O'qish chiroqlari",
+
+  "capsules_btn_gallery": "Galereyani ko'rish",
+  "capsules_btn_booking": "Hoziroq bron qiling",
+
+  "capsules_standard_duration_4h": "4 soatgacha",
+  "capsules_standard_duration_6h": "6 soatgacha",
+  "capsules_standard_duration_8h": "8 soatgacha",
+  "capsules_standard_price_4h": "400 000 so'm",
+  "capsules_standard_price_6h": "600 000 so'm",
+  "capsules_standard_price_8h": "800 000 so'm",
+
+  "capsules_family_duration_4h": "4 soatgacha",
+  "capsules_family_duration_6h": "6 soatgacha",
+  "capsules_family_duration_10h": "10 soatgacha",
+  "capsules_family_price_4h": "600 000 so'm",
+  "capsules_family_price_6h": "800 000 so'm",
+  "capsules_family_price_10h": "1 000 000 so'm",
+
+  "footer_description": "Qonoq Capsule dam olish uchun tinch, shaxsiy va zamonaviy makon bo‘lib, yuqori darajadagi qulaylik va sifatli xizmatni taqdim etadi.",
+
+  "footer_quick_links": "Tezkor havolalar",
+  "footer_link_home": "Bosh sahifa",
+  "footer_link_capsules": "Kapsulalar",
+  "footer_link_services": "Xizmatlar",
+  "footer_link_rules": "Qoidalar",
+  "footer_link_contact": "Aloqa",
+  "footer_link_my_booking": "Mening bronim",
+
+  "footer_contact_title": "Aloqa ma’lumotlari",
+  "footer_contact_address": "Toshkent xalqaro aeroporti ichida, 2-terminal yaqinida, Toshkent shahri",
+  "footer_contact_phone_label": "Telefon:",
+  "footer_contact_email_label": "Email:",
+
+  "footer_rights": "© 2026 Qonoq Capsule. Barcha huquqlar himoyalangan.",
+
+  "capsmodal_title": "Bron qilish ma’lumotlari",
+  "capsmodal_first_name": "Ism",
+  "capsmodal_last_name": "Familiya",
+  "capsmodal_phone": "Telefon",
+  "capsmodal_email": "Email",
+  "capsmodal_price": "Narx:",
+  "capsmodal_confirm": "Tasdiqlash",
+  "capsmodal_cancel": "Bekor qilish",
+
+  "capstype_title": "Soatlik va kunlik xona variantlari",
+
+  "standard_title": "Standart kapsula",
+  "standard_price_4h": "4 soatgacha / 400 000 UZS",
+  "standard_price_6h": "6 soatgacha / 600 000 UZS",
+  "standard_price_8h": "8 soatgacha / 800 000 UZS",
+  "standard_guests": "1 nafar mehmon",
+  "standard_size": "1.2m x 2m",
+  "standard_description": "Tinchlik, soddalik va shaxsiylik uchun mo‘ljallangan qulay kapsula, 1.2m x 2m yotoq bilan jihozlangan — Toshkent xalqaro aeroportiga yaqin joylashgan yakka sayohatchilar uchun ideal.",
+
+  "family_title": "Oilaviy kapsula",
+  "family_price_4h": "4 soatgacha / 600 000 UZS",
+  "family_price_6h": "6 soatgacha / 800 000 UZS",
+  "family_price_10h": "10 soatgacha / 1 000 000 UZS",
+  "family_guests": "2 nafar mehmon",
+  "family_size": "2.4m x 2m",
+  "family_description": "Maxfiylik va qulaylikni ta’minlovchi keng oilaviy kapsula, 2.4m x 2m yotoq bilan — juftliklar yoki kichik oilalar uchun Toshkent xalqaro aeroportiga yaqin joyda.",
+
+  "capsule_location": "Toshkent aeroporti Qonoq kapsulasi",
+
+  "alternative_title": "Muqobil aloqa usullari",
+  "alternative_whatsapp": "WhatsApp",
+  "alternative_telegram": "Telegram",
+  "alternative_email": "Email",
+
+  "contact_location_title": "Mehmonxona joylashuvi",
+  "contact_get_directions": "Yo‘l ko‘rsatish",
+
+  "contact_hotel_name": "Qonoq Capsule",
+  "contact_hotel_address": "Toshkent xalqaro aeroporti, jo‘nab ketish hududi, 2-qavat",
+
+  "contact_nearby_title": "Aeroport yaqinidagi joylar",
+  "contact_near_dutyfree": "Duty Free do‘konlari",
+  "contact_near_dining": "Ovqatlanish joylari (kafe va restoranlar)",
+  "contact_near_post": "Pochta bo‘limi",
+  "contact_near_taxi": "Taksi xizmati",
+
+  "contact_header_title": "Aloqa va joylashuv",
+  "contact_header_subtitle": "Har qanday savol yoki yordam bo‘yicha sizga ko‘mak berishga tayyormiz",
+
+  "contact_alert_text": "Shoshilinch holatlar yoki favqulodda vaziyatlarda 24/7 ishlaydigan ishonch telefonimizga qo‘ng‘iroq qiling",
+  "contact_alert_call": "Hozir qo‘ng‘iroq qilish",
+
+  "email_section_title": "Email manzillar",
+
+  "email_general_title": "Umumiy savollar",
+  "email_reservations_title": "Bron qilish",
+  "email_support_title": "Mijozlarni qo‘llab-quvvatlash",
+
+  "email_button_send": "Yuborish",
+
+  "emergency_title": "Favqulodda aloqa",
+  "emergency_24_7": "24/7 favqulodda:",
+
+  "emergency_phone_numbers": "Telefon raqamlari",
+
+  "emergency_reception": "Resepsiya",
+  "emergency_reservations": "Bron qilish",
+  "emergency_whatsapp": "WhatsApp",
+
+  "emergency_call_now": "Aloqa",
+
+  "faq_title": "Tez-tez so‘raladigan savollar",
+  "faq_subtitle": "Mehmonxonamiz va xizmatlarimiz haqidagi ommabop savollarga javoblar",
+
+  "faq_q1": "Khamsa Hotel Toshkent aeroportining qaysi qismida joylashgan?",
+  "faq_a1": "Khamsa Hotel Toshkent xalqaro aeroportining 2-terminalida joylashgan bo‘lib, asosan tranzit yo‘lovchilar uchun mo‘ljallangan.",
+
+  "faq_q2": "Mehmonxonada nechta xona bor va qanday turlari mavjud?",
+  "faq_a2": "Mehmonxonada jami 24 ta xona mavjud: 23 ta standart va 1 ta lyuks xona.",
+
+  "faq_q3": "Xonalar narxi qanday va oldindan bron qilish mumkinmi?",
+  "faq_a3": "Narxlar xona turi va qolish davomiyligiga bog‘liq. Bron qilish sayt yoki resepsiya orqali amalga oshiriladi.",
+
+  "faq_q4": "Xonalarda qanday qulayliklar mavjud?",
+  "faq_a4": "Xonalarda yotoq, Wi-Fi, konditsioner, dush, gigiyena vositalari va kundalik tozalash mavjud. 24/7 xizmat ham taqdim etiladi.",
+
+  "faq_q5": "Mehmonxona qaysi vaqtlarda ishlaydi?",
+  "faq_a5": "Khamsa Hotel 24/7 ishlaydi va istalgan vaqtda mehmonlarni qabul qiladi.",
+
+  "faq_q6": "Mehmonxona asosan kimlar uchun mo‘ljallangan?",
+  "faq_a6": "Mehmonxona tranzit yo‘lovchilar va qisqa muddatli safardagi ishbilarmonlar uchun qulay.",
+
+  "faq_q7": "Mehmonxona bilan qanday bog‘lanish mumkin?",
+  "faq_a7": "Siz +998 95 877 24 24 raqamiga qo‘ng‘iroq qilishingiz yoki qonoqhotel@mail.ru manziliga yozishingiz mumkin.",
+
+  "faq_q8": "Xavfsizlik va gigiyena qanday ta’minlanadi?",
+  "faq_a8": "Mehmonxonada qat’iy gigiyena qoidalari amal qiladi, xonalar muntazam tozalanadi va xavfsizlik nazorat qilinadi.",
+
+  "faq_help_title": "Yordam kerakmi",
+  "faq_help_heading": "Kerakli javobni topa olmadingizmi?",
+  "faq_help_text": "Shaxsiy yordam uchun qo‘llab-quvvatlash jamoamiz bilan bog‘laning.",
+
+  "hotel_address_title": "Mehmonxona manzili",
+  "hotel_address_line1": "Toshkent aeroporti mehmonxonasi",
+  "hotel_address_line2": "Toshkent xalqaro aeroporti, 2-terminal yaqinida",
+  "hotel_get_directions": "Yo‘l ko‘rsatish",
+
+  "hours_title": "Aeroportdagi tezkor xizmatlar",
+
+  "hours_shuttle": "Shuttle xizmati",
+  "hours_shuttle_time": "5:00 - 23:30",
+
+  "hours_checkin": "Tezkor ro‘yxatdan o‘tish",
+
+  "hours_luggage": "Bagaj saqlash",
+  "hours_luggage_time": "05:00 – 23:00",
+
+  "hours_currency": "Valyuta ayirboshlash",
+
+  "hours_always_open": "24/7 ochiq",
+
+  "send_title": "Biz bilan bog‘laning",
+  "send_subtitle": "Xabaringizni yuboring, biz imkon qadar tezroq javob beramiz.",
+
+  "send_new_message": "Yangi xabar",
+  "send_success": "Xabaringiz muvaffaqiyatli yuborildi ✅",
+
+  "send_full_name": "To‘liq ism",
+  "send_email": "Email manzil",
+  "send_phone": "Telefon raqam",
+  "send_method": "Aloqa usuli",
+  "send_message_label": "Xabar",
+
+  "send_full_name_placeholder": "Ali Valiyev",
+  "send_email_placeholder": "ali@example.com",
+  "send_phone_placeholder": "Telefon raqam",
+  "send_method_placeholder": "Aloqa usulini tanlang",
+  "send_message_placeholder": "Iltimos, murojaatingizni batafsil yozing...",
+
+  "send_method_telegram": "Telegram",
+  "send_method_email": "Email",
+  "send_method_whatsapp": "WhatsApp",
+
+  "send_button": "Xabar yuborish",
+
+  "mybooking_title": "Mening bronlarim",
+  "mybooking_empty": "Hozircha bronlar yo‘q",
+
+  "booking_location_default": "Toshkent aeroporti mehmonxonasi",
+
+  "booking_checkin": "Kirish",
+  "booking_time": "Vaqt",
+  "booking_capsule": "Kapsula",
+  "booking_duration": "Davomiylik",
+  "booking_price": "Narx",
+
+  "booking_guest_info": "Mehmon ma’lumotlari",
+  "booking_name": "Ism",
+  "booking_phone": "Telefon",
+  "booking_email": "Email",
+
+  "booking_edit": "Tahrirlash",
+  "booking_delete": "O‘chirish",
+
+  "rules_title": "Qonoq Capsule uchun umumiy qoidalar",
+
+  "rules_1_title": "Taklif predmeti",
+  "rules_1_text": "Ushbu taklif mehmonxona xizmatlari, bron qilish, to‘lov, bekor qilish va ma’lumotlarni himoya qilish shartlarini o‘z ichiga oladi.",
+
+  "rules_2_title": "Bron qilish va to‘lov tartibi",
+  "rules_2_text": "Bron qilish sayt orqali yoki resepsiya orqali amalga oshiriladi. To‘lovlar onlayn, karta yoki naqd shaklda qabul qilinadi.",
+
+  "rules_3_title": "Xizmatdan voz kechish",
+  "rules_3_text": "Mehmonlar kelishdan 3 kun oldin bepul bekor qilishi mumkin. Kech bekor qilish yoki kelmaslik jarima bilan baholanadi.",
+
+  "rules_4_title": "Tranzaksiya xavfsizligi",
+  "rules_4_text": "Barcha onlayn to‘lovlar SSL orqali himoyalangan.",
+
+  "rules_5_title": "Maxfiylik siyosati",
+  "rules_5_text": "Mehmonxona shaxsiy ma’lumotlaringizni himoya qiladi va maxfiylikni ta’minlaydi.",
+
+  "rules_6_title": "Amaldagi qonun",
+  "rules_6_text": "Ushbu qoidalar O‘zbekiston Respublikasi qonunlariga muvofiq tartibga solinadi.",
+
+  "rules_7_title": "Aloqa ma’lumotlari",
+  "rules_7_text": "Savollar bo‘yicha quyidagi manzillarga murojaat qiling:",
+
+  "rules_contact_phone": "Telefon: +998 95 877 24 24",
+  "rules_contact_email": "Email: qonoqhotel@mail.ru",
+
+  "rules_8_title": "Kuchga kirish sanasi",
+  "rules_8_text": "Qoidalar 14.05.2024 sanasidan amal qiladi. Mehmonxona ularni istalgan vaqtda o‘zgartirish huquqiga ega.",
+
+  "service_header_title": "Kapsula dam olish uchun premium xizmatlar",
+  "service_header_text1": "Tinch va qulay kapsula dam olishi uchun yaratilgan xizmatlardan bahramand bo‘ling.",
+  "service_header_text2": "Qonoq Capsule Hotel’da biz zamonaviy texnologiyalarni puxta o‘ylangan qulayliklar bilan uyg‘unlashtiramiz. Qulay ro‘yxatdan o‘tishdan tortib, sifatli xizmatlargacha — barchasi sizning qulay va xotirjam dam olishingiz uchun.",
+  "service_header_booking": "Bron qilish",
+  "service_header_contact": "Bog‘lanish",
+
+  "services_title": "Kapsula xizmatlari",
+  "services_subtitle": "Tinch, xavfsiz va qulay kapsula dam olishi uchun zarur bo‘lgan barcha xizmatlar.",
+
+  "service_1_title": "Aqlli LED boshqaruv paneli",
+  "service_1_desc": "Yoritish va asosiy funksiyalarni boshqarish uchun sensorli LED panel.",
+  "service_1_tag": "Sensorli",
+
+  "service_2_title": "Ovoz o‘tkazmaydigan kapsula",
+  "service_2_desc": "Aeroport shovqinini kamaytiruvchi ovoz izolyatsiyasi.",
+  "service_2_tag": "Aqlli tizim",
+
+  "service_3_title": "Ambient LED yoritish",
+  "service_3_desc": "Ko‘z va dam olish uchun yumshoq yoritish.",
+  "service_3_tag": "Aqlli boshqaruv",
+
+  "service_4_title": "Shaxsiy ventilyatsiya",
+  "service_4_desc": "Har bir kapsula uchun alohida havo aylanish tizimi.",
+  "service_4_tag": "Texnologik",
+
+  "service_5_title": "Tinch zona dizayni",
+  "service_5_desc": "Minimal shovqin va harakatga ega kapsula hududi.",
+  "service_5_tag": "Uyqu uchun",
+
+  "service_6_title": "Raqamli soat",
+  "service_6_desc": "Vaqtni kuzatish uchun o‘rnatilgan soat.",
+  "service_6_tag": "Qulaylik",
+
+  "service_7_title": "Qurilmalarni quvvatlash",
+  "service_7_desc": "USB va Type-C portlari bilan tezkor quvvatlash.",
+  "service_7_tag": "Aqlli tizim",
+
+  "service_8_title": "Gigiyenik materiallar",
+  "service_8_desc": "Antibakterial va oson tozalanadigan ichki materiallar.",
+  "service_8_tag": "Xavfsizlik",
+
+  "service_9_title": "Maxfiylik qulfi",
+  "service_9_desc": "Kapsula ichidan yopiladigan xavfsiz qulf.",
+  "service_9_tag": "Qulaylik",
+
+  "service_10_title": "Aeroport ichida joylashuv",
+  "service_10_desc": "Kapsulalar aeroport binosining ichida joylashgan.",
+  "service_10_tag": "Joyida",
+
+  "empty": "Hozircha bo'sh"
 }

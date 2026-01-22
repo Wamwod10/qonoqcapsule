@@ -1,0 +1,217 @@
+.admin {
+  min-height: 100vh;
+  padding: 40px 20px;
+  color: #fff;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 28px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  & .container {
+    display: flex;
+    align-items: start;
+    column-gap: 80px;
+  }
+}
+
+/* ===== FORM ===== */
+
+.admin__form {
+  width: 520px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin__row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-size: 13px;
+    opacity: 0.85;
+  }
+
+  input,
+  select {
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    padding: 0 12px;
+    outline: none;
+  }
+}
+
+.admin__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.admin__add-btn {
+  margin-top: 10px;
+  height: 44px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.08)
+  );
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ===== LIST ===== */
+
+.admin__list {
+  width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.admin__loading,
+.admin__empty {
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* ===== CARD ===== */
+
+.admin__card {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    span {
+      font-size: 16px;
+      opacity: 0.7;
+    }
+
+    b {
+      font-size: 16px;
+      font-weight: 500;
+      text-transform: capitalize;
+    }
+  }
+}
+
+.admin__duration {
+  grid-column: span 2;
+}
+
+.admin__delete-btn {
+  margin-top: 6px;
+  height: 38px;
+  border-radius: 12px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 80, 80, 0.25);
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+/* ================= MOBILE FIX ================= */
+
+@media (max-width: 900px) {
+  .admin {
+    padding: 30px 14px;
+
+    & .container {
+      flex-direction: column;
+      row-gap: 30px;
+    }
+  }
+
+  .admin__form {
+    width: 100%;
+  }
+
+  .admin__list {
+    width: 100%;
+  }
+}
+
+/* ===== PHONE ===== */
+
+@media (max-width: 520px) {
+  .admin {
+    padding: 24px 12px;
+
+    &__title {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .admin__form {
+    padding: 16px;
+    border-radius: 16px;
+    gap: 12px;
+  }
+
+  .admin__grid {
+    grid-template-columns: 1fr; // date + time pastga tushadi
+  }
+
+  .admin__row label {
+    font-size: 12px;
+  }
+
+  .admin__row input,
+  .admin__row select {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .admin__add-btn {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .admin__card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .admin__card div span {
+    font-size: 13px;
+  }
+
+  .admin__card div b {
+    font-size: 14px;
+  }
+
+  .admin__delete-btn {
+    width: 100%;
+    height: 36px;
+    margin-top: 10px;
+  }
+}

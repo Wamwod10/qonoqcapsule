@@ -14,7 +14,8 @@ a {
   text-decoration: none !important;
 }
 body {
-  background: #1e1e1e;
+  background: #1d1d1d;
+   transform: none !important;
 }
 
 a:hover {
@@ -27,6 +28,10 @@ ul {
 
 img {
   vertical-align: bottom;
+}
+
+p {
+  color: #ececec !important;
 }
 
 .container {

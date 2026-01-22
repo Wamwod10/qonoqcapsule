@@ -6,7 +6,7 @@
   "services": "Services",
   "rules": "Rules",
   "contact": "Contact",
-  "my_booking": "My Booking",
+  "my_booking": "Booking",
   "contact_now": "Contact Now",
   "change_lang": "Change language",
 
@@ -24,10 +24,9 @@
   "capsule_standard": "Standard Capsule",
   "capsule_family": "Family Capsule",
   "duration_label": "Duration",
-  "duration_2h": "Up to 2 hours",
   "duration_4h": "Up to 4 hours",
+  "duration_6h": "Up to 6 hours",
   "duration_10h": "Up to 10 hours",
-  "duration_1d": "1 day",
   "select_location": "Select Location",
   "loc_tas": "Tashkent Airport",
   "loc_buh": "Bukhara",
@@ -60,5 +59,308 @@
   "image_alt": "Capsule image",
   "experience_title": "Experience Comfort & Privacy",
   "experience_paragraph": "Our capsules provide a peaceful and clean private space designed for travelers who need rest between flights. Equipped with modern amenities and secure access, each unit offers the perfect environment to relax, recharge, or work quietly before your next journey.",
-  "booking_now": "Booking Now"
+  "booking_now": "Booking Now",
+
+  "capsules_page_title": "Quiet Capsules — calm zone, comfort sleep",
+  "capsules_standard_title": "Standard Capsules",
+  "capsules_standard_guests": "1 Guest",
+  "capsules_standard_size": "1.2m x 2m",
+  "capsules_family_title": "Family Capsules",
+  "capsules_family_guests": "2 Guests",
+  "capsules_family_size": "2.4m x 2m",
+  "capsules_location_tashkent_airport": "Tashkent International Airport",
+
+  "capsules_standard_description": "The standard capsule is a private, quiet, and secure mini-space designed for short rest at the airport. It includes an orthopedic bed, ventilation, adjustable lighting, and charging ports.",
+  "capsules_family_description": "The family capsule is a spacious, private, and secure mini-space designed for two people to rest comfortably at the airport. It includes a larger orthopedic bed, individual ventilation, adjustable lighting, and charging ports.",
+
+  "capsules_features_title": "Features:",
+  "capsules_feature_bed": "Bed",
+  "capsules_feature_lighting": "Lighting",
+  "capsules_feature_outlet": "Outlet",
+  "capsules_feature_airflow": "Airflow",
+  "capsules_feature_wifi": "Wi-Fi",
+  "capsules_feature_safe": "Safe",
+  "capsules_feature_power": "Power",
+  "capsules_feature_climate": "Climate",
+  "capsules_feature_mirror": "Mirror",
+  "capsules_feature_soundproof": "Soundproof Panels",
+  "capsules_feature_reading_lamps": "Reading Lamps",
+
+  "capsules_btn_gallery": "See Gallery",
+  "capsules_btn_booking": "Booking Now",
+
+  "capsules_standard_duration_4h": "Up to 4 hours",
+  "capsules_standard_duration_6h": "Up to 6 hours",
+  "capsules_standard_duration_8h": "Up to 8 hours",
+  "capsules_standard_price_4h": "400 000 UZS",
+  "capsules_standard_price_6h": "600 000 UZS",
+  "capsules_standard_price_8h": "800 000 UZS",
+
+  "capsules_family_duration_4h": "Up to 4 hours",
+  "capsules_family_duration_6h": "Up to 6 hours",
+  "capsules_family_duration_10h": "Up to 10 hours",
+  "capsules_family_price_4h": "600 000 UZS",
+  "capsules_family_price_6h": "800 000 UZS",
+  "capsules_family_price_10h": "1 000 000 UZS",
+
+  "footer_description": "Qonoq Capsule offers a calm, private, and modern space to rest, delivering quality comfort and exceptional service.",
+
+  "footer_quick_links": "Quick Links",
+  "footer_link_home": "Home",
+  "footer_link_capsules": "Capsules",
+  "footer_link_services": "Services",
+  "footer_link_rules": "Rules",
+  "footer_link_contact": "Contact",
+  "footer_link_my_booking": "My Booking",
+
+  "footer_contact_title": "Contact Info",
+  "footer_contact_address": "Inside Tashkent International Airport, near Terminal 2, Tashkent city",
+  "footer_contact_phone_label": "Phone:",
+  "footer_contact_email_label": "Email:",
+
+  "footer_rights": "© 2026 Qonoq Capsule. All rights reserved.",
+
+  "capsmodal_title": "Booking Information",
+  "capsmodal_first_name": "First Name",
+  "capsmodal_last_name": "Last Name",
+  "capsmodal_phone": "Phone",
+  "capsmodal_email": "Email",
+  "capsmodal_price": "Price:",
+  "capsmodal_confirm": "Confirm",
+  "capsmodal_cancel": "Cancel",
+
+  "capstype_title": "Hourly & Daily Room Options",
+
+  "standard_title": "Standard Capsule",
+  "standard_price_4h": "Up to 4 hours / 400 000 UZS",
+  "standard_price_6h": "Up to 6 hours / 600 000 UZS",
+  "standard_price_8h": "Up to 8 hours / 800 000 UZS",
+  "standard_guests": "1 Guest",
+  "standard_size": "1.2m x 2m",
+  "standard_description": "A practical and comfortable capsule designed for peace, simplicity, and privacy, featuring a cozy 1.2m x 2m bed — ideal for solo travelers seeking rest just a few minutes from Tashkent International Airport.",
+
+  "family_title": "Family Capsule",
+  "family_price_4h": "Up to 4 hours / 600 000 UZS",
+  "family_price_6h": "Up to 6 hours / 800 000 UZS",
+  "family_price_10h": "Up to 10 hours / 1 000 000 UZS",
+  "family_guests": "2 Guests",
+  "family_size": "2.4m x 2m",
+  "family_description": "A spacious and comfortable family capsule offering privacy and relaxation, with a 2.4m x 2m bed — perfect for couples or small families just minutes from Tashkent International Airport.",
+
+  "capsule_location": "Tashkent Airport Qonoq Capsule",
+
+  "alternative_title": "Alternative Contact Methods",
+  "alternative_whatsapp": "WhatsApp",
+  "alternative_telegram": "Telegram",
+  "alternative_email": "Email",
+
+  "contact_location_title": "Hotel Location",
+  "contact_get_directions": "Get Directions",
+
+  "contact_hotel_name": "Qonoq Capsule",
+  "contact_hotel_address": "Tashkent International Airport, Departure Area, 2nd Floor",
+
+  "contact_nearby_title": "Places Near the Airport",
+  "contact_near_dutyfree": "Duty-Free Shops",
+  "contact_near_dining": "Dining Areas (Cafes & Restaurants)",
+  "contact_near_post": "Post Office",
+  "contact_near_taxi": "Taxi Service",
+
+  "contact_header_title": "Contact & Location",
+  "contact_header_subtitle": "We're here to help you with any questions or assistance you may need",
+
+  "contact_alert_text": "For urgent matters or emergencies, please call our 24/7 hotline",
+  "contact_alert_call": "Call Now",
+
+  "email_section_title": "Email Addresses",
+
+  "email_general_title": "General Inquiries",
+  "email_reservations_title": "Reservations",
+  "email_support_title": "Customer Support",
+
+  "email_button_send": "Send",
+
+  "emergency_title": "Emergency Contact",
+  "emergency_24_7": "24/7 Emergency:",
+
+  "emergency_phone_numbers": "Phone Numbers",
+
+  "emergency_reception": "Reception",
+  "emergency_reservations": "Reservations",
+  "emergency_whatsapp": "WhatsApp",
+
+  "emergency_call_now": "Call Now",
+
+  "faq_title": "Frequently Asked Questions",
+  "faq_subtitle": "Find answers to common questions about our hotel and services",
+
+  "faq_q1": "Where is Khamsa Hotel located within Tashkent Airport?",
+  "faq_a1": "Khamsa Hotel is located in Terminal 2 of Tashkent International Airport, designed especially for transit passengers. Its close proximity to the airport helps travelers save time during layovers.",
+
+  "faq_q2": "How many rooms does the hotel have and what types are available?",
+  "faq_a2": "The hotel offers a total of 24 rooms, including 23 standard rooms and 1 luxury suite. Each room is equipped with modern amenities to ensure guest comfort.",
+
+  "faq_q3": "What are the room rates and is it possible to make a reservation?",
+  "faq_a3": "Room rates vary depending on the type and duration of stay. Reservations can be made through the hotel’s website or by contacting the reception directly.",
+
+  "faq_q4": "What amenities are provided in the hotel rooms?",
+  "faq_a4": "Each room features a full-size bed, Wi-Fi, air conditioning, shower, toiletries, wardrobe space, and daily housekeeping. Additionally, 24-hour room service is available.",
+
+  "faq_q5": "What are the hotel’s operating hours?",
+  "faq_a5": "Khamsa Hotel operates 24/7 and accepts guests at any time, making it convenient for late-night and early-morning flights.",
+
+  "faq_q6": "Who is the hotel primarily designed for?",
+  "faq_a6": "The hotel is mainly intended for transit passengers and business travelers with short stays at the airport.",
+
+  "faq_q7": "How can guests contact the hotel?",
+  "faq_a7": "Guests can contact the hotel by calling +998 95 877 24 24 or emailing qonoqhotel@mail.ru. Information is also available on the official website.",
+
+  "faq_q8": "How are safety and hygiene maintained at Khamsa Hotel?",
+  "faq_a8": "The hotel follows strict hygiene protocols with regular cleaning and enhanced safety measures. Staff are trained to maintain high service standards.",
+
+  "faq_help_title": "Need Help",
+  "faq_help_heading": "Can't find what you're looking for?",
+  "faq_help_text": "Contact our support team for personalized assistance.",
+
+  "hotel_address_title": "Hotel Address",
+  "hotel_address_line1": "Tashkent Airport Hotel",
+  "hotel_address_line2": "Tashkent International Airport, near Terminal 2",
+  "hotel_get_directions": "Get Directions",
+
+  "hours_title": "Quick Services in Airport",
+
+  "hours_shuttle": "Shuttle Service",
+  "hours_shuttle_time": "5:00 - 23:30",
+
+  "hours_checkin": "Express Check-In",
+
+  "hours_luggage": "Luggage Storage",
+  "hours_luggage_time": "05:00 – 23:00",
+
+  "hours_currency": "Currency Exchange",
+
+  "hours_always_open": "Always Open",
+
+  "send_title": "Get in Touch",
+  "send_subtitle": "Send us a message and we'll respond as soon as possible.",
+
+  "send_new_message": "New message",
+  "send_success": "Your message has been sent successfully ✅",
+
+  "send_full_name": "Full Name",
+  "send_email": "Email Address",
+  "send_phone": "Phone Number",
+  "send_method": "Preferred Contact Method",
+  "send_message_label": "Message",
+
+  "send_full_name_placeholder": "John Doe",
+  "send_email_placeholder": "john@example.com",
+  "send_phone_placeholder": "Phone Number",
+  "send_method_placeholder": "Select a contact method",
+  "send_message_placeholder": "Please describe your inquiry in detail...",
+
+  "send_method_telegram": "Telegram",
+  "send_method_email": "Email",
+  "send_method_whatsapp": "WhatsApp",
+
+  "send_button": "Send Message",
+
+  "mybooking_title": "My Bookings",
+  "mybooking_empty": "No bookings yet",
+
+  "booking_location_default": "Tashkent Airport Hotel",
+
+  "booking_checkin": "Check-in",
+  "booking_time": "Time",
+  "booking_capsule": "Capsule",
+  "booking_duration": "Duration",
+  "booking_price": "Price",
+
+  "booking_guest_info": "Guest Information",
+  "booking_name": "Name",
+  "booking_phone": "Phone",
+  "booking_email": "Email",
+
+  "booking_edit": "Edit",
+  "booking_delete": "Delete",
+
+  "rules_title": "Public Rules For Qonoq Capsule",
+
+  "rules_1_title": "Subject of the Offer",
+  "rules_1_text": "This Offer provides information about the Hotel’s services, including room reservations, payment procedures, cancellation policies and data privacy policies. By booking a room at the Hotel, you agree to be bound by these terms.",
+
+  "rules_2_title": "Order and Payment Methods",
+  "rules_2_text": "Guests can book rooms via the website or by contacting the front desk. Payments are accepted online, by credit card, or in cash upon check-in.",
+
+  "rules_3_title": "Return of Goods (Refusal of Services)",
+  "rules_3_text": "Guests may cancel reservations free of charge up to 3 days before arrival. Late cancellations or no-shows may be charged. In rare cases of hotel cancellation, a refund or alternative room will be offered.",
+
+  "rules_4_title": "Transaction Security",
+  "rules_4_text": "The hotel applies standard security measures. All online payments are protected using SSL encryption.",
+
+  "rules_5_title": "Privacy Policy",
+  "rules_5_text": "The hotel respects guest privacy and protects personal data. Please review our Privacy Policy for full details.",
+
+  "rules_6_title": "Applicable Law",
+  "rules_6_text": "These rules are governed by and interpreted in accordance with the laws of the Republic of Uzbekistan.",
+
+  "rules_7_title": "Contact Information",
+  "rules_7_text": "For any questions related to these rules, please contact us:",
+
+  "rules_contact_phone": "Phone: +998 95 877 24 24",
+  "rules_contact_email": "Email: qonoqhotel@mail.ru",
+
+  "rules_8_title": "Effective Date",
+  "rules_8_text": "These rules are effective from 05/14/2024. The hotel reserves the right to modify them at any time.",
+
+  "service_header_title": "Premium Services for Your Capsule Stay",
+  "service_header_text1": "Experience essential comfort with services designed for a relaxing capsule stay.",
+  "service_header_text2": "At Qonoq Capsule Hotel, we combine smart technology with thoughtful amenities to create a peaceful and reliable environment. From seamless check-in to well-maintained facilities, every service is crafted to make your stay comfortable, secure, and pleasantly memorable.",
+  "service_header_booking": "Booking Now",
+  "service_header_contact": "Contact Now",
+
+  "services_title": "Capsule Services",
+  "services_subtitle": "Everything you need for a calm, safe and comfortable capsule stay — designed with care.",
+
+  "service_1_title": "Smart LED Control Panel",
+  "service_1_desc": "Touch-enabled LED control panel inside the capsule to manage lighting and basic functions.",
+  "service_1_tag": "Touch Enabled",
+
+  "service_2_title": "Soundproof Capsule System",
+  "service_2_desc": "Advanced sound-insulated walls reduce airport noise for deep rest and privacy.",
+  "service_2_tag": "Smart System",
+
+  "service_3_title": "Ambient LED Lighting",
+  "service_3_desc": "Soft ambient LED lighting designed for relaxation and eye comfort.",
+  "service_3_tag": "Smart Control",
+
+  "service_4_title": "Private Ventilation Flow",
+  "service_4_desc": "Individual air circulation system inside each capsule for fresh airflow.",
+  "service_4_tag": "Tech Powered",
+
+  "service_5_title": "Quiet Zone Design",
+  "service_5_desc": "Capsule area is designed as a quiet zone with minimal movement and noise.",
+  "service_5_tag": "Sleep Optimized",
+
+  "service_6_title": "Digital Time Display",
+  "service_6_desc": "Built-in digital clock to keep track of time while resting.",
+  "service_6_tag": "Designed for Comfort",
+
+  "service_7_title": "Device Charging Hub",
+  "service_7_desc": "Multiple USB and Type-C ports for fast charging of personal devices.",
+  "service_7_tag": "Smart System",
+
+  "service_8_title": "Hygienic Interior Materials",
+  "service_8_desc": "Antibacterial and easy-to-clean interior materials for maximum hygiene.",
+  "service_8_tag": "Guest Safety",
+
+  "service_9_title": "Privacy Lock System",
+  "service_9_desc": "Secure lock system from inside the capsule ensuring full privacy.",
+  "service_9_tag": "Designed for Comfort",
+
+  "service_10_title": "Airport-Integrated Location",
+  "service_10_desc": "Capsules are located directly inside the airport for fast and easy access.",
+  "service_10_tag": "On-Site Location",
+
+  "empty": "Still Empty"
 }

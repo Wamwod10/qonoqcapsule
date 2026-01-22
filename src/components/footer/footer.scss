@@ -1,0 +1,366 @@
+.footer {
+  margin-top: 100px;
+
+  &__box {
+    width: 100%;
+    height: fit-content;
+    border-radius: 75px;
+    background: rgba(20, 20, 20, 0.55);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 2px solid rgba(255, 255, 255, 0.204);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    padding: 50px 100px 30px 100px;
+  }
+
+  &__div {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+  }
+
+  & .nav__logo {
+    display: flex;
+    justify-content: start;
+  }
+
+  &__text {
+    max-width: 370px;
+    width: 100%;
+    text-align: center;
+    color: rgb(153, 153, 153);
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    column-gap: 25px;
+    margin-top: 30px;
+  }
+
+  &__social {
+    font-size: 18px;
+    background: rgba(40, 40, 40, 0.55);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+  }
+
+  &__card-title {
+    font-size: 25px !important;
+    font-weight: 600;
+    color: transparent;
+    background: linear-gradient(180deg,
+        rgb(47, 134, 255),
+        rgba(47, 134, 255, 0.417)),
+      rgba(255, 255, 255, 0.202);
+    background-clip: text;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    margin-top: 20px;
+  }
+
+  &__link {
+    font-size: 18px;
+    color: rgb(179, 179, 179);
+    transition: 0.2s;
+    font-weight: 500;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  &__card-contact {
+    color: rgb(179, 179, 179);
+    font-size: 18px;
+    max-width: 330px;
+    margin-top: 20px;
+
+    a {
+      color: rgb(179, 179, 179);
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  &__line {
+    width: 50%;
+    margin: 0 auto;
+    height: 3px;
+    background: #393939;
+    border-radius: 10px;
+    margin-top: 70px;
+  }
+
+  &__line-text {
+    margin-top: 30px;
+    font-size: 16px;
+    text-align: center;
+    color: #606060;
+    user-select: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .footer {
+    margin-top: 80px;
+  }
+
+  .footer__box {
+    padding: 30px 40px 10px 40px !important;
+  }
+
+  .footer__box {
+    border-radius: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__box {
+    padding: 25px 20px 15px 20px !important;
+  }
+
+  .footer__div {
+    display: grid !important;
+    grid-template-rows: auto 1fr auto !important;
+    height: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    row-gap: 30px;
+  }
+
+  .footer__text {
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+
+  .nav__logo img {
+    margin: 0 auto !important;
+  }
+
+  .footer__socials {
+    justify-content: center !important;
+  }
+
+  .footer__card-contact {
+    text-align: center !important;
+    margin: 0 auto !important;
+    row-gap: 10px;
+    padding: 0 15px !important;
+    max-width: 400px !important;
+  }
+
+  .footer__card {
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column !important;
+    row-gap: 20px;
+    display: flex;
+  }
+
+  .footer__card:nth-child(1) {
+    margin-top: 0px !important;
+    row-gap: 5px;
+  }
+
+  .footer__card:nth-child(3) {
+    margin-top: 20px !important;
+    row-gap: 10px;
+  }
+
+  .footer__list {
+    row-gap: 10px;
+    margin-top: 0px;
+  }
+
+  .footer__links {
+    /* 1 */
+    align-self: start !important;
+  }
+
+  .footer__contact {
+    /* 2 */
+    display: flex !important;
+    gap: 30px !important;
+    align-self: end !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer__box {
+    padding: 10px 10px !important;
+  }
+
+  .footer__div {
+    row-gap: 20px !important;
+  }
+
+  .footer__socials {
+    margin-top: 10px !important;
+  }
+
+  .footer__box {
+    border-radius: 25px;
+  }
+}
+
+@media (max-width: 550px) {
+  .footer__box {
+    padding: 25px 20px 15px 20px !important;
+  }
+
+  .footer__div {
+    display: grid !important;
+    grid-template-rows: auto 1fr auto !important;
+    height: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    row-gap: 30px;
+  }
+
+  .footer__text {
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+
+  .nav__logo img {
+    margin: 0 auto !important;
+  }
+
+  .footer__socials {
+    justify-content: center !important;
+  }
+
+  .footer__card-contact {
+    text-align: center !important;
+    margin: 0 auto !important;
+    row-gap: 10px;
+    padding: 0 15px !important;
+    max-width: 400px !important;
+  }
+
+  .footer__card {
+    row-gap: 10px;
+  }
+
+  .footer__card:nth-child(1) {
+    margin-top: 0px !important;
+    row-gap: 0px;
+  }
+
+  .footer__card:nth-child(3) {
+    margin-top: 10px !important;
+    row-gap: 8px;
+  }
+
+  .footer__list {
+    row-gap: 10px;
+    margin-top: 0px;
+  }
+
+  .footer__contact {
+    gap: 20px !important;
+  }
+
+  .footer {
+    margin-top: 30px;
+  }
+
+  .footer__social {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .footer__card-title {
+    font-size: 20px !important;
+  }
+
+  .footer__link {
+    font-size: 17px !important;
+  }
+
+  .footer__list {
+    row-gap: 7px;
+  }
+
+  .footer__card-contact {
+    text-align: center !important;
+    margin: 0 auto !important;
+    row-gap: 10px;
+    padding: 0 15px !important;
+    max-width: 400px !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .footer__box {
+    padding: 0;
+  }
+
+  .footer__box {
+    border-radius: 15px;
+  }
+}
+
+@media (max-width: 410px) {
+  .gallery .qonoq__title {
+    margin-bottom: 15px;
+  }
+
+  .footer {
+    margin-top: 15px;
+  }
+
+  .footer__text {
+    font-size: 14px !important;
+  }
+
+  .footer__social {
+    width: 32px;
+    height: 32px;
+    font-size: 17px;
+  }
+
+  .footer__card-title {
+    font-size: 19px !important;
+  }
+
+  .footer__link {
+    font-size: 16px !important;
+  }
+
+  .footer__list {
+    row-gap: 6px;
+  }
+
+  .footer__card-contact {
+    text-align: center !important;
+    margin: 0 auto !important;
+    row-gap: 10px;
+    max-width: 400px !important;
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer__card:nth-child(1) {
+    margin-top: 0px !important;
+    row-gap: 0px;
+    padding: 0 10px;
+  }
+}

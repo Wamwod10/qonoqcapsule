@@ -1,9 +1,108 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation, Trans } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import "./header.scss";
 
 const Header = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  const [checkIn, setCheckIn] = useState("");
+  const [checkInTime, setCheckInTime] = useState("");
+  const [capsuleType, setCapsuleType] = useState("standard");
+  const [duration, setDuration] = useState("4h");
+  const [locationValue, setLocationValue] = useState("tas");
+
+  const [busyTime, setBusyTime] = useState(null);
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  /* ================= VALIDATION ================= */
+
+  const validate = () => {
+    const newErrors = {};
+    if (!checkIn)
+      newErrors.checkIn = t("required", { defaultValue: "Required" });
+    if (!checkInTime)
+      newErrors.checkInTime = t("required", { defaultValue: "Required" });
+    if (!duration)
+      newErrors.duration = t("required", { defaultValue: "Required" });
+    if (!capsuleType)
+      newErrors.capsuleType = t("required", { defaultValue: "Required" });
+    if (!locationValue)
+      newErrors.location = t("required", { defaultValue: "Required" });
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  /* ================= SUBMIT ================= */
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    const durationMap = { "4h": 4, "6h": 6, "10h": 10 };
+
+    const branch =
+      locationValue === "tas"
+        ? "airport"
+        : locationValue === "buh"
+          ? "city"
+          : "north";
+
+    try {
+      // ✅ faqat availability check
+      const res = await fetch("http://localhost:5000/api/check-availability", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          branch,
+          capsuleType,
+          date: checkIn,
+          time: checkInTime,
+          duration: durationMap[duration],
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!data.available) {
+        setBusyTime({
+          time: data.nextTime,
+          nextDay: data.nextDay,
+        });
+        return;
+      }
+    } catch (err) {
+      alert("Server error. Try again.");
+      return;
+    }
+
+    // ✅ faqat session + navigate
+    const bookingState = {
+      checkIn,
+      checkInTime,
+      durationValue: duration,
+      capsuleTypeValue: capsuleType,
+      locationValue,
+      durationLabel: t(`duration_${duration}`, { defaultValue: duration }),
+      capsuleTypeLabel:
+        capsuleType === "standard"
+          ? t("capsule_standard")
+          : t("capsule_family"),
+      locationLabel:
+        locationValue === "tas"
+          ? t("loc_tas")
+          : locationValue === "buh"
+            ? t("loc_buh")
+            : t("loc_ind"),
+      createdAt: new Date().toISOString(),
+    };
+
+    sessionStorage.setItem("qonoq_booking", JSON.stringify(bookingState));
+    navigate("/capsule", { state: bookingState });
+  };
 
   return (
     <div className="header">
@@ -14,7 +113,7 @@ const Header = () => {
               <Trans
                 i18nKey="hero_title"
                 components={{ bold: <span /> }}
-                values={{ brand: t("brand_full") }}
+                values={{ brand: "Qonoq Capsule" }}
               />
             </h1>
 
@@ -37,7 +136,7 @@ const Header = () => {
           <div className="header__left">
             <h2 className="header__left-title">{t("book_your_stay")}</h2>
 
-            <form className="header__form" onSubmit={(e) => e.preventDefault()}>
+            <form className="header__form" onSubmit={handleSubmit}>
               <div className="header__form-flex">
                 <div className="header__form-box check-in">
                   <label htmlFor="checkin" className="header__form-title">
@@ -47,10 +146,12 @@ const Header = () => {
                     className="header__form-input"
                     type="date"
                     id="checkin"
-                    name="check_in"
-                    required
-                    aria-label={t("check_in")}
+                    value={checkIn}
+                    onChange={(e) => setCheckIn(e.target.value)}
                   />
+                  {errors.checkIn && (
+                    <small className="form-error">{errors.checkIn}</small>
+                  )}
                 </div>
 
                 <div className="header__form-box check-in">
@@ -61,23 +162,23 @@ const Header = () => {
                     className="header__form-input"
                     type="time"
                     id="checkinTime"
-                    name="check_in_time"
-                    required
-                    aria-label={t("check_in_time")}
+                    value={checkInTime}
+                    onChange={(e) => setCheckInTime(e.target.value)}
                   />
+                  {errors.checkInTime && (
+                    <small className="form-error">{errors.checkInTime}</small>
+                  )}
                 </div>
               </div>
 
               <div className="header__form-box">
-                <label htmlFor="capsuleType" className="header__form-title">
+                <label className="header__form-title">
                   {t("capsules_label")}
                 </label>
                 <select
-                  id="capsuleType"
-                  name="capsule_type"
                   className="header__form-input header__select"
-                  aria-label={t("capsules_label")}
-                  defaultValue="standard"
+                  value={capsuleType}
+                  onChange={(e) => setCapsuleType(e.target.value)}
                 >
                   <option value="standard">{t("capsule_standard")}</option>
                   <option value="family">{t("capsule_family")}</option>
@@ -85,49 +186,61 @@ const Header = () => {
               </div>
 
               <div className="header__form-box">
-                <label htmlFor="stayDuration" className="header__form-title">
+                <label className="header__form-title">
                   {t("duration_label")}
                 </label>
                 <select
-                  id="stayDuration"
-                  name="duration"
                   className="header__form-input header__select"
-                  aria-label={t("duration_label")}
-                  defaultValue="2h"
+                  value={duration}
+                  onChange={(e) => setDuration(e.target.value)}
                 >
-                  <option value="2h">{t("duration_2h")}</option>
                   <option value="4h">{t("duration_4h")}</option>
+                  <option value="6h">{t("duration_6h")}</option>
                   <option value="10h">{t("duration_10h")}</option>
-                  <option value="1d">{t("duration_1d")}</option>
                 </select>
               </div>
 
               <div className="header__form-box">
-                <label htmlFor="location" className="header__form-title">
+                <label className="header__form-title">
                   {t("select_location")}
                 </label>
                 <select
-                  id="location"
-                  name="location"
                   className="header__form-input header__select"
-                  aria-label={t("select_location")}
-                  defaultValue="tas"
+                  value={locationValue}
+                  onChange={(e) => setLocationValue(e.target.value)}
                 >
                   <option value="tas">{t("loc_tas")}</option>
                   <option value="buh">{t("loc_buh")}</option>
                   <option value="ind">{t("loc_ind")}</option>
                 </select>
               </div>
-            </form>
 
-            <div className="header__link-box">
-              <a href="" className="header__left-link">
-                {t("check_availability")}
-              </a>
-            </div>
+              <div className="header__link-box">
+                <button type="submit" className="header__left-link">
+                  {loading ? "Checking..." : t("check_availability")}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
+
+      {/* ===== BUSY MODAL ===== */}
+      {busyTime && (
+        <div className="availability-modal">
+          <div className="availability-modal__box">
+            <p>
+              This room is busy. Next available time:
+              <br />
+              <b>
+                {busyTime.time}
+                {busyTime.nextDay && " (next day)"}
+              </b>
+            </p>
+            <button onClick={() => setBusyTime(null)}>OK</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

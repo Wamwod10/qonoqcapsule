@@ -7,7 +7,7 @@
   "rules": "Правила",
   "contact": "Контакты",
   "my_booking": "Мои брони",
-  "contact_now": "Связаться сейчас",
+  "contact_now": "Связаться",
   "change_lang": "Сменить язык",
 
   "hero_title": "Спокойный, комфортный отдых — капсулы для вашего путешествия с <bold>{{brand}}</bold>",
@@ -24,8 +24,8 @@
   "capsule_standard": "Стандартная капсула",
   "capsule_family": "Семейная капсула",
   "duration_label": "Длительность",
-  "duration_2h": "До 2 часов",
   "duration_4h": "До 4 часов",
+  "duration_6h": "До 6 часов",
   "duration_10h": "До 10 часов",
   "duration_1d": "1 день",
   "select_location": "Выберите локацию",
@@ -46,19 +46,322 @@
   "wake_up_service_text": "Умный будильник, чтобы вы не проспали",
   "amenities_inside_title": "Удобства внутри капсулы",
   "bedding_title": "Постельное бельё",
-  "bedding_text": "Мягкий матрас и чистая подушка",
+  "bedding_text": "Матрас и подушка",
   "ventilation_title": "Вентиляция",
-  "ventilation_text": "Постоянная циркуляция воздуха и чистота",
+  "ventilation_text": "Циркуляция воздуха",
   "charging_point_title": "Точка зарядки",
-  "charging_point_text": "Удобный доступ к питанию для ваших устройств",
+  "charging_point_text": "Доступ к питанию",
   "led_lighting_title": "Подсветка",
   "led_lighting_text": "Регулируемая подсветка",
   "temperature_title": "Температура",
   "temperature_text": "Контроль температуры",
   "wifi_title": "Wi-Fi",
-  "wifi_text": "Быстрый и бесплатный Wi-Fi",
+  "wifi_text": "Бесплатный Wi-Fi",
   "image_alt": "Изображение капсулы",
   "experience_title": "Комфорт и приватность",
   "experience_paragraph": "Наши капсулы предлагают спокойное и чистое пространство для путешественников, которым нужен отдых между рейсами. С удобствами и безопасным доступом они обеспечивают идеальные условия для отдыха, зарядки или работы",
-  "booking_now": "Забронировать сейчас"
+  "booking_now": "Забронировать сейчас",
+
+  "capsules_page_title": "Quiet Capsules — тихая зона, комфортный сон",
+  "capsules_standard_title": "Стандартные капсулы",
+  "capsules_standard_guests": "1 гость",
+  "capsules_standard_size": "1.2 м x 2 м",
+  "capsules_family_title": "Семейные капсулы",
+  "capsules_family_guests": "2 гостя",
+  "capsules_family_size": "2.4 м x 2 м",
+  "capsules_location_tashkent_airport": "Международный аэропорт Ташкента",
+
+  "capsules_standard_description": "Стандартная капсула — это приватное и безопасное мини-пространство для отдыха в аэропорту. Внутри есть ортопедическая кровать, вентиляция, освещение и зарядные розетки",
+  "capsules_family_description": "Семейная капсула — это просторное и безопасное мини-пространство для отдыха двух человек в аэропорту. Внутри есть большая ортопедическая кровать, вентиляция, освещение и зарядные розетки",
+
+  "capsules_features_title": "Удобства:",
+  "capsules_feature_bed": "Кровать",
+  "capsules_feature_lighting": "Освещение",
+  "capsules_feature_outlet": "Розетка",
+  "capsules_feature_airflow": "Вентиляция",
+  "capsules_feature_wifi": "Wi-Fi",
+  "capsules_feature_safe": "Сейф",
+  "capsules_feature_power": "Питание",
+  "capsules_feature_climate": "Климат-контроль",
+  "capsules_feature_mirror": "Зеркало",
+  "capsules_feature_soundproof": "Шумоизоляция",
+  "capsules_feature_reading_lamps": "Лампы для чтения",
+
+  "capsules_btn_gallery": "Смотреть галерею",
+  "capsules_btn_booking": "Забронировать",
+
+  "capsules_standard_duration_4h": "До 4 часов",
+  "capsules_standard_duration_6h": "До 6 часов",
+  "capsules_standard_duration_8h": "До 8 часов",
+  "capsules_standard_price_4h": "400 000 сум",
+  "capsules_standard_price_6h": "600 000 сум",
+  "capsules_standard_price_8h": "800 000 сум",
+
+  "capsules_family_duration_4h": "До 4 часов",
+  "capsules_family_duration_6h": "До 6 часов",
+  "capsules_family_duration_10h": "До 10 часов",
+  "capsules_family_price_4h": "600 000 сум",
+  "capsules_family_price_6h": "800 000 сум",
+  "capsules_family_price_10h": "1 000 000 сум",
+
+  "footer_description": "Qonoq Capsule предлагает спокойное, уединённое и современное пространство для отдыха, обеспечивая высокий уровень комфорта и сервиса.",
+
+  "footer_quick_links": "Быстрые ссылки",
+  "footer_link_home": "Главная",
+  "footer_link_capsules": "Капсулы",
+  "footer_link_services": "Услуги",
+  "footer_link_rules": "Правила",
+  "footer_link_contact": "Контакты",
+  "footer_link_my_booking": "Моё бронирование",
+
+  "footer_contact_title": "Контактная информация",
+  "footer_contact_address": "Внутри международного аэропорта Ташкента, рядом с Терминалом 2, город Ташкент",
+  "footer_contact_phone_label": "Телефон:",
+  "footer_contact_email_label": "Эл. почта:",
+
+  "footer_rights": "© 2026 Qonoq Capsule. Все права защищены.",
+
+  "capsmodal_title": "Информация о бронировании",
+  "capsmodal_first_name": "Имя",
+  "capsmodal_last_name": "Фамилия",
+  "capsmodal_phone": "Телефон",
+  "capsmodal_email": "Эл. почта",
+  "capsmodal_price": "Цена:",
+  "capsmodal_confirm": "Подтвердить",
+  "capsmodal_cancel": "Отмена",
+
+  "capstype_title": "Почасовые и дневные варианты проживания",
+
+  "standard_title": "Стандартная капсула",
+  "standard_price_4h": "До 4 часов / 400 000 UZS",
+  "standard_price_6h": "До 6 часов / 600 000 UZS",
+  "standard_price_8h": "До 8 часов / 800 000 UZS",
+  "standard_guests": "1 гость",
+  "standard_size": "1.2м x 2м",
+  "standard_description": "Практичная и комфортная капсула для тишины и уединения с удобной кроватью 1.2 × 2 м рядом с аэропортом Ташкента.",
+
+  "family_title": "Семейная капсула",
+  "family_price_4h": "До 4 часов / 600 000 UZS",
+  "family_price_6h": "До 6 часов / 800 000 UZS",
+  "family_price_10h": "До 10 часов / 1 000 000 UZS",
+  "family_guests": "2 гостя",
+  "family_size": "2.4м x 2м",
+  "family_description": "Просторная и комфортная семейная капсула для уединения и отдыха, с кроватью 2.4м x 2м — идеально для пар или небольших семей рядом с международным аэропортом Ташкента.",
+
+  "capsule_location": "Капсулы Qonoq в аэропорту Ташкента",
+
+  "alternative_title": "Альтернативные способы связи",
+  "alternative_whatsapp": "WhatsApp",
+  "alternative_telegram": "Telegram",
+  "alternative_email": "Электронная почта",
+
+  "contact_location_title": "Расположение отеля",
+  "contact_get_directions": "Построить маршрут",
+
+  "contact_hotel_name": "Qonoq Capsule",
+  "contact_hotel_address": "Международный аэропорт Ташкента, зона вылета, 2-й этаж",
+
+  "contact_nearby_title": "Места рядом с аэропортом",
+  "contact_near_dutyfree": "Магазины Duty Free",
+  "contact_near_dining": "Зоны питания (кафе и рестораны)",
+  "contact_near_post": "Почтовое отделение",
+  "contact_near_taxi": "Служба такси",
+
+  "contact_header_title": "Контакты и расположение",
+  "contact_header_subtitle": "Мы всегда готовы помочь вам с любыми вопросами и предоставить необходимую поддержку",
+
+  "contact_alert_text": "В экстренных ситуациях или при срочных вопросах звоните на нашу круглосуточную горячую линию",
+  "contact_alert_call": "Позвонить сейчас",
+
+  "email_section_title": "Адреса электронной почты",
+
+  "email_general_title": "Общие вопросы",
+  "email_reservations_title": "Бронирование",
+  "email_support_title": "Служба поддержки",
+
+  "email_button_send": "Отправить",
+
+  "emergency_title": "Экстренная связь",
+  "emergency_24_7": "Экстренно 24/7:",
+
+  "emergency_phone_numbers": "Телефонные номера",
+
+  "emergency_reception": "Ресепшн",
+  "emergency_reservations": "Бронирование",
+  "emergency_whatsapp": "WhatsApp",
+
+  "emergency_call_now": "Позвонить сейчас",
+
+  "faq_title": "Часто задаваемые вопросы",
+  "faq_subtitle": "Ответы на популярные вопросы о нашем отеле и услугах",
+
+  "faq_q1": "Где находится отель Khamsa в аэропорту Ташкента?",
+  "faq_a1": "Отель Khamsa расположен в Терминале 2 международного аэропорта Ташкента и предназначен в первую очередь для транзитных пассажиров.",
+
+  "faq_q2": "Сколько номеров в отеле и какие типы доступны?",
+  "faq_a2": "В отеле 24 номера: 23 стандартных и 1 люкс. Все номера оснащены современными удобствами.",
+
+  "faq_q3": "Какие цены на номера и можно ли забронировать заранее?",
+  "faq_a3": "Цены зависят от типа номера и продолжительности проживания. Бронирование доступно через сайт или по телефону.",
+
+  "faq_q4": "Какие удобства предоставляются в номерах?",
+  "faq_a4": "В каждом номере есть кровать, Wi-Fi, кондиционер, душ, туалетные принадлежности и ежедневная уборка. Также доступен круглосуточный сервис.",
+
+  "faq_q5": "Какой режим работы у отеля?",
+  "faq_a5": "Отель работает круглосуточно и принимает гостей в любое время суток.",
+
+  "faq_q6": "Для кого в первую очередь предназначен отель?",
+  "faq_a6": "Отель ориентирован на транзитных пассажиров и бизнес-путешественников.",
+
+  "faq_q7": "Как связаться с отелем?",
+  "faq_a7": "Вы можете позвонить по номеру +998 95 877 24 24 или написать на qonoqhotel@mail.ru.",
+
+  "faq_q8": "Как обеспечивается безопасность и гигиена?",
+  "faq_a8": "В отеле соблюдаются строгие санитарные нормы, проводится регулярная уборка и контроль безопасности.",
+
+  "faq_help_title": "Нужна помощь",
+  "faq_help_heading": "Не нашли нужную информацию?",
+  "faq_help_text": "Свяжитесь с нашей службой поддержки для индивидуальной помощи.",
+
+  "hotel_address_title": "Адрес отеля",
+  "hotel_address_line1": "Отель в аэропорту Ташкента",
+  "hotel_address_line2": "Международный аэропорт Ташкента, рядом с Терминалом 2",
+  "hotel_get_directions": "Построить маршрут",
+
+  "hours_title": "Быстрые сервисы в аэропорту",
+
+  "hours_shuttle": "Трансфер",
+  "hours_shuttle_time": "5:00 - 23:30",
+
+  "hours_checkin": "Экспресс-регистрация",
+
+  "hours_luggage": "Хранение багажа",
+  "hours_luggage_time": "05:00 – 23:00",
+
+  "hours_currency": "Обмен валюты",
+
+  "hours_always_open": "Круглосуточно",
+
+  "send_title": "Связаться с нами",
+  "send_subtitle": "Отправьте нам сообщение, и мы ответим как можно скорее.",
+
+  "send_new_message": "Новое сообщение",
+  "send_success": "Ваше сообщение успешно отправлено ✅",
+
+  "send_full_name": "Полное имя",
+  "send_email": "Электронная почта",
+  "send_phone": "Номер телефона",
+  "send_method": "Предпочтительный способ связи",
+  "send_message_label": "Сообщение",
+
+  "send_full_name_placeholder": "Иван Иванов",
+  "send_email_placeholder": "ivan@example.com",
+  "send_phone_placeholder": "Номер телефона",
+  "send_method_placeholder": "Выберите способ связи",
+  "send_message_placeholder": "Пожалуйста, подробно опишите ваш запрос...",
+
+  "send_method_telegram": "Telegram",
+  "send_method_email": "Email",
+  "send_method_whatsapp": "WhatsApp",
+
+  "send_button": "Отправить сообщение",
+
+  "mybooking_title": "Мои бронирования",
+  "mybooking_empty": "Бронирований пока нет",
+
+  "booking_location_default": "Отель аэропорта Ташкента",
+
+  "booking_checkin": "Заезд",
+  "booking_time": "Время",
+  "booking_capsule": "Капсула",
+  "booking_duration": "Длительность",
+  "booking_price": "Цена",
+
+  "booking_guest_info": "Информация о госте",
+  "booking_name": "Имя",
+  "booking_phone": "Телефон",
+  "booking_email": "Эл. почта",
+
+  "booking_edit": "Редактировать",
+  "booking_delete": "Удалить",
+
+  "rules_title": "Публичные правила Qonoq Capsule",
+
+  "rules_1_title": "Предмет оферты",
+  "rules_1_text": "Данная оферта содержит информацию об услугах отеля, условиях бронирования, оплаты, отмены и защите персональных данных.",
+
+  "rules_2_title": "Порядок бронирования и оплаты",
+  "rules_2_text": "Бронирование возможно через сайт или на ресепшене. Оплата принимается онлайн, картой или наличными при заезде.",
+
+  "rules_3_title": "Возврат услуг",
+  "rules_3_text": "Бронирование можно отменить бесплатно за 3 дня до заезда. Поздняя отмена или незаезд могут повлечь штраф.",
+
+  "rules_4_title": "Безопасность транзакций",
+  "rules_4_text": "Все онлайн-платежи защищены SSL-шифрованием.",
+
+  "rules_5_title": "Политика конфиденциальности",
+  "rules_5_text": "Отель уважает конфиденциальность гостей и защищает персональные данные.",
+
+  "rules_6_title": "Применимое право",
+  "rules_6_text": "Настоящие правила регулируются законодательством Республики Узбекистан.",
+
+  "rules_7_title": "Контактная информация",
+  "rules_7_text": "По всем вопросам обращайтесь:",
+
+  "rules_contact_phone": "Телефон: +998 95 877 24 24",
+  "rules_contact_email": "Эл. почта: qonoqhotel@mail.ru",
+
+  "rules_8_title": "Дата вступления в силу",
+  "rules_8_text": "Правила действуют с 14.05.2024. Отель может изменять их без предварительного уведомления.",
+
+  "service_header_title": "Премиальные услуги для комфортного проживания",
+  "service_header_text1": "Наслаждайтесь комфортом с услугами, созданными для спокойного отдыха в капсуле.",
+  "service_header_text2": "В Qonoq Capsule Hotel мы объединяем умные технологии и продуманные удобства, создавая спокойную и надёжную атмосферу. От быстрого заселения до ухоженной инфраструктуры — каждая услуга направлена на ваш комфорт и безопасность.",
+  "service_header_booking": "Забронировать",
+  "service_header_contact": "Связаться",
+
+  "services_title": "Услуги капсулы",
+  "services_subtitle": "Всё необходимое для спокойного, безопасного и комфортного отдыха в капсуле.",
+
+  "service_1_title": "Умная LED-панель управления",
+  "service_1_desc": "Сенсорная LED-панель для управления освещением и основными функциями.",
+  "service_1_tag": "Сенсорное управление",
+
+  "service_2_title": "Звукоизолированная капсула",
+  "service_2_desc": "Шумоизоляционные стены снижают уровень шума аэропорта.",
+  "service_2_tag": "Умная система",
+
+  "service_3_title": "Атмосферное LED-освещение",
+  "service_3_desc": "Мягкое освещение для расслабления и комфорта глаз.",
+  "service_3_tag": "Умный контроль",
+
+  "service_4_title": "Индивидуальная вентиляция",
+  "service_4_desc": "Отдельная система циркуляции воздуха в каждой капсуле.",
+  "service_4_tag": "Технологично",
+
+  "service_5_title": "Тихая зона",
+  "service_5_desc": "Зона капсул с минимальным шумом и движением.",
+  "service_5_tag": "Для сна",
+
+  "service_6_title": "Цифровые часы",
+  "service_6_desc": "Встроенные часы для контроля времени.",
+  "service_6_tag": "Комфорт",
+
+  "service_7_title": "Зарядная станция",
+  "service_7_desc": "USB и Type-C порты для быстрой зарядки устройств.",
+  "service_7_tag": "Умная система",
+
+  "service_8_title": "Гигиеничные материалы",
+  "service_8_desc": "Антибактериальные и легко очищаемые поверхности.",
+  "service_8_tag": "Безопасность",
+
+  "service_9_title": "Система приватности",
+  "service_9_desc": "Надёжный замок изнутри капсулы.",
+  "service_9_tag": "Комфорт",
+
+  "service_10_title": "Расположение в аэропорту",
+  "service_10_desc": "Капсулы расположены прямо в здании аэропорта.",
+  "service_10_tag": "На месте",
+
+  "empty": "Нет данных"
 }

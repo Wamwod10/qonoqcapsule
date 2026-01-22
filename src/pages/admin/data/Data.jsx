@@ -1,13 +1,14 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import "./data.scss";
 
-const API = "http://localhost:5000/api/bookings";
+/* ===== PRODUCTION BACKEND ===== */
+const API = "https://qonoqcapsule-backend.onrender.com/api/bookings";
 
+/* ===== BRANCHES (BACKEND GA MOS) ===== */
 const branches = [
-  { id: "Tashkent", name: "Tashkent Airport" },
-  { id: "Bukhara", name: "Bukhara" },
-  { id: "India", name: "India" },
+  { id: "airport", name: "Tashkent Airport" },
+  { id: "city", name: "Bukhara" },
+  { id: "north", name: "India" },
 ];
 
 const Data = () => {
@@ -16,10 +17,10 @@ const Data = () => {
 
   const [form, setForm] = useState({
     branch: "airport",
-    capsuleType: "family", // ✅ backendga mos
+    capsuleType: "family",
     date: "",
     time: "",
-    duration: 4, // ✅ number bo‘lishi kerak
+    duration: 4,
   });
 
   /* ===== LOAD BOOKINGS ===== */
@@ -207,14 +208,3 @@ const Data = () => {
 };
 
 export default Data;
-=======
-import React from 'react'
-
-const Data = () => {
-  return (
-    <div></div>
-  )
-}
-
-export default Data
->>>>>>> 7394a65e5d184348042a5154ab1e22463af714f1

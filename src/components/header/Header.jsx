@@ -13,15 +13,11 @@ const Header = () => {
   const [duration, setDuration] = useState("4h");
   const [locationValue, setLocationValue] = useState("tas");
 
-<<<<<<< HEAD
   const [busyTime, setBusyTime] = useState(null);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  /* ================= VALIDATION ================= */
-=======
-  const [errors, setErrors] = useState({});
->>>>>>> 7394a65e5d184348042a5154ab1e22463af714f1
+  /* === VALIDATION === */
 
   const validate = () => {
     const newErrors = {};
@@ -40,12 +36,13 @@ const Header = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-<<<<<<< HEAD
-  /* ================= SUBMIT ================= */
+  /* === SUBMIT === */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
+
+    setLoading(true);
 
     const durationMap = { "4h": 4, "6h": 6, "10h": 10 };
 
@@ -57,18 +54,20 @@ const Header = () => {
           : "north";
 
     try {
-      // ✅ faqat availability check
-      const res = await fetch("http://localhost:5000/api/check-availability", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          branch,
-          capsuleType,
-          date: checkIn,
-          time: checkInTime,
-          duration: durationMap[duration],
-        }),
-      });
+      const res = await fetch(
+        "https://qonoqcapsule-backend.onrender.com/api/check-availability",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            branch,
+            capsuleType,
+            date: checkIn,
+            time: checkInTime,
+            duration: durationMap[duration],
+          }),
+        },
+      );
 
       const data = await res.json();
 
@@ -77,47 +76,24 @@ const Header = () => {
           time: data.nextTime,
           nextDay: data.nextDay,
         });
+        setLoading(false);
         return;
       }
     } catch (err) {
       alert("Server error. Try again.");
+      setLoading(false);
       return;
     }
 
-    // ✅ faqat session + navigate
-    const bookingState = {
-=======
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!validate()) return;
-
-    // Prepare label keys and localized labels
-    const durationLabelKey = `duration_${duration}`; // e.g. duration_4h
-    const capsuleTypeLabelKey =
-      capsuleType === "standard" ? "capsule_standard" : "capsule_family";
-    const locationLabelKey = (() => {
-      switch (locationValue) {
-        case "tas":
-          return "loc_tas";
-        case "buh":
-          return "loc_buh";
-        case "ind":
-          return "loc_ind";
-        default:
-          return locationValue;
-      }
-    })();
+    /* === SAVE BOOKING STATE === */
 
     const bookingState = {
-      // raw values
->>>>>>> 7394a65e5d184348042a5154ab1e22463af714f1
       checkIn,
       checkInTime,
       durationValue: duration,
       capsuleTypeValue: capsuleType,
       locationValue,
-<<<<<<< HEAD
+
       durationLabel: t(`duration_${duration}`, { defaultValue: duration }),
       capsuleTypeLabel:
         capsuleType === "standard"
@@ -129,29 +105,17 @@ const Header = () => {
           : locationValue === "buh"
             ? t("loc_buh")
             : t("loc_ind"),
+
       createdAt: new Date().toISOString(),
     };
 
-    sessionStorage.setItem("qonoq_booking", JSON.stringify(bookingState));
-=======
-      // localized labels for display on Capsule page
-      durationLabel: t(durationLabelKey, { defaultValue: duration }),
-      capsuleTypeLabel: t(capsuleTypeLabelKey, { defaultValue: capsuleType }),
-      locationLabel: t(locationLabelKey, { defaultValue: locationValue }),
-      // meta
-      createdAt: new Date().toISOString(),
-    };
-
-    // Save to sessionStorage (so data persists for the session and page reloads)
     try {
       sessionStorage.setItem("qonoq_booking", JSON.stringify(bookingState));
     } catch (err) {
-      // ignore storage errors silently
-      // optionally: console.warn("Could not save booking to sessionStorage", err);
+      // ignore storage error
     }
 
-    // Navigate to /capsule with booking state (so immediate navigation provides state too)
->>>>>>> 7394a65e5d184348042a5154ab1e22463af714f1
+    setLoading(false);
     navigate("/capsule", { state: bookingState });
   };
 
@@ -197,12 +161,9 @@ const Header = () => {
                     className="header__form-input"
                     type="date"
                     id="checkin"
-<<<<<<< HEAD
-=======
                     name="check_in"
                     required
                     aria-label={t("check_in")}
->>>>>>> 7394a65e5d184348042a5154ab1e22463af714f1
                     value={checkIn}
                     onChange={(e) => setCheckIn(e.target.value)}
                   />
@@ -219,12 +180,9 @@ const Header = () => {
                     className="header__form-input"
                     type="time"
                     id="checkinTime"
-<<<<<<< HEAD
-=======
                     name="check_in_time"
                     required
                     aria-label={t("check_in_time")}
->>>>>>> 7394a65e5d184348042a5154ab1e22463af714f1
                     value={checkInTime}
                     onChange={(e) => setCheckInTime(e.target.value)}
                   />
@@ -240,10 +198,7 @@ const Header = () => {
                 </label>
                 <select
                   className="header__form-input header__select"
-<<<<<<< HEAD
-=======
                   aria-label={t("capsules_label")}
->>>>>>> 7394a65e5d184348042a5154ab1e22463af714f1
                   value={capsuleType}
                   onChange={(e) => setCapsuleType(e.target.value)}
                 >
@@ -261,10 +216,7 @@ const Header = () => {
                 </label>
                 <select
                   className="header__form-input header__select"
-<<<<<<< HEAD
-=======
                   aria-label={t("duration_label")}
->>>>>>> 7394a65e5d184348042a5154ab1e22463af714f1
                   value={duration}
                   onChange={(e) => setDuration(e.target.value)}
                 >
@@ -283,10 +235,7 @@ const Header = () => {
                 </label>
                 <select
                   className="header__form-input header__select"
-<<<<<<< HEAD
-=======
                   aria-label={t("select_location")}
->>>>>>> 7394a65e5d184348042a5154ab1e22463af714f1
                   value={locationValue}
                   onChange={(e) => setLocationValue(e.target.value)}
                 >
@@ -301,18 +250,9 @@ const Header = () => {
 
               <div className="header__link-box">
                 <button type="submit" className="header__left-link">
-                  {t("check_availability")}
-                </button>
-              </div>
-<<<<<<< HEAD
-
-              <div className="header__link-box">
-                <button type="submit" className="header__left-link">
                   {loading ? "Checking..." : t("check_availability")}
                 </button>
               </div>
-=======
->>>>>>> 7394a65e5d184348042a5154ab1e22463af714f1
             </form>
           </div>
         </div>

@@ -22,31 +22,32 @@ const SendMessage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const text = `
-📩 ${t("send_new_message")}
-👤 ${t("send_full_name")}: ${formData.fullName}
-📧 ${t("send_email")}: ${formData.email}
-📞 ${t("send_phone")}: ${formData.phone}
-💬 ${t("send_method")}: ${formData.method}
-📝 ${t("send_message_label")}: ${formData.message}
-    `;
+    const text = `📩 Yangi xabar:
+👤 Ism: ${formData.fullName}
+📧 Email: ${formData.email}
+📞 Telefon: ${formData.phone}
+💬 Aloqa usuli: ${formData.method}
+📝 Xabar: ${formData.message}`;
 
-    await fetch("https://khamsa-backend.onrender.com/notify/telegram", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text }),
-    });
+    try {
+      await fetch("http://localhost:5000/notify/telegram", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
+      });
 
-    alert(t("send_success"));
+      alert("Message Sent ✅");
 
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      method: "",
-      message: "",
-    });
-    e.target.reset();
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        method: "",
+        message: "",
+      });
+    } catch (error) {
+      alert("Xatolik bo‘ldi ❌");
+    }
   };
 
   const isFormValid =
@@ -64,58 +65,60 @@ const SendMessage = () => {
           <p className="sendmessage__text">{t("send_subtitle")}</p>
 
           <form className="sendmessage-form" onSubmit={handleSubmit}>
-            <div className="sendmessage__form-group">
-              <label>{t("send_full_name")}</label>
-              <input
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder={t("send_full_name_placeholder")}
-                required
-              />
-            </div>
+            <div className="sendmessage__form-box">
+              <div className="sendmessage__form-group">
+                <label>{t("send_full_name")}</label>
+                <input
+                  type="text"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  placeholder={t("send_full_name_placeholder")}
+                  required
+                />
+              </div>
 
-            <div className="sendmessage__form-group">
-              <label>{t("send_email")}</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder={t("send_email_placeholder")}
-                required
-              />
-            </div>
+              <div className="sendmessage__form-group">
+                <label>{t("send_email")}</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder={t("send_email_placeholder")}
+                  required
+                />
+              </div>
 
-            <div className="sendmessage__form-group">
-              <label>{t("send_phone")}</label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder={t("send_phone_placeholder")}
-                required
-              />
-            </div>
+              <div className="sendmessage__form-group">
+                <label>{t("send_phone")}</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder={t("send_phone_placeholder")}
+                  required
+                />
+              </div>
 
-            <div className="sendmessage__form-group">
-              <label>{t("send_method")}</label>
-              <select
-                name="method"
-                value={formData.method}
-                onChange={handleChange}
-                required
-              >
-                <option value="" disabled>
-                  {t("send_method_placeholder")}
-                </option>
-                <option value="telegram">{t("send_method_telegram")}</option>
-                <option value="email">{t("send_method_email")}</option>
-                <option value="whatsapp">{t("send_method_whatsapp")}</option>
-              </select>
-              <FaChevronDown className="select-icon" />
+              <div className="sendmessage__form-group">
+                <label>{t("send_method")}</label>
+                <select
+                  name="method"
+                  value={formData.method}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="" disabled>
+                    {t("send_method_placeholder")}
+                  </option>
+                  <option value="telegram">{t("send_method_telegram")}</option>
+                  <option value="email">{t("send_method_email")}</option>
+                  <option value="whatsapp">{t("send_method_whatsapp")}</option>
+                </select>
+                <FaChevronDown className="select-icon" />
+              </div>
             </div>
 
             <div className="sendmessage__form">

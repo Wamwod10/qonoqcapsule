@@ -52,8 +52,8 @@ const MyBooking = () => {
           b.locationValue === "tas"
             ? "airport"
             : b.locationValue === "buh"
-            ? "city"
-            : "north";
+              ? "city"
+              : "north";
 
         const res = await fetch(`${API}/api/check-availability`, {
           method: "POST",
@@ -88,6 +88,7 @@ const MyBooking = () => {
       return false;
     }
   };
+
 
   /* ===== OCTO PAYMENT ===== */
 

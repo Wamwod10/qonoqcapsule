@@ -53,6 +53,14 @@
     margin-top: 16px;
   }
 
+  &__form-box {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 40px;
+  }
+
   &__form-group {
     display: flex;
     flex-direction: column;

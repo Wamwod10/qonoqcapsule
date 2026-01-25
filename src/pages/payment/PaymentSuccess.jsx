@@ -13,11 +13,14 @@ const PaymentSuccess = () => {
 
         if (!booking) return;
 
-        await fetch("http://localhost:5000/notify/booking", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ booking }),
-        });
+        await fetch(
+          "https://qonoqcapsule-backend.onrender.com/notify/booking",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ booking }),
+          },
+        );
 
         console.log("Booking sent to Telegram ✅");
       } catch (err) {

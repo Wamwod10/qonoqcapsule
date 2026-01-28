@@ -3,6 +3,11 @@ import "./paymentsuccess.scss";
 import { FaCheck } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
+await fetch("https://qonoqcapsule-backend.onrender.com/notify/email", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ booking }),
+});
 const PaymentSuccess = () => {
   const navigate = useNavigate();
 

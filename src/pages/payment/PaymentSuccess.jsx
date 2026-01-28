@@ -12,7 +12,6 @@ const PaymentSuccess = () => {
         const booking = JSON.parse(localStorage.getItem("lastBooking"));
         if (!booking) return;
 
-        // 👉 Telegram
         await fetch(
           "https://qonoqcapsule-backend.onrender.com/notify/booking",
           {
@@ -22,7 +21,6 @@ const PaymentSuccess = () => {
           },
         );
 
-        // 👉 Email
         await fetch("https://qonoqcapsule-backend.onrender.com/notify/email", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -42,7 +40,6 @@ const PaymentSuccess = () => {
     <div className="qonoq-success">
       <div className="qonoq-success__card">
         <FaCheck className="qonoq-success__icon" />
-
         <h1>Payment Successful</h1>
         <p>Your booking has been confirmed successfully</p>
 

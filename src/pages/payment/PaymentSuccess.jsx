@@ -3,21 +3,16 @@ import "./paymentsuccess.scss";
 import { FaCheck } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-await fetch("https://qonoqcapsule-backend.onrender.com/notify/email", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ booking }),
-});
 const PaymentSuccess = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const sendBookingToTelegram = async () => {
+    const sendBooking = async () => {
       try {
         const booking = JSON.parse(localStorage.getItem("lastBooking"));
-
         if (!booking) return;
 
+        // 👉 Telegram
         await fetch(
           "https://qonoqcapsule-backend.onrender.com/notify/booking",
           {
@@ -27,13 +22,20 @@ const PaymentSuccess = () => {
           },
         );
 
-        console.log("Booking sent to Telegram ✅");
+        // 👉 Email
+        await fetch("https://qonoqcapsule-backend.onrender.com/notify/email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ booking }),
+        });
+
+        console.log("Telegram + Email sent ✅");
       } catch (err) {
-        console.log("Telegram send error:", err);
+        console.log("Send error:", err);
       }
     };
 
-    sendBookingToTelegram();
+    sendBooking();
   }, []);
 
   return (

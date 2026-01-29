@@ -194,7 +194,7 @@
   /* ===== Language dropdown (dark) ===== */
   &__lang {
     position: relative;
-    z-index: 999 !important;
+    z-index: 9999 !important;
   }
 
   &__lang-toggle {
@@ -212,6 +212,7 @@
         rgba(255, 255, 255, 0.04)
       ),
       rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px) !important;
     color: #e9eef6;
     font-weight: 700;
     backdrop-filter: blur(14px) saturate(170%);

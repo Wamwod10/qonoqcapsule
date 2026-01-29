@@ -17,10 +17,11 @@ const Header = () => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  /* === VALIDATION === */
+  /* ================= VALIDATION ================= */
 
   const validate = () => {
     const newErrors = {};
+
     if (!checkIn)
       newErrors.checkIn = t("required", { defaultValue: "Required" });
     if (!checkInTime)
@@ -36,12 +37,13 @@ const Header = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  /* === SUBMIT === */
+  /* ================= SUBMIT ================= */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
+    setBusyTime(null);
     setLoading(true);
 
     const durationMap = { "4h": 4, "6h": 6, "10h": 10 };
@@ -52,6 +54,8 @@ const Header = () => {
         : locationValue === "buh"
           ? "city"
           : "north";
+
+    let available = false;
 
     try {
       const res = await fetch(
@@ -71,13 +75,13 @@ const Header = () => {
 
       const data = await res.json();
 
-      if (!data.available) {
+      if (data.available === true) {
+        available = true;
+      } else {
         setBusyTime({
           time: data.nextTime,
           nextDay: data.nextDay,
         });
-        setLoading(false);
-        return;
       }
     } catch (err) {
       alert("Server error. Try again.");
@@ -85,7 +89,12 @@ const Header = () => {
       return;
     }
 
-    /* === SAVE BOOKING STATE === */
+    if (!available) {
+      setLoading(false);
+      return; // ❗ bu yerda QATTIQ to‘xtaydi
+    }
+
+    /* ===== faqat available bo‘lsa pastga tushadi ===== */
 
     const bookingState = {
       checkIn,
@@ -111,9 +120,7 @@ const Header = () => {
 
     try {
       sessionStorage.setItem("qonoq_booking", JSON.stringify(bookingState));
-    } catch (err) {
-      // ignore storage error
-    }
+    } catch {}
 
     setLoading(false);
     navigate("/capsule", { state: bookingState });
@@ -123,6 +130,7 @@ const Header = () => {
     <div className="header">
       <div className="container">
         <div className="header__box">
+          {/* ===== RIGHT ===== */}
           <div className="header__right">
             <h1 className="header__title">
               <Trans
@@ -148,6 +156,7 @@ const Header = () => {
             </p>
           </div>
 
+          {/* ===== LEFT ===== */}
           <div className="header__left">
             <h2 className="header__left-title">{t("book_your_stay")}</h2>
 
@@ -161,9 +170,7 @@ const Header = () => {
                     className="header__form-input"
                     type="date"
                     id="checkin"
-                    name="check_in"
                     required
-                    aria-label={t("check_in")}
                     value={checkIn}
                     onChange={(e) => setCheckIn(e.target.value)}
                   />
@@ -180,9 +187,7 @@ const Header = () => {
                     className="header__form-input"
                     type="time"
                     id="checkinTime"
-                    name="check_in_time"
                     required
-                    aria-label={t("check_in_time")}
                     value={checkInTime}
                     onChange={(e) => setCheckInTime(e.target.value)}
                   />
@@ -198,16 +203,12 @@ const Header = () => {
                 </label>
                 <select
                   className="header__form-input header__select"
-                  aria-label={t("capsules_label")}
                   value={capsuleType}
                   onChange={(e) => setCapsuleType(e.target.value)}
                 >
                   <option value="standard">{t("capsule_standard")}</option>
                   <option value="family">{t("capsule_family")}</option>
                 </select>
-                {errors.capsuleType && (
-                  <small className="form-error">{errors.capsuleType}</small>
-                )}
               </div>
 
               <div className="header__form-box">
@@ -216,7 +217,6 @@ const Header = () => {
                 </label>
                 <select
                   className="header__form-input header__select"
-                  aria-label={t("duration_label")}
                   value={duration}
                   onChange={(e) => setDuration(e.target.value)}
                 >
@@ -224,9 +224,6 @@ const Header = () => {
                   <option value="6h">{t("duration_6h")}</option>
                   <option value="10h">{t("duration_10h")}</option>
                 </select>
-                {errors.duration && (
-                  <small className="form-error">{errors.duration}</small>
-                )}
               </div>
 
               <div className="header__form-box">
@@ -235,7 +232,6 @@ const Header = () => {
                 </label>
                 <select
                   className="header__form-input header__select"
-                  aria-label={t("select_location")}
                   value={locationValue}
                   onChange={(e) => setLocationValue(e.target.value)}
                 >
@@ -243,37 +239,47 @@ const Header = () => {
                   <option value="buh">{t("loc_buh")}</option>
                   <option value="ind">{t("loc_ind")}</option>
                 </select>
-                {errors.location && (
-                  <small className="form-error">{errors.location}</small>
-                )}
               </div>
 
+              {/* ===== BUSY MESSAGE ===== */}
+              {busyTime && (
+                <div className="availability-modal">
+                  <div className="availability-modal__box">
+                    <p className="availability__modal-text">
+                      Capsule is busy! Next available time: 
+                      {/* <br /> */}
+                      <b>
+                        {busyTime.time}
+                        {busyTime.nextDay &&
+                          `  (${t("next_day", { defaultValue: "Next day" })})`}
+                      </b>
+                    </p>
+                    {/* <button
+                      type="button"
+                      className="availability-modal__btn"
+                      onClick={() => setBusyTime(null)}
+                    >
+                      OK
+                    </button> */}
+                  </div>
+                </div>
+              )}
+
               <div className="header__link-box">
-                <button type="submit" className="header__left-link">
-                  {loading ? "Checking..." : t("check_availability")}
+                <button
+                  type="submit"
+                  className="header__left-link"
+                  disabled={loading}
+                >
+                  {loading
+                    ? t("checking", { defaultValue: "Checking..." })
+                    : t("check_availability")}
                 </button>
               </div>
             </form>
           </div>
         </div>
       </div>
-
-      {/* ===== BUSY MODAL ===== */}
-      {busyTime && (
-        <div className="availability-modal">
-          <div className="availability-modal__box">
-            <p>
-              This room is busy. Next available time:
-              <br />
-              <b>
-                {busyTime.time}
-                {busyTime.nextDay && " (next day)"}
-              </b>
-            </p>
-            <button onClick={() => setBusyTime(null)}>OK</button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

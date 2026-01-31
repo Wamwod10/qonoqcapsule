@@ -4,16 +4,12 @@
   &__box {
     width: 835px;
     height: fit-content;
-    background: radial-gradient(
-        300px 150px at 0% 5%,
+    background: radial-gradient(300px 150px at 0% 5%,
         rgba(255, 255, 255, 0.08),
-        transparent 60%
-      ),
-      radial-gradient(
-        300px 150px at 100% 100%,
+        transparent 60%),
+      radial-gradient(300px 150px at 100% 100%,
         rgba(255, 255, 255, 0.08),
-        transparent 60%
-      ),
+        transparent 60%),
       rgba(16, 16, 16, 0.55);
     backdrop-filter: saturate(170%) blur(14px);
     -webkit-backdrop-filter: saturate(170%) blur(14px);
@@ -29,11 +25,9 @@
 
   &__title {
     color: transparent;
-    background: linear-gradient(
-        180deg,
+    background: linear-gradient(180deg,
         rgb(47, 134, 255),
-        rgba(47, 134, 255, 0.417)
-      ),
+        rgba(47, 134, 255, 0.417)),
       rgba(255, 255, 255, 0.202);
     background-clip: text;
     font-size: 26px !important;
@@ -73,7 +67,7 @@
     }
 
     input {
-      width: 370px;
+      width: 370px !important;
       height: 40px;
       padding: 8px 12px;
       background: rgba(20, 20, 20, 0.35);
@@ -219,13 +213,21 @@
       gap: 15px;
 
       .sendmessage__form-group {
+
         input,
         select,
         textarea {
           width: 100% !important;
-          max-width: 100%;
         }
       }
+    }
+
+    .sendmessage__form-group input {
+      max-width: 700px !important;
+      font-size: 17px !important;
+ 
+      width: 100%;
+
     }
 
     &__form {
@@ -245,6 +247,16 @@
     &__form-but {
       justify-content: center;
     }
+  }
+}
+
+@media (max-width: 500px) {
+  .sendmessage__form-group input {
+    max-width: 700px !important;
+    font-size: 17px !important;
+    
+    width: 100%;
+
   }
 }
 

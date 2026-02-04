@@ -1,8 +1,8 @@
 import React from "react";
-import { FaLocationArrow, FaUtensils, FaTaxi } from "react-icons/fa6";
+import { FaLocationArrow, FaUtensils, FaTaxi, FaMoneyBillWave } from "react-icons/fa6";
 import { GiShoppingBag } from "react-icons/gi";
 import { LuExternalLink } from "react-icons/lu";
-import { MdMarkEmailRead } from "react-icons/md";
+import { MdAccountBalance, MdAirplaneTicket, MdCurrencyExchange, MdMarkEmailRead } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import "./contactform.scss";
 
@@ -53,7 +53,7 @@ const ContactForm = () => {
               <div className="contactform__nears-div">
                 <div className="contactform__titles-div">
                   <div className="contactform__nears-icon">
-                    <GiShoppingBag className="icon icon-rotate" />
+                    <MdCurrencyExchange className="icon icon-rotate" />
                   </div>
                   <div>
                     <h3 className="contactform__div-title">
@@ -73,7 +73,7 @@ const ContactForm = () => {
               <div className="contactform__nears-div">
                 <div className="contactform__titles-div">
                   <div className="contactform__nears-icon">
-                    <FaUtensils className="icon icon-rotate" />
+                    <MdAccountBalance className="icon icon-rotate" />
                   </div>
                   <div>
                     <h3 className="contactform__div-title">
@@ -93,7 +93,7 @@ const ContactForm = () => {
               <div className="contactform__nears-div">
                 <div className="contactform__titles-div">
                   <div className="contactform__nears-icon">
-                    <MdMarkEmailRead className="icon icon-rotate" />
+                    <MdAirplaneTicket className="icon icon-rotate" />
                   </div>
                   <div>
                     <h3 className="contactform__div-title">
@@ -113,7 +113,7 @@ const ContactForm = () => {
               <div className="contactform__nears-div">
                 <div className="contactform__titles-div">
                   <div className="contactform__nears-icon">
-                    <FaTaxi className="icon icon-rotate" />
+                    <FaMoneyBillWave className="icon icon-rotate" />
                   </div>
                   <div>
                     <h3 className="contactform__div-title">

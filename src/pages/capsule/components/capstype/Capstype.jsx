@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import { TbArrowAutofitHeight } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
-import { MdAir, MdLightMode, MdPowerSettingsNew, MdWifi } from "react-icons/md";
+import { MdLightMode, MdPowerSettingsNew, MdWifi } from "react-icons/md";
 import CapsModal from "./CapsModal";
 
 const Capstype = () => {
@@ -19,11 +19,18 @@ const Capstype = () => {
   const [selectedType, setSelectedType] = useState(null);
   const [hasBooking, setHasBooking] = useState(false);
 
+  // ===== Images =====
+  const standardImages = ["/10.jpg", "/27.jpg", "/28.jpg", "/29.jpg"];
+  const familyImages = ["/17.jpg", "/26.jpg", "/28.jpg", "/29.jpg"];
+
+  const [standardMain, setStandardMain] = useState(standardImages[0]);
+  const [familyMain, setFamilyMain] = useState(familyImages[0]);
+
   React.useEffect(() => {
     const data = sessionStorage.getItem("qonoq_booking");
     if (data) {
       const parsed = JSON.parse(data);
-      setSelectedType(parsed.capsuleTypeValue); // "standard" yoki "family"
+      setSelectedType(parsed.capsuleTypeValue);
     }
   }, []);
 
@@ -34,7 +41,7 @@ const Capstype = () => {
       const parsed = JSON.parse(data);
 
       if (parsed?.capsuleTypeValue) {
-        setSelectedType(parsed.capsuleTypeValue); // standard | family
+        setSelectedType(parsed.capsuleTypeValue);
         setHasBooking(true);
       } else {
         setHasBooking(false);
@@ -53,18 +60,22 @@ const Capstype = () => {
           <div className="capstype__box">
             {/* ================= STANDARD CAPSULE ================= */}
             <div className="capstype__card">
-              <img className="capstype__img" src="/10.jpg" alt="" />
+              <div>
+                <img className="capstype__img" src={standardMain} alt="" />
 
-              <div className="capstype__prices">
-                <a href="#!" className="capstype__price-link">
-                  {t("standard_price_4h")}
-                </a>
-                <a href="#!" className="capstype__price-link">
-                  {t("standard_price_6h")}
-                </a>
-                <a href="#!" className="capstype__price-link">
-                  {t("standard_price_8h")}
-                </a>
+                <div className="capstype__thumbs">
+                  {standardImages.map((img, idx) => (
+                    <img
+                      key={idx}
+                      src={img}
+                      alt=""
+                      className={`capstype__thumb ${
+                        standardMain === img ? "active" : ""
+                      }`}
+                      onClick={() => setStandardMain(img)}
+                    />
+                  ))}
+                </div>
               </div>
 
               <div className="capstype__div">
@@ -87,6 +98,24 @@ const Capstype = () => {
 
                 <p className="capstype__text">{t("standard_description")}</p>
 
+                <div className="capstype__prices">
+                  <a href="#!" className="capstype__price-link">
+                    {t("standard_price_2h")}
+                  </a>
+                  <a href="#!" className="capstype__price-link">
+                    {t("standard_price_4h")}
+                  </a>
+                  <a href="#!" className="capstype__price-link">
+                    {t("standard_price_6h")}
+                  </a>
+                  <a href="#!" className="capstype__price-link">
+                    {t("standard_price_10h")}
+                  </a>
+                  <a href="#!" className="capstype__price-link">
+                    {t("standard_price_1d")}
+                  </a>
+                </div>
+
                 <div className="caps__card-features">
                   <h2 className="caps__ft-title">
                     {t("capsules_features_title")}
@@ -117,10 +146,6 @@ const Capstype = () => {
                       <MdPowerSettingsNew className="caps__ft-icon" />
                       {t("capsules_feature_power")}
                     </a>
-                    {/* <a href="#!" className="caps__ft-link">
-                      <MdAir className="caps__ft-icon" />
-                      {t("capsules_feature_climate")}
-                    </a> */}
                   </div>
 
                   <div className="capstype__link-div">
@@ -138,18 +163,22 @@ const Capstype = () => {
 
             {/* ================= FAMILY CAPSULE ================= */}
             <div className="capstype__card">
-              <img className="capstype__img" src="/17.jpg" alt="" />
+              <div>
+                <img className="capstype__img" src={familyMain} alt="" />
 
-              <div className="capstype__prices">
-                <a href="#!" className="capstype__price-link">
-                  {t("family_price_4h")}
-                </a>
-                <a href="#!" className="capstype__price-link">
-                  {t("family_price_6h")}
-                </a>
-                <a href="#!" className="capstype__price-link">
-                  {t("family_price_10h")}
-                </a>
+                <div className="capstype__thumbs">
+                  {familyImages.map((img, idx) => (
+                    <img
+                      key={idx}
+                      src={img}
+                      alt=""
+                      className={`capstype__thumb ${
+                        familyMain === img ? "active" : ""
+                      }`}
+                      onClick={() => setFamilyMain(img)}
+                    />
+                  ))}
+                </div>
               </div>
 
               <div className="capstype__div">
@@ -172,6 +201,24 @@ const Capstype = () => {
 
                 <p className="capstype__text">{t("family_description")}</p>
 
+                <div className="capstype__prices">
+                  <a href="#!" className="capstype__price-link">
+                    {t("family_price_2h")}
+                  </a>
+                  <a href="#!" className="capstype__price-link">
+                    {t("family_price_4h")}
+                  </a>
+                  <a href="#!" className="capstype__price-link">
+                    {t("family_price_6h")}
+                  </a>
+                  <a href="#!" className="capstype__price-link">
+                    {t("family_price_10h")}
+                  </a>
+                  <a href="#!" className="capstype__price-link">
+                    {t("family_price_1d")}
+                  </a>
+                </div>
+
                 <div className="caps__card-features">
                   <h2 className="caps__ft-title">
                     {t("capsules_features_title")}
@@ -202,10 +249,6 @@ const Capstype = () => {
                       <MdPowerSettingsNew className="caps__ft-icon" />
                       {t("capsules_feature_power")}
                     </a>
-                    {/* <a href="#!" className="caps__ft-link">
-                      <MdAir className="caps__ft-icon" />
-                      {t("capsules_feature_climate")}
-                    </a> */}
                   </div>
 
                   <div className="capstype__link-div">

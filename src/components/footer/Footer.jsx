@@ -83,7 +83,7 @@ const Footer = () => {
               </p>
               <p className="footer__card-contact">
                 {t("footer_contact_email_label")}{" "}
-                <a href="mailto:qonoqhotel@mail.ru">qonoqhotel@mail.ru</a>
+                <a href="mailto:qonoqcapsule@mail.ru">qonoqcapsule@mail.ru</a>
               </p>
             </div>
           </div>

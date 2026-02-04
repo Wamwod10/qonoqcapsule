@@ -26,7 +26,7 @@ const AlternativeContacts = () => {
                 <h2 className="alternative__message-title">
                   {t("alternative_whatsapp")}
                 </h2>
-                <p className="alternative__message-text">+998 95 877 24 24</p>
+                <p className="alternative__message-text">+998 95 232 24 24</p>
               </div>
             </a>
 
@@ -46,7 +46,7 @@ const AlternativeContacts = () => {
             </a>
 
             <a
-              href="mailto:qonoqhotel@mail.ru"
+              href="mailto:qonoqcapsule@mail.ru"
               className="alternative__messages"
             >
               <div>
@@ -56,7 +56,7 @@ const AlternativeContacts = () => {
                 <h2 className="alternative__message-title">
                   {t("alternative_email")}
                 </h2>
-                <p className="alternative__message-text">qonoqhotel@mail.ru</p>
+                <p className="alternative__message-text">qonoqcapsule@mail.ru</p>
               </div>
             </a>
           </div>

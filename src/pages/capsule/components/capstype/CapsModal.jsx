@@ -6,14 +6,18 @@ import Confirm from "../capstype/Confirm";
 
 const PRICE_MAP = {
   standard: {
-    "4h": 400000,
-    "6h": 600000,
-    "10h": 800000,
+    "2h": 345000,
+    "4h": 460000,
+    "6h": 690000,
+    "10h": 920000,
+    "1d": 1500000,
   },
   family: {
-    "4h": 600000,
-    "6h": 800000,
-    "10h": 1000000,
+    "2h": 460000,
+    "4h": 690000,
+    "6h": 920000,
+    "10h": 1150000,
+    "1d": 1750000,
   },
 };
 
@@ -24,7 +28,7 @@ const CapsModal = ({ onClose }) => {
   const [showConfirm, setShowConfirm] = useState(false);
 
   const bookingBase = JSON.parse(
-    sessionStorage.getItem("qonoq_booking") || "{}"
+    sessionStorage.getItem("qonoq_booking") || "{}",
   );
 
   const [form, setForm] = useState({
@@ -106,10 +110,10 @@ const CapsModal = ({ onClose }) => {
                     {key === "firstName"
                       ? t("capsmodal_first_name")
                       : key === "lastName"
-                      ? t("capsmodal_last_name")
-                      : key === "phone"
-                      ? t("capsmodal_phone")
-                      : t("capsmodal_email")}
+                        ? t("capsmodal_last_name")
+                        : key === "phone"
+                          ? t("capsmodal_phone")
+                          : t("capsmodal_email")}
                   </label>
                 </div>
               ))}
@@ -134,7 +138,7 @@ const CapsModal = ({ onClose }) => {
       {/* ===== SUCCESS CONFIRM MODAL (faqat showConfirm true bo‘lsa) ===== */}
       {showConfirm && <Confirm onClose={closeAll} />}
     </>,
-    document.body
+    document.body,
   );
 };
 

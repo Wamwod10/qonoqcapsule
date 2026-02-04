@@ -1,11 +1,13 @@
 import React from "react";
 import "./qonoq.scss";
 import { BsFillStarFill } from "react-icons/bs";
-import { FaRegBell, FaRegClock } from "react-icons/fa";
+import { FaFireExtinguisher, FaRegBell, FaRegClock } from "react-icons/fa";
 import {
+  MdAdminPanelSettings,
   MdLight,
   MdOutlineBedtime,
   MdPowerSettingsNew,
+  MdSafetyCheck,
   MdWifi,
 } from "react-icons/md";
 import { GiPillow } from "react-icons/gi";
@@ -67,14 +69,6 @@ const Qonoq = () => {
               <div className="qonoq__cardd qonoq__first-cardd">
                 <div className="qonoq__card-div">
                   <div className="qonoq__big-icon">
-                    <GiPillow className="big-icon" />
-                  </div>
-                  <h2 className="qonoq__big-title">{t("bedding_title")}</h2>
-                  <p className="qonoq__big-text">{t("bedding_text")}</p>
-                </div>
-
-                <div className="qonoq__card-div">
-                  <div className="qonoq__big-icon">
                     <TbWindmillFilled className="big-icon" />
                   </div>
                   <h2 className="qonoq__big-title">{t("ventilation_title")}</h2>
@@ -90,25 +84,21 @@ const Qonoq = () => {
                   </h2>
                   <p className="qonoq__big-text">{t("charging_point_text")}</p>
                 </div>
-              </div>
 
-              <div className="qonoq__cardd">
                 <div className="qonoq__card-div">
                   <div className="qonoq__big-icon">
-                    <MdLight className="big-icon" />
+                    <MdSafetyCheck  className="big-icon" />
                   </div>
-                  <h2 className="qonoq__big-title">
-                    {t("led_lighting_title")}
-                  </h2>
-                  <p className="qonoq__big-text">{t("led_lighting_text")}</p>
+                  <h2 className="qonoq__big-title">{t("temperature_title")}</h2>
+                  <p className="qonoq__big-text">{t("temperature_text")}</p>
                 </div>
 
                 <div className="qonoq__card-div">
                   <div className="qonoq__big-icon">
-                    <WiThermometer className="big-icon" />
+                    <GiPillow className="big-icon" />
                   </div>
-                  <h2 className="qonoq__big-title">{t("temperature_title")}</h2>
-                  <p className="qonoq__big-text">{t("temperature_text")}</p>
+                  <h2 className="qonoq__big-title">{t("bedding_title")}</h2>
+                  <p className="qonoq__big-text">{t("bedding_text")}</p>
                 </div>
 
                 <div className="qonoq__card-div">
@@ -118,16 +108,38 @@ const Qonoq = () => {
                   <h2 className="qonoq__big-title">{t("wifi_title")}</h2>
                   <p className="qonoq__big-text">{t("wifi_text")}</p>
                 </div>
+
+                <div className="qonoq__card-div">
+                  <div className="qonoq__big-icon">
+                    <MdAdminPanelSettings  className="big-icon" />
+                  </div>
+                  <h2 className="qonoq__big-title">{t("admin_title")}</h2>
+                  <p className="qonoq__big-text">{t("admin_text")}</p>
+                </div>
+
+                <div className="qonoq__card-div">
+                  <div className="qonoq__big-icon">
+                    <FaFireExtinguisher className="big-icon" />
+                  </div>
+                  <h2 className="qonoq__big-title">{t("fire_title")}</h2>
+                  <p className="qonoq__big-text">{t("fire_text")}</p>
+                </div>
+
+                <div className="qonoq__card-div">
+                  <div className="qonoq__big-icon">
+                    <MdLight className="big-icon" />
+                  </div>
+                  <h2 className="qonoq__big-title">
+                    {t("led_lighting_title")}
+                  </h2>
+                  <p className="qonoq__big-text">{t("led_lighting_text")}</p>
+                </div>
               </div>
             </div>
           </div>
 
           <div className="qonoq__big-card big-card">
-            <img
-              className="qonoq__big-img"
-              src="/9.png"
-              alt={t("image_alt")}
-            />
+            <img className="qonoq__big-img" src="/9.png" alt={t("image_alt")} />
             <h2 className="qonoq__big-exp">{t("experience_title")}</h2>
             <p className="qonoq__big-about">{t("experience_paragraph")}</p>
             <div className="qonoq__big-links">

@@ -33,15 +33,17 @@ const MyBooking = () => {
 
   const USD_RATE = 12000;
   const EUR_RATE = 14000;
+  const RUB_RATE = 160;
 
   let displayTotal = totalUZS;
 
   if (currency === "USD") displayTotal = (totalUZS / USD_RATE).toFixed(1);
   if (currency === "EUR") displayTotal = (totalUZS / EUR_RATE).toFixed(1);
+  if (currency === "RUB") displayTotal = (totalUZS / RUB_RATE).toFixed(1);
 
   /* ===== AVAILABILITY CHECK ===== */
 
-  const durationMap = { "4h": 4, "6h": 6, "10h": 10 };
+  const durationMap = { "2h": 2, "4h": 4, "6h": 6, "10h": 10, "1d": 1 };
 
   const checkAllAvailability = async () => {
     setChecking(true);
@@ -88,7 +90,6 @@ const MyBooking = () => {
       return false;
     }
   };
-
 
   /* ===== OCTO PAYMENT ===== */
 
@@ -155,6 +156,7 @@ const MyBooking = () => {
                   <button onClick={() => setCurrency("UZS")}>UZS</button>
                   <button onClick={() => setCurrency("USD")}>USD</button>
                   <button onClick={() => setCurrency("EUR")}>EUR</button>
+                  <button onClick={() => setCurrency("RUB")}>RUB</button>
                 </div>
               </div>
 

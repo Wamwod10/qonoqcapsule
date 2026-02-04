@@ -46,7 +46,7 @@ const Header = () => {
     setBusyTime(null);
     setLoading(true);
 
-    const durationMap = { "4h": 4, "6h": 6, "10h": 10 };
+    const durationMap = { "4h": 4, "2h": 2, "6h": 6, "10h": 10, "1d": 1 };
 
     const branch =
       locationValue === "tas"
@@ -220,9 +220,11 @@ const Header = () => {
                   value={duration}
                   onChange={(e) => setDuration(e.target.value)}
                 >
+                  <option value="2h">{t("duration_2h")}</option>
                   <option value="4h">{t("duration_4h")}</option>
                   <option value="6h">{t("duration_6h")}</option>
                   <option value="10h">{t("duration_10h")}</option>
+                  <option value="1d">{t("duration_1d")}</option>
                 </select>
               </div>
 
@@ -246,7 +248,7 @@ const Header = () => {
                 <div className="availability-modal">
                   <div className="availability-modal__box">
                     <p className="availability__modal-text">
-                      Capsule is busy! Next available time: 
+                      Capsule is busy! Next available time:
                       {/* <br /> */}
                       <b>
                         {busyTime.time}

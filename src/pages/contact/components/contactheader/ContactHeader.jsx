@@ -26,7 +26,7 @@ const ContactHeader = () => {
                 {t("contact_alert_text")}
               </p>
               <p className="contact-alert__number">
-                +998 95 877 24 24
+                +998 95 232 24 24
               </p>
             </div>
           </div>

@@ -10,6 +10,8 @@ import {
   MdOutlineLock,
   MdOutlineSanitizer,
   MdOutlineTouchApp,
+  MdSupportAgent,
+  MdVideocam,
   MdVolumeOff,
 } from "react-icons/md";
 import { useTranslation } from "react-i18next";
@@ -49,7 +51,7 @@ const Services = () => {
       tag: t("service_5_tag"),
     },
     {
-      icon: <MdAccessTime />,
+      icon: <MdSupportAgent />,
       title: t("service_6_title"),
       desc: t("service_6_desc"),
       tag: t("service_6_tag"),
@@ -61,7 +63,7 @@ const Services = () => {
       tag: t("service_7_tag"),
     },
     {
-      icon: <MdOutlineSanitizer />,
+      icon: <MdVideocam />,
       title: t("service_8_title"),
       desc: t("service_8_desc"),
       tag: t("service_8_tag"),

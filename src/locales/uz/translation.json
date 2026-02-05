@@ -179,22 +179,30 @@
   "emergency_call_now": "Aloqa",
   "faq_title": "Tez-tez so‘raladigan savollar",
   "faq_subtitle": "Mehmonxonamiz va xizmatlarimiz haqidagi ommabop savollarga javoblar",
-  "faq_q1": "Khamsa Hotel Toshkent aeroportining qaysi qismida joylashgan?",
-  "faq_a1": "Khamsa Hotel Toshkent xalqaro aeroportining 2-terminalida joylashgan bo‘lib, asosan tranzit yo‘lovchilar uchun mo‘ljallangan.",
-  "faq_q2": "Mehmonxonada nechta xona bor va qanday turlari mavjud?",
-  "faq_a2": "Mehmonxonada jami 24 ta xona mavjud: 23 ta standart va 1 ta lyuks xona.",
-  "faq_q3": "Xonalar narxi qanday va oldindan bron qilish mumkinmi?",
-  "faq_a3": "Narxlar xona turi va qolish davomiyligiga bog‘liq. Bron qilish sayt yoki resepsiya orqali amalga oshiriladi.",
-  "faq_q4": "Xonalarda qanday qulayliklar mavjud?",
-  "faq_a4": "Xonalarda yotoq, Wi-Fi, konditsioner, dush, gigiyena vositalari va kundalik tozalash mavjud. 24/7 xizmat ham taqdim etiladi.",
-  "faq_q5": "Mehmonxona qaysi vaqtlarda ishlaydi?",
-  "faq_a5": "Khamsa Hotel 24/7 ishlaydi va istalgan vaqtda mehmonlarni qabul qiladi.",
-  "faq_q6": "Mehmonxona asosan kimlar uchun mo‘ljallangan?",
-  "faq_a6": "Mehmonxona tranzit yo‘lovchilar va qisqa muddatli safardagi ishbilarmonlar uchun qulay.",
-  "faq_q7": "Mehmonxona bilan qanday bog‘lanish mumkin?",
-  "faq_a7": "Siz +998 95 232 24 24 raqamiga qo‘ng‘iroq qilishingiz yoki qonoqcapsule@mail.ru manziliga yozishingiz mumkin.",
-  "faq_q8": "Xavfsizlik va gigiyena qanday ta’minlanadi?",
-  "faq_a8": "Mehmonxonada qat’iy gigiyena qoidalari amal qiladi, xonalar muntazam tozalanadi va xavfsizlik nazorat qilinadi.",
+  "faq_q1": "Qo‘noq kapsula mehmonxonasi Toshkent aeroportining qayerida joylashgan?",
+  "faq_a1": "Qo‘noq kapsula mehmonxonasi Toshkent xalqaro aeroporti ichida joylashgan bo‘lib, yo‘lovchilarga terminaldan chiqmasdan dam olish imkonini beradi. U asosan tranzit yo‘lovchilar uchun mo‘ljallangan.",
+
+  "faq_q2": "Nechta kapsula bor va qanday turlari mavjud?",
+  "faq_a2": "Qo‘noq Capsule standart va oilaviy kapsulalarni o‘z ichiga olgan bir nechta turdagi individual kapsulalarni taklif etadi. Har bir kapsula qisqa dam olish va qulay uyqu uchun mo‘ljallangan.",
+
+  "faq_q3": "Narxlar qanday va kapsulani bron qilish mumkinmi?",
+  "faq_a3": "Narxlar tanlangan kapsula turi va qolish muddatiga bog‘liq. Kapsulani sayt orqali yoki aeroportdagi qabul bo‘limida mavjudligiga qarab bron qilish mumkin.",
+
+  "faq_q4": "Kapsulalar ichida qanday qulayliklar bor?",
+  "faq_a4": "Har bir kapsulada qulay yotoq, individual yoritish, shamollatish, zaryadlash portlari, Wi-Fi va xavfsiz qulf mavjud. Shuningdek, umumiy dush xonalari ham bor.",
+
+  "faq_q5": "Qo‘noq Capsule qaysi vaqtlarda ishlaydi?",
+  "faq_a5": "Qo‘noq Capsule 24/7 ishlaydi va mehmonlarni istalgan vaqtda qabul qiladi, bu ayniqsa tungi va erta tonggi parvozlar uchun qulay.",
+
+  "faq_q6": "Qo‘noq Capsule asosan kimlar uchun mo‘ljallangan?",
+  "faq_a6": "Qo‘noq Capsule asosan tranzit yo‘lovchilar va parvozlar orasida qisqa dam olishni xohlaydigan sayohatchilar uchun mo‘ljallangan.",
+
+  "faq_q7": "Mehmonlar Qo‘noq Capsule bilan qanday bog‘lanishlari mumkin?",
+  "faq_a7": "Mehmonlar Qo‘noq Capsule bilan rasmiy sayt orqali yoki aeroportdagi qabul bo‘limi orqali bog‘lanishlari mumkin.",
+
+  "faq_q8": "Qo‘noq Capsule’da xavfsizlik va gigiena qanday ta’minlanadi?",
+  "faq_a8": "Xavfsizlik va gigiena muntazam tozalash, umumiy hududlarda videokuzatuv va yuqori xizmat standartlarini ta’minlaydigan xodimlar orqali ta’minlanadi.",
+
   "faq_help_title": "Yordam kerakmi",
   "faq_help_heading": "Kerakli javobni topa olmadingizmi?",
   "faq_help_text": "Shaxsiy yordam uchun qo‘llab-quvvatlash jamoamiz bilan bog‘laning.",

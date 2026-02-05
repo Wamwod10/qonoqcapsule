@@ -5,21 +5,25 @@ import { useTranslation } from "react-i18next";
 const BookingCard = ({ booking, onDelete }) => {
   const { t } = useTranslation();
 
-  useEffect(() => {
-    if (!booking) return;
+useEffect(() => {
+  if (!booking) return;
 
-    const bookingData = {
-      name: `${booking.firstName} ${booking.lastName}`,
-      email: booking.email,
-      phone: booking.phone,
-      checkIn: booking.checkIn,
-      checkOut: booking.checkOut || "",
-      room: booking.capsuleTypeLabel,
-      price: booking.price,
-    };
+  const bookingData = {
+    name: `${booking.firstName} ${booking.lastName}`,
+    email: booking.email,
+    phone: booking.phone,
 
-    localStorage.setItem("lastBooking", JSON.stringify(bookingData));
-  }, [booking]);
+    bookedAt: new Date().toLocaleString(), // bron qilingan vaqt
+    checkInDate: booking.checkIn,          // kirish sanasi
+    checkInTime: booking.checkInTime,       // kirish vaqti
+    room: booking.capsuleTypeLabel,
+    duration: booking.durationLabel,
+    price: `${booking.price.toLocaleString()} UZS`,
+  };
+
+  localStorage.setItem("lastBooking", JSON.stringify(bookingData));
+}, [booking]);
+
 
   return (
     <div className="booking-card">

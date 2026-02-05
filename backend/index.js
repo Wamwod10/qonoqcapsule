@@ -205,7 +205,7 @@ app.post("/api/create-payment", async (req, res) => {
       octo_secret: process.env.OCTO_SECRET,
       shop_transaction_id: orderId,
       auto_capture: true,
-      test: false,
+      test: true,
       init_time: new Date().toISOString().slice(0, 19).replace("T", " "),
       total_sum: Number(amount),
       currency: "UZS",
@@ -290,10 +290,16 @@ app.post("/notify/booking", async (req, res) => {
 📧 Email: ${booking.email}
 📞 Telefon: ${booking.phone}
 
-🗓 Kirish: ${booking.checkIn}
-⏰ Chiqish: ${booking.checkOut}
-🛏 Xona: ${booking.room}
-💶 Narx: ${booking.price}`;
+🗓️ Bron vaqti: ${booking.bookedAt}
+📅 Kirish sanasi: ${booking.checkInDate}
+⏰ Kirish vaqti: ${booking.checkInTime}
+🛏️ Xona: ${booking.room}
+📆 Davomiylik: ${booking.duration}
+💶 Narx: ${booking.price}
+
+❕ @freemustafa Send an Invoice to the guest!
+✅ Mijoz kelganda, mavjud bo‘lgan ixtiyoriy bo‘sh kapsulaga joylashtiriladi
+🌐 Sayt: qonoqcapsule.uz`;
 
     const url = `https://api.telegram.org/bot${process.env.BOOKING_BOT_TOKEN}/sendMessage`;
 

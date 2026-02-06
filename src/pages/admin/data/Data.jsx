@@ -145,9 +145,11 @@ const Data = () => {
                 setForm({ ...form, duration: Number(e.target.value) })
               }
             >
+              <option value={2}>Up to 2 hours</option>
               <option value={4}>Up to 4 hours</option>
               <option value={6}>Up to 6 hours</option>
               <option value={10}>Up to 10 hours</option>
+              <option value={24}>Up to 24 hours</option>
             </select>
           </div>
 

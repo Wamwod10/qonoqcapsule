@@ -65,6 +65,64 @@ const mailTransporter = nodemailer.createTransport({
   },
 });
 
+/* ================= HELPERS ================= */
+
+function toDateTime(date, time) {
+  return new Date(`${date}T${time}:00`);
+}
+
+function checkAvailability({ branch, capsuleType, date, time, duration }) {
+  return new Promise((resolve, reject) => {
+    const limit = capsuleType === "family" ? 2 : 4;
+
+    const reqStart = toDateTime(date, time);
+    const reqEnd = new Date(
+      reqStart.getTime() + Number(duration) * 60 * 60 * 1000,
+    );
+
+    db.all(
+      `SELECT * FROM bookings WHERE branch=? AND capsuleType=?`,
+      [branch, capsuleType],
+      (err, rows) => {
+        if (err) return reject(err);
+
+        const overlaps = rows.filter((b) => {
+          const bStart = toDateTime(b.date, b.time);
+          const bEnd = new Date(
+            bStart.getTime() + Number(b.duration) * 60 * 60 * 1000,
+          );
+
+          return reqStart < bEnd && reqEnd > bStart;
+        });
+
+        if (overlaps.length < limit) {
+          return resolve({ available: true });
+        }
+
+        const nextFreeDate = new Date(
+          Math.min(
+            ...overlaps.map((b) => {
+              const s = toDateTime(b.date, b.time);
+              return s.getTime() + Number(b.duration) * 60 * 60 * 1000;
+            }),
+          ),
+        );
+
+        const hh = String(nextFreeDate.getHours()).padStart(2, "0");
+        const mm = String(nextFreeDate.getMinutes()).padStart(2, "0");
+
+        const nextDay = nextFreeDate.toDateString() !== reqStart.toDateString();
+
+        return resolve({
+          available: false,
+          nextTime: `${hh}:${mm}`,
+          nextDay,
+        });
+      },
+    );
+  });
+}
+
 /* ================= BOOKINGS ================= */
 
 app.get("/api/bookings", (req, res) => {
@@ -77,32 +135,53 @@ app.get("/api/bookings", (req, res) => {
   });
 });
 
-app.post("/api/bookings", (req, res) => {
+app.post("/api/bookings", async (req, res) => {
   const { branch, capsuleType, date, time, duration } = req.body;
 
   if (!branch || !capsuleType || !date || !time || !duration) {
     return res.status(400).json({ error: "Missing fields" });
   }
 
-  const id = crypto.randomUUID();
-  const createdAt = new Date().toISOString();
+  try {
+    const avail = await checkAvailability({
+      branch,
+      capsuleType,
+      date,
+      time,
+      duration,
+    });
 
-  db.run(
-    `INSERT INTO bookings (id, branch, capsuleType, date, time, duration, createdAt)
-     VALUES (?, ?, ?, ?, ?, ?, ?)`,
-    [id, branch, capsuleType, date, time, Number(duration), createdAt],
-    function (err) {
-      if (err) {
-        console.error("DB INSERT ERROR:", err);
-        return res.status(500).json({ error: "Insert failed" });
-      }
-
-      res.json({
-        success: true,
-        booking: { id, branch, capsuleType, date, time, duration, createdAt },
+    if (!avail.available) {
+      return res.status(409).json({
+        error: "No availability",
+        nextTime: avail.nextTime,
+        nextDay: avail.nextDay,
       });
-    },
-  );
+    }
+
+    const id = crypto.randomUUID();
+    const createdAt = new Date().toISOString();
+
+    db.run(
+      `INSERT INTO bookings (id, branch, capsuleType, date, time, duration, createdAt)
+       VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      [id, branch, capsuleType, date, time, Number(duration), createdAt],
+      function (err) {
+        if (err) {
+          console.error("DB INSERT ERROR:", err);
+          return res.status(500).json({ error: "Insert failed" });
+        }
+
+        res.json({
+          success: true,
+          booking: { id, branch, capsuleType, date, time, duration, createdAt },
+        });
+      },
+    );
+  } catch (err) {
+    console.error("AVAIL CHECK ERROR:", err);
+    return res.status(500).json({ error: "Availability check failed" });
+  }
 });
 
 app.delete("/api/bookings/:id", (req, res) => {
@@ -120,12 +199,6 @@ app.delete("/api/bookings/:id", (req, res) => {
 
 /* ================= AVAILABILITY ================= */
 
-/* ================= AVAILABILITY ================= */
-
-function toDateTime(date, time) {
-  return new Date(`${date}T${time}:00`);
-}
-
 app.post("/api/check-availability", (req, res) => {
   const { branch, capsuleType, date, time, duration } = req.body;
 
@@ -133,59 +206,12 @@ app.post("/api/check-availability", (req, res) => {
     return res.status(400).json({ error: "Missing fields" });
   }
 
-  // capacity
-  const limit = capsuleType === "family" ? 2 : 4;
-
-  const reqStart = toDateTime(date, time);
-  const reqEnd = new Date(
-    reqStart.getTime() + Number(duration) * 60 * 60 * 1000,
-  );
-
-  db.all(
-    `SELECT * FROM bookings WHERE branch=? AND capsuleType=?`,
-    [branch, capsuleType],
-    (err, rows) => {
-      if (err) {
-        console.error("AVAIL DB ERROR:", err);
-        return res.status(500).json({ error: "DB error" });
-      }
-
-      const overlaps = rows.filter((b) => {
-        const bStart = toDateTime(b.date, b.time);
-        const bEnd = new Date(
-          bStart.getTime() + Number(b.duration) * 60 * 60 * 1000,
-        );
-
-        // overlap rule
-        return reqStart < bEnd && reqEnd > bStart;
-      });
-
-      if (overlaps.length < limit) {
-        return res.json({ available: true });
-      }
-
-      // nearest free time
-      const nextFreeDate = new Date(
-        Math.min(
-          ...overlaps.map((b) => {
-            const s = toDateTime(b.date, b.time);
-            return s.getTime() + Number(b.duration) * 60 * 60 * 1000;
-          }),
-        ),
-      );
-
-      const hh = String(nextFreeDate.getHours()).padStart(2, "0");
-      const mm = String(nextFreeDate.getMinutes()).padStart(2, "0");
-
-      const nextDay = nextFreeDate.toDateString() !== reqStart.toDateString();
-
-      return res.json({
-        available: false,
-        nextTime: `${hh}:${mm}`,
-        nextDay,
-      });
-    },
-  );
+  checkAvailability({ branch, capsuleType, date, time, duration })
+    .then((result) => res.json(result))
+    .catch((err) => {
+      console.error("AVAIL DB ERROR:", err);
+      res.status(500).json({ error: "DB error" });
+    });
 });
 
 /* ================= OCTO PAYMENT ================= */

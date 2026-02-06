@@ -358,11 +358,16 @@ Ism: ${booking.name}
 Email: ${booking.email}
 Telefon: ${booking.phone}
 
-Kirish: ${booking.checkIn}
-Chiqish: ${booking.checkOut}
-Xona: ${booking.room}
-Narx: ${booking.price}
-`;
+🗓️ Bron vaqti: ${booking.bookedAt}
+📅 Kirish sanasi: ${booking.checkInDate}
+⏰ Kirish vaqti: ${booking.checkInTime}
+🛏️ Xona: ${booking.room}
+📆 Davomiylik: ${booking.duration}
+💶 Narx: ${booking.price}
+
+❕ @freemustafa Send an Invoice to the guest!
+✅ Mijoz kelganda, mavjud bo‘lgan ixtiyoriy bo‘sh kapsulaga joylashtiriladi
+🌐 Sayt: qonoqcapsule.uz`;
 
     await mailTransporter.sendMail({
       from: `"Qonoq Capsule" <${process.env.EMAIL_USER}>`,

@@ -51,7 +51,7 @@ const Data = () => {
     }
 
     try {
-      await fetch(API, {
+      const res = await fetch(API, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -63,10 +63,19 @@ const Data = () => {
         }),
       });
 
+      const data = await res.json();
+
+      if (!res.ok) {
+        // Backenddan kelgan xatoni ko‘rsatamiz (masalan: No availability)
+        alert(data.error || "Insert failed");
+        return;
+      }
+
+      // Hammasi OK bo‘lsa
       setForm({ ...form, date: "", time: "" });
       loadBookings();
     } catch (err) {
-      alert("Insert failed");
+      alert("Network error. Backend unreachable.");
     }
   };
 
@@ -76,10 +85,14 @@ const Data = () => {
     if (!window.confirm("Delete this booking?")) return;
 
     try {
-      await fetch(`${API}/${id}`, { method: "DELETE" });
+      const res = await fetch(`${API}/${id}`, { method: "DELETE" });
+      if (!res.ok) {
+        alert("Delete failed");
+        return;
+      }
       loadBookings();
     } catch (err) {
-      alert("Delete failed");
+      alert("Network error");
     }
   };
 

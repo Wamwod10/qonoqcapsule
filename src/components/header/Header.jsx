@@ -46,7 +46,7 @@ const Header = () => {
     setBusyTime(null);
     setLoading(true);
 
-    const durationMap = { "4h": 4, "2h": 2, "6h": 6, "10h": 10, "1d": 1 };
+    const durationMap = { "4h": 4, "2h": 2, "6h": 6, "10h": 10, "1d": 24 };
 
     const branch =
       locationValue === "tas"

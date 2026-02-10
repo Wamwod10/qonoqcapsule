@@ -11,6 +11,12 @@ const branches = [
   { id: "north", name: "India" },
 ];
 
+/* ===== CAPSULE LABELS ===== */
+const capsuleLabels = {
+  family: "Family Capsule",
+  standard: "Standard Capsule",
+};
+
 const Data = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -66,12 +72,10 @@ const Data = () => {
       const data = await res.json();
 
       if (!res.ok) {
-        // Backenddan kelgan xatoni ko‘rsatamiz (masalan: No availability)
         alert(data.error || "Insert failed");
         return;
       }
 
-      // Hammasi OK bo‘lsa
       setForm({ ...form, date: "", time: "" });
       loadBookings();
     } catch (err) {
@@ -190,7 +194,7 @@ const Data = () => {
 
               <div>
                 <span>Capsule</span>
-                <b>{b.capsuleType}</b>
+                <b>{capsuleLabels[b.capsuleType] || b.capsuleType}</b>
               </div>
 
               <div>

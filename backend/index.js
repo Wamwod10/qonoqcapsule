@@ -2,13 +2,15 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
-import sqlite3 from "sqlite3";
 import crypto from "crypto";
 import axios from "axios";
 import { fileURLToPath } from "url";
 import nodemailer from "nodemailer";
+import pkg from "pg";
 
 dotenv.config();
+
+const { Pool } = pkg;
 
 /* ================= APP ================= */
 
@@ -27,25 +29,32 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-/* ================= DB ================= */
+/* ================= DB (POSTGRESQL) ================= */
 
-const DB_PATH = path.join(__dirname, "bookings.db");
-const db = new sqlite3.Database(DB_PATH, (err) => {
-  if (err) console.error("DB ERROR:", err.message);
-  else console.log("✅ SQLite connected");
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
 });
 
-db.run(`
-  CREATE TABLE IF NOT EXISTS bookings (
-    id TEXT PRIMARY KEY,
-    branch TEXT,
-    capsuleType TEXT,
-    date TEXT,
-    time TEXT,
-    duration INTEGER,
-    createdAt TEXT
-  )
-`);
+async function initDB() {
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS bookings (
+      id TEXT PRIMARY KEY,
+      branch TEXT,
+      capsuleType TEXT,
+      date TEXT,
+      time TEXT,
+      duration INTEGER,
+      createdAt TEXT
+    )
+  `);
+  console.log("✅ PostgreSQL connected & table ready");
+}
+
+initDB().catch((err) => {
+  console.error("DB INIT ERROR:", err);
+  process.exit(1);
+});
 
 /* ================= TEST ================= */
 
@@ -71,68 +80,72 @@ function toDateTime(date, time) {
   return new Date(`${date}T${time}:00`);
 }
 
-function checkAvailability({ branch, capsuleType, date, time, duration }) {
-  return new Promise((resolve, reject) => {
-    const limit = capsuleType === "family" ? 2 : 4;
+async function checkAvailability({
+  branch,
+  capsuleType,
+  date,
+  time,
+  duration,
+}) {
+  const limit = capsuleType === "family" ? 2 : 4;
 
-    const reqStart = toDateTime(date, time);
-    const reqEnd = new Date(
-      reqStart.getTime() + Number(duration) * 60 * 60 * 1000,
+  const reqStart = toDateTime(date, time);
+  const reqEnd = new Date(
+    reqStart.getTime() + Number(duration) * 60 * 60 * 1000,
+  );
+
+  const result = await pool.query(
+    `SELECT * FROM bookings WHERE branch=$1 AND capsuleType=$2`,
+    [branch, capsuleType],
+  );
+
+  const rows = result.rows;
+
+  const overlaps = rows.filter((b) => {
+    const bStart = toDateTime(b.date, b.time);
+    const bEnd = new Date(
+      bStart.getTime() + Number(b.duration) * 60 * 60 * 1000,
     );
-
-    db.all(
-      `SELECT * FROM bookings WHERE branch=? AND capsuleType=?`,
-      [branch, capsuleType],
-      (err, rows) => {
-        if (err) return reject(err);
-
-        const overlaps = rows.filter((b) => {
-          const bStart = toDateTime(b.date, b.time);
-          const bEnd = new Date(
-            bStart.getTime() + Number(b.duration) * 60 * 60 * 1000,
-          );
-
-          return reqStart < bEnd && reqEnd > bStart;
-        });
-
-        if (overlaps.length < limit) {
-          return resolve({ available: true });
-        }
-
-        const nextFreeDate = new Date(
-          Math.min(
-            ...overlaps.map((b) => {
-              const s = toDateTime(b.date, b.time);
-              return s.getTime() + Number(b.duration) * 60 * 60 * 1000;
-            }),
-          ),
-        );
-
-        const hh = String(nextFreeDate.getHours()).padStart(2, "0");
-        const mm = String(nextFreeDate.getMinutes()).padStart(2, "0");
-
-        const nextDay = nextFreeDate.toDateString() !== reqStart.toDateString();
-
-        return resolve({
-          available: false,
-          nextTime: `${hh}:${mm}`,
-          nextDay,
-        });
-      },
-    );
+    return reqStart < bEnd && reqEnd > bStart;
   });
+
+  if (overlaps.length < limit) {
+    return { available: true };
+  }
+
+  const nextFreeDate = new Date(
+    Math.min(
+      ...overlaps.map((b) => {
+        const s = toDateTime(b.date, b.time);
+        return s.getTime() + Number(b.duration) * 60 * 60 * 1000;
+      }),
+    ),
+  );
+
+  const hh = String(nextFreeDate.getHours()).padStart(2, "0");
+  const mm = String(nextFreeDate.getMinutes()).padStart(2, "0");
+
+  const nextDay = nextFreeDate.toDateString() !== reqStart.toDateString();
+
+  return {
+    available: false,
+    nextTime: `${hh}:${mm}`,
+    nextDay,
+  };
 }
 
 /* ================= BOOKINGS ================= */
 
-app.get("/api/bookings", (req, res) => {
-  db.all("SELECT * FROM bookings ORDER BY date, time", [], (err, rows) => {
-    if (err) {
-      console.error("DB GET ERROR:", err);
-      return res.status(500).json({ error: "DB error" });
-    }
-    res.json(rows);
-  });
+app.get("/api/bookings", async (req, res) => {
+  try {
+    const result = await pool.query(
+      "SELECT * FROM bookings ORDER BY date, time",
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error("DB GET ERROR:", err);
+    res.status(500).json({ error: "DB error" });
+  }
 });
 
 app.post("/api/bookings", async (req, res) => {
@@ -162,56 +175,56 @@ app.post("/api/bookings", async (req, res) => {
     const id = crypto.randomUUID();
     const createdAt = new Date().toISOString();
 
-    db.run(
+    await pool.query(
       `INSERT INTO bookings (id, branch, capsuleType, date, time, duration, createdAt)
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
+       VALUES ($1,$2,$3,$4,$5,$6,$7)`,
       [id, branch, capsuleType, date, time, Number(duration), createdAt],
-      function (err) {
-        if (err) {
-          console.error("DB INSERT ERROR:", err);
-          return res.status(500).json({ error: "Insert failed" });
-        }
-
-        res.json({
-          success: true,
-          booking: { id, branch, capsuleType, date, time, duration, createdAt },
-        });
-      },
     );
+
+    res.json({
+      success: true,
+      booking: { id, branch, capsuleType, date, time, duration, createdAt },
+    });
   } catch (err) {
-    console.error("AVAIL CHECK ERROR:", err);
-    return res.status(500).json({ error: "Availability check failed" });
+    console.error("BOOKING ERROR:", err);
+    res.status(500).json({ error: "Insert failed" });
   }
 });
 
-app.delete("/api/bookings/:id", (req, res) => {
+app.delete("/api/bookings/:id", async (req, res) => {
   const { id } = req.params;
 
-  db.run("DELETE FROM bookings WHERE id = ?", [id], function (err) {
-    if (err) {
-      console.error("DB DELETE ERROR:", err);
-      return res.status(500).json({ error: "Delete failed" });
-    }
-
+  try {
+    await pool.query("DELETE FROM bookings WHERE id = $1", [id]);
     res.json({ success: true });
-  });
+  } catch (err) {
+    console.error("DB DELETE ERROR:", err);
+    res.status(500).json({ error: "Delete failed" });
+  }
 });
 
 /* ================= AVAILABILITY ================= */
 
-app.post("/api/check-availability", (req, res) => {
+app.post("/api/check-availability", async (req, res) => {
   const { branch, capsuleType, date, time, duration } = req.body;
 
   if (!branch || !capsuleType || !date || !time || !duration) {
     return res.status(400).json({ error: "Missing fields" });
   }
 
-  checkAvailability({ branch, capsuleType, date, time, duration })
-    .then((result) => res.json(result))
-    .catch((err) => {
-      console.error("AVAIL DB ERROR:", err);
-      res.status(500).json({ error: "DB error" });
+  try {
+    const result = await checkAvailability({
+      branch,
+      capsuleType,
+      date,
+      time,
+      duration,
     });
+    res.json(result);
+  } catch (err) {
+    console.error("AVAIL DB ERROR:", err);
+    res.status(500).json({ error: "DB error" });
+  }
 });
 
 /* ================= OCTO PAYMENT ================= */

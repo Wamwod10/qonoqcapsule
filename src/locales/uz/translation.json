@@ -67,7 +67,7 @@
   "capsules_standard_title": "Standart kapsulalar",
   "capsules_standard_guests": "1 mehmon",
   "capsules_standard_size": "1m x 2m",
-  "capsules_family_title": "Family kapsulalar",
+  "capsules_family_title": "Oilaviy kapsulalar",
   "capsules_family_guests": "2 mehmon",
   "capsules_family_size": "1.5m x 2m",
   "capsules_location_tashkent_airport": "Toshkent xalqaro aeroporti",
@@ -128,7 +128,7 @@
   "capsmodal_price": "Narx:",
   "capsmodal_confirm": "Tasdiqlash",
   "capsmodal_cancel": "Bekor qilish",
-  "capstype_title": "Soatlik va kunlik xona variantlari",
+  "capstype_title": "Soatlik va kunlik kapsula variantlari",
   "standard_title": "Standart kapsula",
   "standard_price_2h": "До 2 часов / 345 000 so‘m",
   "standard_price_4h": "До 4 часов / 460 000 so‘m",
@@ -306,5 +306,6 @@
   "service_10_title": "Aeroport ichida joylashuv",
   "service_10_desc": "Kapsulalar aeroport binosining ichida joylashgan.",
   "service_10_tag": "Joyida",
-  "empty": "Hozircha bo'sh"
+  "empty": "Hozircha bo'sh",
+  "gallery": "Galereya — Bizning makonimiz, Bizning jamoamiz"
 }

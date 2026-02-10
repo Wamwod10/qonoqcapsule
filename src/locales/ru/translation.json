@@ -68,10 +68,10 @@
   "booking_now": "Забронировать сейчас",
 
   "capsules_page_title": "Quiet Capsules — тихая зона, комфортный сон",
-  "capsules_standard_title": "Стандартные капсулы",
+  "capsules_standard_title": "Стандартные капсулa",
   "capsules_standard_guests": "1 гость",
   "capsules_standard_size": "1 м x 2 м",
-  "capsules_family_title": "Семейные капсулы",
+  "capsules_family_title": "Семейные капсулa",
   "capsules_family_guests": "2 гостя",
   "capsules_family_size": "1.5 м x 2 м",
   "capsules_location_tashkent_airport": "Международный аэропорт Ташкента",
@@ -80,9 +80,9 @@
   "capsules_family_description": "Семейная капсула — это просторное и безопасное мини-пространство для отдыха двух человек в аэропорту. Внутри есть большая ортопедическая кровать, вентиляция, освещение и зарядные розетки",
 
   "capsules_features_title": "Удобства:",
-  "capsules_feature_bed": "матрас",
+  "capsules_feature_bed": "Матрас",
   "capsules_feature_lighting": "Индивидуальное освещение",
-  "capsules_feature_airflow": "вентиляция",
+  "capsules_feature_airflow": "Вентиляция",
   "capsules_feature_wifi": "Wi-Fi",
   "capsules_feature_safe": "Мини-сейф",
   "capsules_feature_power": "USB",
@@ -95,7 +95,7 @@
   "capsules_btn_gallery": "Смотреть галерею",
   "capsules_btn_booking": "Забронировать",
 
-  "capsules_standard_duration_2h": "До to 2 часов",
+  "capsules_standard_duration_2h": "До 2 часов",
   "capsules_standard_duration_4h": "До 4 часов",
   "capsules_standard_duration_6h": "До 6 часов",
   "capsules_standard_duration_10h": "До 10 часов",
@@ -106,11 +106,11 @@
   "capsules_standard_price_10h": "920 000 сум",
   "capsules_standard_price_1d": "1 500 000 сум",
 
-  "capsules_family_duration_2h": "До to 2 часов",
+  "capsules_family_duration_2h": "До 2 часов",
   "capsules_family_duration_4h": "До 4 часов",
   "capsules_family_duration_6h": "До 6 часов",
   "capsules_family_duration_10h": "До 10 часов",
-  "capsules_family_duration_1d": "Up До 1 дня",
+  "capsules_family_duration_1d": "До 1 дня",
   "capsules_family_price_2h": "460 000 сум",
   "capsules_family_price_4h": "690 000 сум",
   "capsules_family_price_6h": "920 000 сум",
@@ -143,7 +143,7 @@
   "capsmodal_confirm": "Подтвердить",
   "capsmodal_cancel": "Отмена",
 
-  "capstype_title": "Почасовые и дневные варианты проживания",
+  "capstype_title": "Почасовые и дневные варианты капсул",
 
   "standard_title": "Стандартная капсула",
   "standard_price_2h": "До 2 часов / 345 000 сум",
@@ -380,5 +380,6 @@
   "service_10_desc": "Капсулы расположены прямо в здании аэропорта.",
   "service_10_tag": "На месте",
 
-  "empty": "Нет данных"
+  "empty": "Нет данных",
+  "gallery": "Галерея — Наше пространство, Наша команда"
 }

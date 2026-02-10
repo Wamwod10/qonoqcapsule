@@ -31,7 +31,7 @@ const AlternativeContacts = () => {
             </a>
 
             <a
-              href="https://t.me/khamsahotel"
+              href="https://t.me/qonoqcapsulehotel"
               className="alternative__messages"
             >
               <div>
@@ -41,7 +41,7 @@ const AlternativeContacts = () => {
                 <h2 className="alternative__message-title">
                   {t("alternative_telegram")}
                 </h2>
-                <p className="alternative__message-text">@khamsa_hotel</p>
+                <p className="alternative__message-text">@qonoqcapsulehotel</p>
               </div>
             </a>
 

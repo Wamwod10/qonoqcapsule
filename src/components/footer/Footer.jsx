@@ -79,7 +79,7 @@ const Footer = () => {
               </p>
               <p className="footer__card-contact">
                 {t("footer_contact_phone_label")}{" "}
-                <a href="tel:+998958772424">+998 95 877-24-24</a>
+                <a href="tel:+998958772424">+998 95 232 24 24</a>
               </p>
               <p className="footer__card-contact">
                 {t("footer_contact_email_label")}{" "}

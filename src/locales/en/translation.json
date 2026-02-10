@@ -143,7 +143,7 @@
   "capsmodal_confirm": "Confirm",
   "capsmodal_cancel": "Cancel",
 
-  "capstype_title": "Hourly & Daily Room Options",
+  "capstype_title": "Hourly & Daily Capsule Options",
 
   "standard_title": "Standard Capsule",
   "standard_price_2h": "Up to 2 hours / 345 000 UZS",
@@ -380,5 +380,6 @@
   "service_10_desc": "Capsules are located directly inside the airport for fast and easy access.",
   "service_10_tag": "On-Site Location",
 
-  "empty": "Still Empty"
+  "empty": "Still Empty",
+  "gallery": "Gallery — Our space, Our team"
 }

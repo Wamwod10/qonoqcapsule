@@ -41,11 +41,11 @@ async function initDB() {
     CREATE TABLE IF NOT EXISTS bookings (
       id TEXT PRIMARY KEY,
       branch TEXT,
-      capsuleType TEXT,
+      "capsuleType" TEXT,
       date TEXT,
       time TEXT,
       duration INTEGER,
-      createdAt TEXT
+      "createdAt" TEXT
     )
   `);
   console.log("✅ PostgreSQL connected & table ready");
@@ -95,7 +95,16 @@ async function checkAvailability({
   );
 
   const result = await pool.query(
-    `SELECT * FROM bookings WHERE branch=$1 AND capsuleType=$2`,
+    `SELECT
+       id,
+       branch,
+       "capsuleType" AS "capsuleType",
+       date,
+       time,
+       duration,
+       "createdAt" AS "createdAt"
+     FROM bookings
+     WHERE branch=$1 AND "capsuleType"=$2`,
     [branch, capsuleType],
   );
 
@@ -138,9 +147,18 @@ async function checkAvailability({
 
 app.get("/api/bookings", async (req, res) => {
   try {
-    const result = await pool.query(
-      "SELECT * FROM bookings ORDER BY date, time",
-    );
+    const result = await pool.query(`
+      SELECT
+        id,
+        branch,
+        "capsuleType" AS "capsuleType",
+        date,
+        time,
+        duration,
+        "createdAt" AS "createdAt"
+      FROM bookings
+      ORDER BY date, time
+    `);
     res.json(result.rows);
   } catch (err) {
     console.error("DB GET ERROR:", err);
@@ -176,7 +194,7 @@ app.post("/api/bookings", async (req, res) => {
     const createdAt = new Date().toISOString();
 
     await pool.query(
-      `INSERT INTO bookings (id, branch, capsuleType, date, time, duration, createdAt)
+      `INSERT INTO bookings (id, branch, "capsuleType", date, time, duration, "createdAt")
        VALUES ($1,$2,$3,$4,$5,$6,$7)`,
       [id, branch, capsuleType, date, time, Number(duration), createdAt],
     );
@@ -195,7 +213,7 @@ app.delete("/api/bookings/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    await pool.query("DELETE FROM bookings WHERE id = $1", [id]);
+    await pool.query(`DELETE FROM bookings WHERE id = $1`, [id]);
     res.json({ success: true });
   } catch (err) {
     console.error("DB DELETE ERROR:", err);

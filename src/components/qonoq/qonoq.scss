@@ -409,16 +409,29 @@
     }
 
     &__card-title {
-      font-size: 19px !important;
+      font-size: 22px !important;
+      text-align: center;
+    }
+
+    &__big-text {
+      max-width: 250px !important;
+      width: 100% !important;
     }
 
     &__big-icon {
-      width: 50px;
-      height: 50px;
+      width: 80px;
+      height: 80px;
     }
 
     &__big-title {
-      font-size: 15px !important;
+      font-size: 17px !important;
+      text-align: center;
+    }
+
+    &__first-cardd {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
@@ -504,9 +517,12 @@
       text-align: center;
     }
 
-    &__cardd,
-    &__first-cardd {
-      flex-direction: column;
+    &__cardd {
+      max-width: 300px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: start;
+      column-gap: 70px;
     }
   }
 }

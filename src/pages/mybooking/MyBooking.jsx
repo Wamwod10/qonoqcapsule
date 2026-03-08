@@ -6,7 +6,7 @@ import { TbMoodEmpty } from "react-icons/tb";
 import axios from "axios";
 
 const API = "https://qonoqcapsule-backend.onrender.com";
-// const API = "http://localhost:5000"; // local test
+// const API = "http://localhost:5000";
 
 const MyBooking = () => {
   const { t } = useTranslation();
@@ -15,6 +15,8 @@ const MyBooking = () => {
   const [currency, setCurrency] = useState("UZS");
   const [checking, setChecking] = useState(false);
   const [busyInfo, setBusyInfo] = useState(null);
+
+  /* ===== LOAD BOOKINGS ===== */
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("my_bookings")) || [];
@@ -43,7 +45,13 @@ const MyBooking = () => {
 
   /* ===== AVAILABILITY CHECK ===== */
 
-  const durationMap = { "2h": 2, "4h": 4, "6h": 6, "10h": 10, "1d": 1 };
+  const durationMap = {
+    "2h": 2,
+    "4h": 4,
+    "6h": 6,
+    "10h": 10,
+    "1d": 24,
+  };
 
   const checkAllAvailability = async () => {
     setChecking(true);
@@ -76,6 +84,7 @@ const MyBooking = () => {
             id: b.id,
             nextTime: data.nextTime,
           });
+
           setChecking(false);
           return false;
         }
@@ -100,9 +109,13 @@ const MyBooking = () => {
     if (!ok) return;
 
     try {
+      const firstBooking = bookings[0];
+
       const res = await axios.post(`${API}/api/create-payment`, {
         amount: totalUZS,
         bookings: bookings,
+        phone: firstBooking.phone,
+        email: firstBooking.email,
       });
 
       const { paymentUrl } = res.data;
@@ -118,6 +131,8 @@ const MyBooking = () => {
     }
   };
 
+  /* ===== UI ===== */
+
   return (
     <div className="mybooking">
       <div className="container">
@@ -128,7 +143,9 @@ const MyBooking = () => {
             <div className="mybooking__icon-wrap">
               <TbMoodEmpty className="mybooking__icon" />
             </div>
+
             <p>{t("mybooking_empty")}</p>
+
             <a href="/" className="qonoq__big-link mybooking__book-div">
               {t("service_header_booking")}
             </a>
@@ -180,6 +197,7 @@ const MyBooking = () => {
             <p>
               This room is busy. Next available time: <b>{busyInfo.nextTime}</b>
             </p>
+
             <button onClick={() => setBusyInfo(null)}>OK</button>
           </div>
         </div>

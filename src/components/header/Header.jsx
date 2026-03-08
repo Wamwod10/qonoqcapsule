@@ -112,7 +112,7 @@ const Header = () => {
         locationValue === "tas"
           ? t("loc_tas")
           : locationValue === "buh"
-            ? t("loc_buh")
+            ? t("loc_sam")
             : t("loc_ind"),
 
       createdAt: new Date().toISOString(),
@@ -238,8 +238,7 @@ const Header = () => {
                   onChange={(e) => setLocationValue(e.target.value)}
                 >
                   <option value="tas">{t("loc_tas")}</option>
-                  <option value="buh">{t("loc_buh")}</option>
-                  <option value="ind">{t("loc_ind")}</option>
+                  <option value="sam">{t("loc_sam")}</option>
                 </select>
               </div>
 

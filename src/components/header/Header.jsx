@@ -111,7 +111,7 @@ const Header = () => {
       locationLabel:
         locationValue === "tas"
           ? t("loc_tas")
-          : locationValue === "buh"
+          : locationValue === "sam"
             ? t("loc_sam")
             : t("loc_ind"),
 

@@ -14,13 +14,19 @@ const MyBooking = () => {
   const [bookings, setBookings] = useState([]);
   const [currency, setCurrency] = useState("UZS");
   const [checking, setChecking] = useState(false);
+  const [paying, setPaying] = useState(false);
   const [busyInfo, setBusyInfo] = useState(null);
 
   /* ===== LOAD BOOKINGS ===== */
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("my_bookings")) || [];
-    setBookings(data);
+    try {
+      const data = JSON.parse(localStorage.getItem("my_bookings")) || [];
+      setBookings(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error("LOCALSTORAGE READ ERROR:", err);
+      setBookings([]);
+    }
   }, []);
 
   const deleteBooking = (id) => {
@@ -43,7 +49,7 @@ const MyBooking = () => {
   if (currency === "EUR") displayTotal = (totalUZS / EUR_RATE).toFixed(1);
   if (currency === "RUB") displayTotal = (totalUZS / RUB_RATE).toFixed(1);
 
-  /* ===== AVAILABILITY CHECK ===== */
+  /* ===== HELPERS ===== */
 
   const durationMap = {
     "2h": 2,
@@ -53,17 +59,32 @@ const MyBooking = () => {
     "1d": 24,
   };
 
+  const getBranch = (booking) => {
+    if (booking.locationValue === "tas") return "airport";
+    if (booking.locationValue === "buh") return "city";
+    if (booking.locationValue === "sam") return "north";
+    return booking.locationValue || "airport";
+  };
+
+  const normalizeBookingsForBackend = () => {
+    return bookings.map((b) => ({
+      ...b,
+      branch: getBranch(b),
+      capsuleType: b.capsuleTypeValue,
+      date: b.checkIn,
+      time: b.checkInTime,
+      duration: durationMap[b.durationValue] || Number(b.duration) || 0,
+    }));
+  };
+
+  /* ===== AVAILABILITY CHECK ===== */
+
   const checkAllAvailability = async () => {
     setChecking(true);
 
     try {
       for (const b of bookings) {
-        const branch =
-          b.locationValue === "tas"
-            ? "airport"
-            : b.locationValue === "buh"
-              ? "city"
-              : "north";
+        const branch = getBranch(b);
 
         const res = await fetch(`${API}/api/check-availability`, {
           method: "POST",
@@ -73,16 +94,21 @@ const MyBooking = () => {
             capsuleType: b.capsuleTypeValue,
             date: b.checkIn,
             time: b.checkInTime,
-            duration: durationMap[b.durationValue],
+            duration: durationMap[b.durationValue] || Number(b.duration) || 0,
           }),
         });
 
         const data = await res.json();
 
+        if (!res.ok) {
+          throw new Error(data?.error || "Availability request failed");
+        }
+
         if (!data.available) {
           setBusyInfo({
             id: b.id,
             nextTime: data.nextTime,
+            nextDay: data.nextDay,
           });
 
           setChecking(false);
@@ -104,18 +130,23 @@ const MyBooking = () => {
 
   const handlePayment = async () => {
     if (bookings.length === 0) return;
+    if (paying || checking) return;
 
     const ok = await checkAllAvailability();
     if (!ok) return;
 
     try {
-      const firstBooking = bookings[0];
+      setPaying(true);
+
+      const firstBooking = bookings[0] || {};
+      const preparedBookings = normalizeBookingsForBackend();
 
       const res = await axios.post(`${API}/api/create-payment`, {
         amount: totalUZS,
-        bookings: bookings,
-        phone: firstBooking.phone,
-        email: firstBooking.email,
+        bookings: preparedBookings,
+        phone: firstBooking.phone || "",
+        email: firstBooking.email || "",
+        name: firstBooking.name || "",
       });
 
       const { paymentUrl } = res.data;
@@ -127,7 +158,20 @@ const MyBooking = () => {
       }
     } catch (err) {
       console.error("PAYMENT ERROR:", err.response?.data || err.message);
-      alert("Payment error. Try again.");
+
+      if (err.response?.status === 409) {
+        const data = err.response.data;
+
+        setBusyInfo({
+          id: data?.item?.id || null,
+          nextTime: data?.nextTime || "Unknown",
+          nextDay: data?.nextDay || false,
+        });
+      } else {
+        alert("Payment error. Try again.");
+      }
+    } finally {
+      setPaying(false);
     }
   };
 
@@ -170,21 +214,48 @@ const MyBooking = () => {
                 </h2>
 
                 <div className="mybooking__currency-switch">
-                  <button onClick={() => setCurrency("UZS")}>UZS</button>
-                  <button onClick={() => setCurrency("USD")}>USD</button>
-                  <button onClick={() => setCurrency("EUR")}>EUR</button>
-                  <button onClick={() => setCurrency("RUB")}>RUB</button>
+                  <button
+                    type="button"
+                    onClick={() => setCurrency("UZS")}
+                    disabled={checking || paying}
+                  >
+                    UZS
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCurrency("USD")}
+                    disabled={checking || paying}
+                  >
+                    USD
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCurrency("EUR")}
+                    disabled={checking || paying}
+                  >
+                    EUR
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCurrency("RUB")}
+                    disabled={checking || paying}
+                  >
+                    RUB
+                  </button>
                 </div>
               </div>
 
               <button
+                type="button"
                 onClick={handlePayment}
                 className="mybooking__button"
-                disabled={checking}
+                disabled={checking || paying}
               >
                 {checking
                   ? "Checking availability..."
-                  : "Complete Your Purchase"}
+                  : paying
+                    ? "Redirecting to payment..."
+                    : "Complete Your Purchase"}
               </button>
             </div>
           </>
@@ -196,9 +267,12 @@ const MyBooking = () => {
           <div className="availability-modal__box">
             <p>
               This room is busy. Next available time: <b>{busyInfo.nextTime}</b>
+              {busyInfo.nextDay ? " (next day)" : ""}
             </p>
 
-            <button onClick={() => setBusyInfo(null)}>OK</button>
+            <button type="button" onClick={() => setBusyInfo(null)}>
+              OK
+            </button>
           </div>
         </div>
       )}

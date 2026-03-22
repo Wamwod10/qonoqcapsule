@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import BookingCard from "./components/Bookingcard/BookingCard";
 import "./mybooking.scss";
 import { useTranslation } from "react-i18next";
@@ -17,27 +17,99 @@ const MyBooking = () => {
   const [paying, setPaying] = useState(false);
   const [busyInfo, setBusyInfo] = useState(null);
 
+  /* ===== HELPERS ===== */
+
+  const durationMap = useMemo(
+    () => ({
+      "2h": 2,
+      "4h": 4,
+      "6h": 6,
+      "10h": 10,
+      "1d": 24,
+    }),
+    [],
+  );
+
+  const readBookingsFromStorage = () => {
+    try {
+      const raw = localStorage.getItem("my_bookings");
+      if (!raw) return [];
+
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (err) {
+      console.error("LOCALSTORAGE READ ERROR:", err);
+      return [];
+    }
+  };
+
+  const writeBookingsToStorage = (nextBookings) => {
+    try {
+      localStorage.setItem("my_bookings", JSON.stringify(nextBookings));
+    } catch (err) {
+      console.error("LOCALSTORAGE WRITE ERROR:", err);
+    }
+  };
+
+  const normalizePhone = (phone) => {
+    return String(phone || "").trim();
+  };
+
+  const normalizeEmail = (email) => {
+    return String(email || "")
+      .trim()
+      .toLowerCase();
+  };
+
+  const getFullName = (booking) => {
+    return `${booking?.firstName || ""} ${booking?.lastName || ""}`.trim();
+  };
+
+  const getBranch = (booking) => {
+    if (booking?.locationValue === "tas") return "airport";
+    if (booking?.locationValue === "buh") return "city";
+    if (booking?.locationValue === "sam") return "north";
+    return booking?.locationValue || "airport";
+  };
+
+  const getDuration = (booking) => {
+    return (
+      durationMap[booking?.durationValue] || Number(booking?.duration) || 0
+    );
+  };
+
+  const normalizeBookingsForBackend = () => {
+    return bookings.map((b) => ({
+      ...b,
+      name: getFullName(b),
+      phone: normalizePhone(b.phone),
+      email: normalizeEmail(b.email),
+      branch: getBranch(b),
+      capsuleType: b.capsuleTypeValue || "",
+      date: b.checkIn || "",
+      time: b.checkInTime || "",
+      duration: getDuration(b),
+      price: Number(b.price || 0),
+    }));
+  };
+
   /* ===== LOAD BOOKINGS ===== */
 
   useEffect(() => {
-    try {
-      const data = JSON.parse(localStorage.getItem("my_bookings")) || [];
-      setBookings(Array.isArray(data) ? data : []);
-    } catch (err) {
-      console.error("LOCALSTORAGE READ ERROR:", err);
-      setBookings([]);
-    }
+    setBookings(readBookingsFromStorage());
   }, []);
 
   const deleteBooking = (id) => {
     const updated = bookings.filter((b) => b.id !== id);
     setBookings(updated);
-    localStorage.setItem("my_bookings", JSON.stringify(updated));
+    writeBookingsToStorage(updated);
   };
 
   /* ===== TOTAL ===== */
 
-  const totalUZS = bookings.reduce((sum, b) => sum + Number(b.price || 0), 0);
+  const totalUZS = useMemo(() => {
+    return bookings.reduce((sum, b) => sum + Number(b.price || 0), 0);
+  }, [bookings]);
 
   const USD_RATE = 12000;
   const EUR_RATE = 14000;
@@ -48,34 +120,6 @@ const MyBooking = () => {
   if (currency === "USD") displayTotal = (totalUZS / USD_RATE).toFixed(1);
   if (currency === "EUR") displayTotal = (totalUZS / EUR_RATE).toFixed(1);
   if (currency === "RUB") displayTotal = (totalUZS / RUB_RATE).toFixed(1);
-
-  /* ===== HELPERS ===== */
-
-  const durationMap = {
-    "2h": 2,
-    "4h": 4,
-    "6h": 6,
-    "10h": 10,
-    "1d": 24,
-  };
-
-  const getBranch = (booking) => {
-    if (booking.locationValue === "tas") return "airport";
-    if (booking.locationValue === "buh") return "city";
-    if (booking.locationValue === "sam") return "north";
-    return booking.locationValue || "airport";
-  };
-
-  const normalizeBookingsForBackend = () => {
-    return bookings.map((b) => ({
-      ...b,
-      branch: getBranch(b),
-      capsuleType: b.capsuleTypeValue,
-      date: b.checkIn,
-      time: b.checkInTime,
-      duration: durationMap[b.durationValue] || Number(b.duration) || 0,
-    }));
-  };
 
   /* ===== AVAILABILITY CHECK ===== */
 
@@ -94,7 +138,7 @@ const MyBooking = () => {
             capsuleType: b.capsuleTypeValue,
             date: b.checkIn,
             time: b.checkInTime,
-            duration: durationMap[b.durationValue] || Number(b.duration) || 0,
+            duration: getDuration(b),
           }),
         });
 
@@ -141,15 +185,17 @@ const MyBooking = () => {
       const firstBooking = bookings[0] || {};
       const preparedBookings = normalizeBookingsForBackend();
 
-      const res = await axios.post(`${API}/api/create-payment`, {
+      const payload = {
         amount: totalUZS,
         bookings: preparedBookings,
-        phone: firstBooking.phone || "",
-        email: firstBooking.email || "",
-        name: firstBooking.name || "",
-      });
+        phone: normalizePhone(firstBooking.phone),
+        email: normalizeEmail(firstBooking.email),
+        name: getFullName(firstBooking),
+      };
 
-      const { paymentUrl } = res.data;
+      const res = await axios.post(`${API}/api/create-payment`, payload);
+
+      const { paymentUrl } = res.data || {};
 
       if (paymentUrl) {
         window.location.href = paymentUrl;
@@ -167,6 +213,8 @@ const MyBooking = () => {
           nextTime: data?.nextTime || "Unknown",
           nextDay: data?.nextDay || false,
         });
+      } else if (err.response?.data?.error) {
+        alert(err.response.data.error);
       } else {
         alert("Payment error. Try again.");
       }
@@ -221,6 +269,7 @@ const MyBooking = () => {
                   >
                     UZS
                   </button>
+
                   <button
                     type="button"
                     onClick={() => setCurrency("USD")}
@@ -228,6 +277,7 @@ const MyBooking = () => {
                   >
                     USD
                   </button>
+
                   <button
                     type="button"
                     onClick={() => setCurrency("EUR")}
@@ -235,6 +285,7 @@ const MyBooking = () => {
                   >
                     EUR
                   </button>
+
                   <button
                     type="button"
                     onClick={() => setCurrency("RUB")}

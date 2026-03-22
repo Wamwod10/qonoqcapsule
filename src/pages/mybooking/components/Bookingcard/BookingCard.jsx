@@ -1,29 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./bookingcard.scss";
 import { useTranslation } from "react-i18next";
 
 const BookingCard = ({ booking, onDelete }) => {
   const { t } = useTranslation();
 
-useEffect(() => {
-  if (!booking) return;
-
-  const bookingData = {
-    name: `${booking.firstName} ${booking.lastName}`,
-    email: booking.email,
-    phone: booking.phone,
-
-    bookedAt: new Date().toLocaleString(), // bron qilingan vaqt
-    checkInDate: booking.checkIn,          // kirish sanasi
-    checkInTime: booking.checkInTime,       // kirish vaqti
-    room: booking.capsuleTypeLabel,
-    duration: booking.durationLabel,
-    price: `${booking.price.toLocaleString()} UZS`,
-  };
-
-  localStorage.setItem("lastBooking", JSON.stringify(bookingData));
-}, [booking]);
-
+  if (!booking) return null;
 
   return (
     <div className="booking-card">
@@ -46,7 +28,8 @@ useEffect(() => {
       </div>
 
       <div className="row">
-        <span>{t("booking_price")}:</span> {booking.price.toLocaleString()} UZS
+        <span>{t("booking_price")}:</span>{" "}
+        {Number(booking.price || 0).toLocaleString()} UZS
       </div>
 
       <h4>{t("booking_guest_info")}</h4>
@@ -64,8 +47,15 @@ useEffect(() => {
       </div>
 
       <div className="actions">
-        <button className="edit">{t("booking_edit")}</button>
-        <button className="delete" onClick={() => onDelete(booking.id)}>
+        <button className="edit" type="button">
+          {t("booking_edit")}
+        </button>
+
+        <button
+          className="delete"
+          type="button"
+          onClick={() => onDelete?.(booking.id)}
+        >
           {t("booking_delete")}
         </button>
       </div>

@@ -601,18 +601,33 @@ app.post("/api/create-payment", async (req, res) => {
       auto_capture: true,
       test: String(process.env.OCTO_TEST_MODE || "false") === "true",
       init_time: new Date().toISOString().slice(0, 19).replace("T", " "),
-      user_data:
-        phone || email || name
-          ? {
-              user_id: name || phone || email || orderId,
-              phone: String(phone || "").replace(/\D/g, ""),
-              email: email || "",
-            }
-          : undefined,
+
+      user_data: {
+        user_id: name || orderId,
+        phone:
+          phone && phone.replace(/\D/g, "").startsWith("998")
+            ? phone.replace(/\D/g, "")
+            : "998901234567",
+        email: email || "",
+      },
+
       total_sum: Number(amount),
       currency: "UZS",
+
+      basket: bookings.map((b) => ({
+        position_desc: "Capsule booking",
+        count: 1,
+        price: Number(b.price),
+        spic: process.env.OCTO_SPIC || "00000000",
+        inn: process.env.OCTO_INN,
+        package_code: process.env.OCTO_PACKAGE_CODE || "1212121",
+        nds: Number(process.env.OCTO_NDS || 0),
+      })),
+
       description: "Qonoq Capsule Booking",
-      return_url: `${process.env.FRONTEND_URL || "https://qonoqcapsule.uz"}/success?orderId=${orderId}`,
+      return_url: `${
+        process.env.FRONTEND_URL || "https://qonoqcapsule.uz"
+      }/success?orderId=${orderId}`,
       notify_url:
         process.env.OCTO_NOTIFY_URL ||
         "https://qonoqcapsule-backend.onrender.com/api/octo-callback",

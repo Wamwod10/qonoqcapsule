@@ -15,6 +15,8 @@ import {
   MdVolumeOff,
 } from "react-icons/md";
 import { useTranslation } from "react-i18next";
+import { IoIosTv } from "react-icons/io";
+import { SiRailway } from "react-icons/si";
 
 const Services = () => {
   const { t } = useTranslation();
@@ -75,11 +77,23 @@ const Services = () => {
       tag: t("service_9_tag"),
     },
     {
+      icon: <IoIosTv />,
+      title: t("service_11_title"),
+      desc: t("service_11_desc"),
+      tag: t("service_11_tag"),
+    },
+    {
       icon: <MdFlightTakeoff />,
       title: t("service_10_title"),
       desc: t("service_10_desc"),
       tag: t("service_10_tag"),
     },
+    {
+      icon: <SiRailway />,
+      title: t("service_12_title"),
+      desc: t("service_12_desc"),
+      tag: t("service_12_tag"),
+    }
   ];
 
   return (

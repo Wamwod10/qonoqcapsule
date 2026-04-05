@@ -54,6 +54,7 @@
   "charging_point_text": "Доступ к питанию",
   "led_lighting_title": "Подсветка",
   "led_lighting_text": "Регулируемая подсветка",
+  "tv_lighting_text": "HD ТВ дисплей",
   "temperature_title": "Безопасность",
   "temperature_text": "Видеоконтроль зон",
   "admin_title": "Администратор",
@@ -192,9 +193,9 @@
 
   "email_section_title": "Адреса электронной почты",
 
-  "email_general_title": "Общие вопросы",
-  "email_reservations_title": "Бронирование",
-  "email_support_title": "Служба поддержки",
+  "email_general_title": "Ташкент аэропорт",
+  "email_reservations_title": "Самарканд Аэро...",
+  "email_support_title": "Самарканд вокзал",
 
   "email_button_send": "Отправить",
 
@@ -203,11 +204,11 @@
 
   "emergency_phone_numbers": "Телефонные номера",
 
-  "emergency_reception": "Ресепшн",
-  "emergency_reservations": "Бронирование",
-  "emergency_whatsapp": "WhatsApp",
+  "emergency_reception": "Ташкент аэропорт",
+  "emergency_reservations": "Самарканд Аэро...",
+  "emergency_whatsapp": "Самарканд вокзал",
 
-  "emergency_call_now": "Позвонить сейчас",
+  "emergency_call_now": "Позвонить",
 
   "faq_title": "Часто задаваемые вопросы",
   "faq_subtitle": "Ответы на популярные вопросы о нашем отеле и услугах",
@@ -379,6 +380,14 @@
   "service_10_title": "Расположение в аэропорту",
   "service_10_desc": "Капсулы расположены прямо в здании аэропорта.",
   "service_10_tag": "На месте",
+
+  "service_11_title": "Современное ТВ-развлечение",
+  "service_11_desc": "Капсулы оснащены современными телевизорами, чтобы вы могли расслабиться и наслаждаться любимыми фильмами, сериалами и контентом во время пребывания.",
+  "service_11_tag": "Удобство на месте",
+
+  "service_12_title": "Расположение на железнодорожном вокзале",
+  "service_12_desc": "Капсулы расположены прямо внутри железнодорожного вокзала, обеспечивая быстрый и удобный доступ во время вашего путешествия.",
+  "service_12_tag": "Удобство на месте",
 
   "empty": "Нет данных",
   "gallery": "Галерея — Наше пространство, Наша команда"

@@ -53,6 +53,7 @@
   "charging_point_text": "Easy access to power for devices",
   "led_lighting_title": "LED lighting",
   "led_lighting_text": "Adjustable LED light",
+  "tv_lighting_text": "HD TV display",
   "temperature_title": "Security",
   "temperature_text": "Video monitoring",
   "admin_title": "Administrator",
@@ -191,9 +192,9 @@
 
   "email_section_title": "Email Addresses",
 
-  "email_general_title": "General Inquiries",
-  "email_reservations_title": "Reservations",
-  "email_support_title": "Customer Support",
+  "email_general_title": "Tashkent Airport",
+  "email_reservations_title": "Samarkand Airport",
+  "email_support_title": "Samarkand Railway",
 
   "email_button_send": "Send",
 
@@ -202,9 +203,9 @@
 
   "emergency_phone_numbers": "Phone Numbers",
 
-  "emergency_reception": "Reception",
-  "emergency_reservations": "Reservations",
-  "emergency_whatsapp": "WhatsApp",
+  "emergency_reception": "Tashkent Airport",
+  "emergency_reservations": "Samarkand Airport",
+  "emergency_whatsapp": "Samarkand Railway",
 
   "emergency_call_now": "Call Now",
 
@@ -378,6 +379,15 @@
   "service_10_title": "Airport-Integrated Location",
   "service_10_desc": "Capsules are located directly inside the airport for fast and easy access.",
   "service_10_tag": "On-Site Location",
+
+  "service_11_title": "Smart TV Entertainment",
+  "service_11_desc": "Capsules are equipped with modern TVs, allowing you to relax and enjoy your favorite shows, movies, and content during your stay.",
+  "service_11_tag": "On-Site Convenience",
+
+  "service_12_title": "Railway Station Location",
+  "service_12_desc": "Capsules are located directly inside the railway station for fast and easy access, making your journey more comfortable and convenient.",
+  "service_12_tag": "On-Site Convenience",
+
 
   "empty": "Still Empty",
   "gallery": "Gallery — Our space, Our team"

@@ -14,6 +14,7 @@ import { GiPillow } from "react-icons/gi";
 import { TbWindmillFilled } from "react-icons/tb";
 import { WiThermometer } from "react-icons/wi";
 import { useTranslation, Trans } from "react-i18next";
+import { IoIosTv } from "react-icons/io";
 
 const Qonoq = () => {
   const { t } = useTranslation();
@@ -134,6 +135,16 @@ const Qonoq = () => {
                   </h2>
                   <p className="qonoq__big-text">{t("led_lighting_text")}</p>
                 </div>
+
+                <div className="qonoq__card-div">
+                  <div className="qonoq__big-icon">
+                    <IoIosTv className="big-icon" />
+                  </div>
+                  <h2 className="qonoq__big-title">
+                    Smart TV
+                  </h2>
+                  <p className="qonoq__big-text">{t("tv_lighting_text")}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -143,10 +154,10 @@ const Qonoq = () => {
             <h2 className="qonoq__big-exp">{t("experience_title")}</h2>
             <p className="qonoq__big-about">{t("experience_paragraph")}</p>
             <div className="qonoq__big-links">
-              <a href="#" className="qonoq__big-link">
+              <a href="tel:+998952322424" className="qonoq__big-link">
                 {t("contact_now")}
               </a>
-              <a href="#" className="qonoq__big-link">
+              <a href="/" className="qonoq__big-link">
                 {t("booking_now")}
               </a>
             </div>

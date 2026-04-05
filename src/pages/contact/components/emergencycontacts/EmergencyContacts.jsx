@@ -17,13 +17,13 @@ const EmergencyContacts = () => {
     },
     {
       title: t("emergency_reservations"),
-      number: "+998 95 232 24 24",
+      number: "+998 95 662 24 14",
       buttonText: t("emergency_call_now"),
       icon: <IoCallOutline className="emergency__call-icon" />,
     },
     {
       title: t("emergency_whatsapp"),
-      number: "+998 95 232 24 24",
+      number: "+998 95 236 24 14",
       buttonText: t("emergency_call_now"),
       icon: <FaWhatsapp className="emergency__call-icon" />,
     },

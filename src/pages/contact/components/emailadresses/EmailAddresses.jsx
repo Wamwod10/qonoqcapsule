@@ -18,13 +18,13 @@ const EmailAddresses = () => {
     },
     {
       title: t("email_reservations_title"),
-      email: "qonoqcapsule@mail.ru",
+      email: "qonoqairport@mail.ru",
       buttonText: t("email_button_send"),
       icon: <BsCalendar3 className="email__call-icon" />,
     },
     {
       title: t("email_support_title"),
-      email: "qonoqcapsule@mail.ru",
+      email: "qonoqrailway@mail.ru",
       buttonText: t("email_button_send"),
       icon: <BsHeadphones className="email__call-icon" />,
     },

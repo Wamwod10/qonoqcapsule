@@ -105,6 +105,7 @@ const SendMessage = () => {
               <div className="sendmessage__form-group">
                 <label>{t("send_method")}</label>
                 <select
+                  className="sendmessage__methods"
                   name="method"
                   value={formData.method}
                   onChange={handleChange}
@@ -113,9 +114,13 @@ const SendMessage = () => {
                   <option value="" disabled>
                     {t("send_method_placeholder")}
                   </option>
-                  <option value="telegram">{t("send_method_telegram")}</option>
-                  <option value="email">{t("send_method_email")}</option>
-                  <option value="whatsapp">{t("send_method_whatsapp")}</option>
+                    <option value="telegram">
+                      {t("send_method_telegram")}
+                    </option>
+                    <option value="email">{t("send_method_email")}</option>
+                    <option value="whatsapp">
+                      {t("send_method_whatsapp")}
+                    </option>
                 </select>
                 <FaChevronDown className="select-icon" />
               </div>

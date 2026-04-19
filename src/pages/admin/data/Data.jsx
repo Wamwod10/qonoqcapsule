@@ -7,14 +7,16 @@ const API = "https://qonoqcapsule-backend.onrender.com/api/bookings";
 /* ===== BRANCHES (BACKEND GA MOS) ===== */
 const branches = [
   { id: "airport", name: "Tashkent Airport" },
-  { id: "city", name: "Bukhara" },
-  { id: "north", name: "India" },
+  { id: "city", name: "Samarkand Airport" },
+  { id: "north", name: "Samarkand Railway" },
 ];
 
 /* ===== CAPSULE LABELS ===== */
 const capsuleLabels = {
   family: "Family Capsule",
   standard: "Standard Capsule",
+  standard_luxe: "Standard Luxe Capsule",
+  family_luxe: "Family Luxe Capsule",
 };
 
 const Data = () => {
@@ -131,6 +133,8 @@ const Data = () => {
             >
               <option value="family">Family Capsule</option>
               <option value="standard">Standard Capsule</option>
+              <option value="standard_luxe">Standard Luxe Capsule</option>
+              <option value="family_luxe">Family Luxe Capsule</option>
             </select>
           </div>
 

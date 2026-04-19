@@ -35,6 +35,18 @@ function App() {
           }
         />
         <Route path="/capsule" element={<Capsule />} />
+        <Route
+          path="/tashkent-airport"
+          element={<Capsule forcedBranchKey="tashkent_airport" />}
+        />
+        <Route
+          path="/samarkand-airport"
+          element={<Capsule forcedBranchKey="samarkand_airport" />}
+        />
+        <Route
+          path="/samarkand-railway"
+          element={<Capsule forcedBranchKey="samarkand_railway" />}
+        />
         <Route path="/rules" element={<Rules />} />
         <Route path="/services" element={<Service />} />
         <Route path="/contact" element={<Contact />} />

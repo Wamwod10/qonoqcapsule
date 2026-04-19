@@ -177,7 +177,16 @@
   "contact_get_directions": "Построить маршрут",
 
   "contact_hotel_name": "Qonoq Capsule",
-  "contact_hotel_address": "Международный аэропорт Ташкента, зона вылета, 2-й этаж",
+  "contact_hotel_address": "Международный аэропорт Ташкента (зона вылета, 2-й этаж) + ещё 2 локации",
+  "contact_directions_modal_title": "Выберите локацию",
+  "contact_directions_modal_subtitle": "Откройте маршрут до нужного филиала",
+  "contact_modal_open_map": "Открыть карту",
+  "contact_branch_tashkent_airport": "Tashkent Airport",
+  "contact_branch_tashkent_airport_address": "Зона вылета, 2-й этаж",
+  "contact_branch_samarkand_airport": "Samarkand Airport",
+  "contact_branch_samarkand_airport_address": "Международный аэропорт Самарканда",
+  "contact_branch_samarkand_railway": "Samarkand Railway",
+  "contact_branch_samarkand_railway_address": "Самаркандский железнодорожный вокзал",
 
   "contact_nearby_title": "Места рядом с аэропортом",
   "contact_near_dutyfree": "Обменный пункт валюты",

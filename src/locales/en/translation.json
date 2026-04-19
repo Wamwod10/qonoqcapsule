@@ -32,6 +32,11 @@
   "select_location": "Select Location",
   "loc_tas": "Tashkent Airport",
   "loc_sam": "Samarkand Station",
+  "loc_sam_airport": "Samarkand Airport",
+  "loc_sam_railway": "Samarkand Railway",
+  "branch_tashkent_airport": "Tashkent Airport",
+  "branch_samarkand_airport": "Samarkand Airport",
+  "branch_samarkand_railway": "Samarkand Railway",
   "check_availability": "Check Availability",
 
   "trusted_by_travelers_worldwide": "Trusted by travelers worldwide",
@@ -144,8 +149,10 @@
   "capsmodal_cancel": "Cancel",
 
   "capstype_title": "Hourly & Daily Capsule Options",
+  "capsules_branch_title": "{{branch}} Capsules",
 
   "standard_title": "Standard Capsule",
+  "standard_luxe_title": "Standard Luxe Capsule",
   "standard_price_2h": "Up to 2 hours / 345 000 UZS",
   "standard_price_4h": "Up to 4 hours / 460 000 UZS",
   "standard_price_6h": "Up to 6 hours / 690 000 UZS",
@@ -156,6 +163,7 @@
   "standard_description": "A practical and comfortable capsule designed for peace, simplicity, and privacy, featuring a cozy 1.2m x 2m bed — ideal for solo travelers seeking rest just a few minutes from Tashkent International Airport.",
 
   "family_title": "Family Capsule",
+  "family_luxe_title": "Family Luxe Capsule",
   "family_price_2h": "Up to 2 hours / 460 000 UZS",
   "family_price_4h": "Up to 4 hours / 690 000 UZS",
   "family_price_6h": "Up to 6 hours / 920 000 UZS",
@@ -166,6 +174,13 @@
   "family_description": "A spacious and comfortable family capsule offering privacy and relaxation, with a 2.4m x 2m bed — perfect for couples or small families just minutes from Tashkent International Airport.",
 
   "capsule_location": "Tashkent Airport Qonoq Capsule",
+  "branch_tashkent_airport_capsule_location": "Tashkent Airport Qonoq Capsule",
+  "branch_samarkand_airport_capsule_location": "Samarkand Airport Qonoq Capsule",
+  "branch_samarkand_railway_capsule_location": "Samarkand Railway Qonoq Capsule",
+  "capsule_standard_luxe": "Standard Luxe Capsule",
+  "capsule_family_luxe": "Family Luxe Capsule",
+  "availability_timeout": "The server is responding slowly. Please try again in a few seconds.",
+  "availability_error": "We could not check availability right now. Please try again.",
 
   "alternative_title": "Alternative Contact Methods",
   "alternative_whatsapp": "WhatsApp",
@@ -176,7 +191,16 @@
   "contact_get_directions": "Get Directions",
 
   "contact_hotel_name": "Qonoq Capsule",
-  "contact_hotel_address": "Tashkent International Airport, Departure Area, 2nd Floor",
+  "contact_hotel_address": "Tashkent International Airport (Departure Area, 2nd Floor) + 2 more locations",
+  "contact_directions_modal_title": "Choose Location",
+  "contact_directions_modal_subtitle": "Open directions for the branch you need",
+  "contact_modal_open_map": "Open Map",
+  "contact_branch_tashkent_airport": "Tashkent Airport",
+  "contact_branch_tashkent_airport_address": "Departure Area, 2nd Floor",
+  "contact_branch_samarkand_airport": "Samarkand Airport",
+  "contact_branch_samarkand_airport_address": "Samarkand International Airport",
+  "contact_branch_samarkand_railway": "Samarkand Railway",
+  "contact_branch_samarkand_railway_address": "Samarkand Railway Station",
 
   "contact_nearby_title": "Places Near the Airport",
   "contact_near_dutyfree": "Currency Exchange Office",

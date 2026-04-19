@@ -4,6 +4,7 @@ import "./mybooking.scss";
 import { useTranslation } from "react-i18next";
 import { TbMoodEmpty } from "react-icons/tb";
 import axios from "axios";
+import { getBranchConfig } from "../../data/bookingConfig";
 
 const API = "https://qonoqcapsule-backend.onrender.com";
 // const API = "http://localhost:5000";
@@ -66,10 +67,8 @@ const MyBooking = () => {
   };
 
   const getBranch = (booking) => {
-    if (booking?.locationValue === "tas") return "airport";
-    if (booking?.locationValue === "buh") return "city";
-    if (booking?.locationValue === "sam") return "north";
-    return booking?.locationValue || "airport";
+    return getBranchConfig(booking?.locationValue || booking?.branchKey)
+      .backendBranch;
   };
 
   const getDuration = (booking) => {
@@ -85,7 +84,7 @@ const MyBooking = () => {
       phone: normalizePhone(b.phone),
       email: normalizeEmail(b.email),
       branch: getBranch(b),
-      capsuleType: b.capsuleTypeValue || "",
+      capsuleType: b.backendCapsuleTypeValue || b.capsuleTypeValue || "",
       date: b.checkIn || "",
       time: b.checkInTime || "",
       duration: getDuration(b),

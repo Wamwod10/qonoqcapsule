@@ -3,23 +3,10 @@ import { createPortal } from "react-dom";
 import "./capsmodal.scss";
 import { useTranslation } from "react-i18next";
 import Confirm from "../capstype/Confirm";
-
-const PRICE_MAP = {
-  standard: {
-    "2h": 345000,
-    "4h": 460000,
-    "6h": 690000,
-    "10h": 920000,
-    "1d": 1500000,
-  },
-  family: {
-    "2h": 460000,
-    "4h": 690000,
-    "6h": 920000,
-    "10h": 1150000,
-    "1d": 1750000,
-  },
-};
+import {
+  getCapsulePrice,
+  STORAGE_KEY,
+} from "../../../../data/bookingConfig";
 
 const CapsModal = ({ onClose }) => {
   const { t } = useTranslation();
@@ -37,7 +24,7 @@ const CapsModal = ({ onClose }) => {
   const bookingBase = useMemo(() => {
     try {
       const parsed = JSON.parse(
-        sessionStorage.getItem("qonoq_booking") || "{}",
+        sessionStorage.getItem(STORAGE_KEY) || "{}",
       );
       return parsed && typeof parsed === "object" ? parsed : {};
     } catch (err) {
@@ -47,8 +34,9 @@ const CapsModal = ({ onClose }) => {
   }, []);
 
   const capsuleType = bookingBase.capsuleTypeValue || "standard";
+  const branchKey = bookingBase.branchKey || bookingBase.locationValue;
   const duration = bookingBase.durationValue || "4h";
-  const price = PRICE_MAP[capsuleType]?.[duration] || 0;
+  const price = getCapsulePrice(branchKey, capsuleType, duration);
 
   const closeAll = () => {
     setClosing(true);

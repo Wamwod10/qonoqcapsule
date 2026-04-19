@@ -193,7 +193,7 @@ const PaymentSuccess = () => {
 
         <div className="qonoq-success__buttons">
           <button onClick={() => navigate("/")}>Home</button>
-          <button className="outline" onClick={() => navigate("/booking")}>
+          <button className="outline" onClick={() => navigate("/")}>
             New Booking
           </button>
         </div>

@@ -10,8 +10,35 @@ export const DURATION_HOURS = {
   "1d": 24,
 };
 
-const standardImages = ["/10.jpg", "/27.jpg", "/28.jpg", "/29.jpg"];
-const familyImages = ["/17.jpg", "/26.jpg", "/28.jpg", "/29.jpg"];
+// ==========================
+// 🖼️ IMAGE STRUCTURE (CLEAN)
+// ==========================
+
+// 🔹 Tashkent Airport
+const TashkentAirportImages = {
+  standard: ["/10.jpg", "/27.jpg", "/28.jpg", "/29.jpg"],
+  family: ["/17.jpg", "/26.jpg", "/28.jpg", "/29.jpg"],
+};
+
+// 🔹 Samarkand Airport
+const SamarkandAirportImages = {
+  standard: ["/30.jpg", "/32.jpg", "/34.jpg", "/35.jpg"],
+  family: ["/31.jpg", "/33.jpg", "/34.jpg", "/35.jpg"],
+};
+
+// 🔹 Samarkand Railway
+const SamarkandRailwayImages = {
+  standard: ["/39.jpg", "/41.jpg", "/38.jpg", "/42.jpg"],
+  family: ["/37.jpg", "/43.jpg", "/38.jpg", "/42.jpg"],
+
+  // luxe = same images
+  standard_luxe: ["/39.jpg", "/41.jpg", "/38.jpg", "/42.jpg"],
+  family_luxe: ["/37.jpg", "/43.jpg", "/38.jpg", "/42.jpg"],
+};
+
+// ==========================
+// 🧩 CAPSULE TYPES (NO IMAGES)
+// ==========================
 
 export const CAPSULE_TYPES = {
   standard: {
@@ -23,7 +50,6 @@ export const CAPSULE_TYPES = {
     guestsKey: "standard_guests",
     sizeKey: "standard_size",
     descriptionKey: "standard_description",
-    images: standardImages,
     backendType: "standard",
   },
   family: {
@@ -35,7 +61,6 @@ export const CAPSULE_TYPES = {
     guestsKey: "family_guests",
     sizeKey: "family_size",
     descriptionKey: "family_description",
-    images: familyImages,
     backendType: "family",
   },
   standard_luxe: {
@@ -47,7 +72,6 @@ export const CAPSULE_TYPES = {
     guestsKey: "standard_guests",
     sizeKey: "standard_size",
     descriptionKey: "standard_description",
-    images: standardImages,
     backendType: "standard",
   },
   family_luxe: {
@@ -59,10 +83,13 @@ export const CAPSULE_TYPES = {
     guestsKey: "family_guests",
     sizeKey: "family_size",
     descriptionKey: "family_description",
-    images: familyImages,
     backendType: "family",
   },
 };
+
+// ==========================
+// 🏢 BRANCHES (WITH IMAGES)
+// ==========================
 
 export const BRANCHES = {
   tashkent_airport: {
@@ -77,6 +104,9 @@ export const BRANCHES = {
     capsuleLocationKey: "branch_tashkent_airport_capsule_location",
     fallbackCapsuleLocation: "Tashkent Airport Qonoq Capsule",
     capsuleTypes: ["standard", "family"],
+
+    images: TashkentAirportImages,
+
     prices: {
       standard: {
         "2h": 345000,
@@ -94,6 +124,7 @@ export const BRANCHES = {
       },
     },
   },
+
   samarkand_airport: {
     key: "samarkand_airport",
     value: "samarkand_airport",
@@ -106,6 +137,9 @@ export const BRANCHES = {
     capsuleLocationKey: "branch_samarkand_airport_capsule_location",
     fallbackCapsuleLocation: "Samarkand Airport Qonoq Capsule",
     capsuleTypes: ["standard", "family"],
+
+    images: SamarkandAirportImages,
+
     prices: {
       standard: {
         "2h": 200000,
@@ -123,6 +157,7 @@ export const BRANCHES = {
       },
     },
   },
+
   samarkand_railway: {
     key: "samarkand_railway",
     value: "samarkand_railway",
@@ -135,6 +170,9 @@ export const BRANCHES = {
     capsuleLocationKey: "branch_samarkand_railway_capsule_location",
     fallbackCapsuleLocation: "Samarkand Railway Qonoq Capsule",
     capsuleTypes: ["standard", "family", "standard_luxe", "family_luxe"],
+
+    images: SamarkandRailwayImages,
+
     prices: {
       standard: {
         "2h": 150000,
@@ -168,6 +206,10 @@ export const BRANCHES = {
   },
 };
 
+// ==========================
+// ⚙️ HELPERS
+// ==========================
+
 export const DEFAULT_BRANCH_KEY = "tashkent_airport";
 
 export const BRANCH_ORDER = [
@@ -192,7 +234,9 @@ const BRANCH_ALIASES = Object.values(BRANCHES).flatMap((branch) => {
 const BRANCH_ALIAS_MAP = new Map(BRANCH_ALIASES);
 
 export const normalizeBranchKey = (input) => {
-  const normalized = String(input || "").trim().toLowerCase();
+  const normalized = String(input || "")
+    .trim()
+    .toLowerCase();
   return BRANCH_ALIAS_MAP.get(normalized) || DEFAULT_BRANCH_KEY;
 };
 
@@ -216,6 +260,12 @@ export const getDefaultCapsuleType = (branchInput) =>
 export const getCapsulePrice = (branchInput, capsuleTypeKey, durationValue) => {
   const branch = getBranchConfig(branchInput);
   return branch.prices?.[capsuleTypeKey]?.[durationValue] || 0;
+};
+
+// 🔥 ENG MUHIM (IMAGE GETTER)
+export const getCapsuleImages = (branchInput, capsuleTypeKey) => {
+  const branch = getBranchConfig(branchInput);
+  return branch.images?.[capsuleTypeKey] || [];
 };
 
 export const formatPriceLabel = (t, durationValue, price) =>

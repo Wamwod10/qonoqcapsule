@@ -809,7 +809,6 @@ app.post("/notify/booking", async (req, res) => {
   }
 });
 
-/* ================= EMAIL ================= */
 
 app.post("/notify/email", async (req, res) => {
   try {
@@ -835,5 +834,5 @@ ${booking.duration}`,
 /* ================= START ================= */
 
 app.listen(PORT, () => {
-  console.log("🚀 Server running on", PORT);
+  console.log("🚀 Server good running on", PORT);
 });

@@ -109,7 +109,7 @@ export const BRANCHES = {
 
     prices: {
       standard: {
-        "2h": 345000,
+        "2h": 500,
         "4h": 460000,
         "6h": 690000,
         "10h": 920000,

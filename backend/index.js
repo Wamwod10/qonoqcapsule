@@ -83,6 +83,12 @@ async function initDB() {
     )
   `);
 
+  // 🔥 SHUNI QO‘SHASAN
+  await pool.query(`
+    ALTER TABLE pending_payments
+    ADD COLUMN IF NOT EXISTS "telegramsent" BOOLEAN DEFAULT false
+  `);
+
   console.log("✅ PostgreSQL connected");
 }
 
@@ -317,6 +323,7 @@ async function finalizePayment(orderId, callbackPayload) {
     }
 
     const payment = paymentRes.rows[0];
+
     const currentStatus = payment.status || "";
     const callbackStatus =
       callbackPayload?.status ||
@@ -333,6 +340,12 @@ async function finalizePayment(orderId, callbackPayload) {
       callbackPayload?.data?.octo_payment_UUID ||
       callbackPayload?.data?.octoPaymentId ||
       null;
+
+    // ❗ Duplicate Telegram oldini olish
+    if (payment.telegramsent === true) {
+      await client.query("COMMIT");
+      return { ok: true, message: "Already processed (telegram sent)" };
+    }
 
     if (isSuccessStatus(currentStatus)) {
       await client.query(
@@ -419,8 +432,6 @@ async function finalizePayment(orderId, callbackPayload) {
         return {
           ok: false,
           message: "Payment succeeded but selected slot is no longer available",
-          item,
-          avail,
         };
       }
     }
@@ -449,6 +460,33 @@ async function finalizePayment(orderId, callbackPayload) {
       );
     }
 
+    // 🔥 TELEGRAM SEND (ENG MUHIM)
+    try {
+      for (const rawItem of bookings) {
+        const item = normalizeBookingItem(rawItem);
+
+        const text = `📢 Yangi bron qabul qilindi
+
+📍 Filial: ${item.branch}
+🛏 Xona: ${item.capsuleType}
+📅 Sana: ${item.date}
+⏰ Vaqt: ${item.time}
+⏳ Davomiylik: ${item.duration} soat
+
+💳 Order ID: ${orderId}`;
+
+        await axios.post(
+          `https://api.telegram.org/bot${process.env.BOOKING_BOT_TOKEN}/sendMessage`,
+          {
+            chat_id: process.env.CHAT_ID,
+            text,
+          },
+        );
+      }
+    } catch (err) {
+      console.log("TELEGRAM AUTO ERROR:", err.message);
+    }
+
     await client.query(
       `
         UPDATE pending_payments
@@ -468,9 +506,15 @@ async function finalizePayment(orderId, callbackPayload) {
       ],
     );
 
+    // 🔐 telegram sent flag
+    await client.query(
+      `UPDATE pending_payments SET "telegramsent"=true WHERE id=$1`,
+      [orderId],
+    );
+
     await client.query("COMMIT");
 
-    return { ok: true, message: "Payment finalized and bookings created" };
+    return { ok: true, message: "Payment finalized and telegram sent" };
   } catch (err) {
     await client.query("ROLLBACK");
     throw err;
@@ -808,7 +852,6 @@ app.post("/notify/booking", async (req, res) => {
     res.status(500).json({ success: false });
   }
 });
-
 
 app.post("/notify/email", async (req, res) => {
   try {

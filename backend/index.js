@@ -21,19 +21,71 @@ const TELEGRAM_CHAT_IDS = {
   tashkent_airport: process.env.CHAT_ID_AIRPORT || "-1003037735123",
 };
 
+const normalizeTelegramBranch = (branch) =>
+  String(branch || "")
+    .trim()
+    .toLowerCase()
+    .replace(/'/g, "")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+
 const getTelegramChatIdForBranch = (branch) => {
-  const normalizedBranch = String(branch || "").trim().toLowerCase();
+  const normalizedBranch = normalizeTelegramBranch(branch);
   const branchKeyMap = {
-    samarkand_airport: "city",
-    "samarkand-airport": "city",
-    samarkand_railway: "north",
-    "samarkand-railway": "north",
+    airport: "airport",
+    tas: "airport",
+    tashkent: "airport",
     tashkent_airport: "airport",
-    "tashkent-airport": "airport",
+    toshkent_aeroporti: "airport",
+    toshkent_xalqaro_aeroporti: "airport",
+    samarkand_airport: "city",
+    samarqand_aeroporti: "city",
+    samarqand_xalqaro_aeroporti: "city",
+    sam_air: "city",
+    city: "city",
+    buh: "city",
+    samarkand_railway: "north",
+    samarkand_railway_station: "north",
+    samarqand_temir_yo_l_vokzali: "north",
+    samarqand_temir_yol_vokzali: "north",
+    samarqand_temir_yo_l_vokzali_qonoq_kapsulasi: "north",
+    samarqand_temir_yol_vokzali_qonoq_kapsulasi: "north",
+    sam_rail: "north",
+    sam: "north",
+    north: "north",
   };
 
   const mappedKey = branchKeyMap[normalizedBranch] || normalizedBranch;
   return TELEGRAM_CHAT_IDS[mappedKey] || process.env.CHAT_ID;
+};
+
+const getTelegramBranchLabel = (branch) => {
+  const normalizedBranch = normalizeTelegramBranch(branch);
+  const branchLabelMap = {
+    airport: "Tashkent Airport",
+    tas: "Tashkent Airport",
+    tashkent: "Tashkent Airport",
+    tashkent_airport: "Tashkent Airport",
+    toshkent_aeroporti: "Tashkent Airport",
+    toshkent_xalqaro_aeroporti: "Tashkent Airport",
+    city: "Samarkand Airport",
+    buh: "Samarkand Airport",
+    sam_air: "Samarkand Airport",
+    samarkand_airport: "Samarkand Airport",
+    samarqand_aeroporti: "Samarkand Airport",
+    samarqand_xalqaro_aeroporti: "Samarkand Airport",
+    north: "Samarkand Railway",
+    sam: "Samarkand Railway",
+    sam_rail: "Samarkand Railway",
+    samarkand_railway: "Samarkand Railway",
+    samarkand_railway_station: "Samarkand Railway",
+    samarqand_temir_yo_l_vokzali: "Samarkand Railway",
+    samarqand_temir_yol_vokzali: "Samarkand Railway",
+    samarqand_temir_yo_l_vokzali_qonoq_kapsulasi: "Samarkand Railway",
+    samarqand_temir_yol_vokzali_qonoq_kapsulasi: "Samarkand Railway",
+  };
+
+  return branchLabelMap[normalizedBranch] || branch || "";
 };
 
 const app = express();
@@ -491,7 +543,7 @@ async function finalizePayment(orderId, callbackPayload) {
 
         const text = `📢 Yangi bron qabul qilindi
 
-📍 Filial: ${item.branch}
+📍 Filial: ${getTelegramBranchLabel(item.branch)}
 🛏 Xona: ${item.capsuleType}
 📅 Sana: ${item.date}
 ⏰ Vaqt: ${item.time}
@@ -847,7 +899,7 @@ app.post("/notify/booking", async (req, res) => {
 📧 Email: ${booking.email}
 📞 Telefon: ${booking.phone}
 
-📍 Filial: ${booking.branch}
+📍 Filial: ${getTelegramBranchLabel(booking.branch || booking.locationLabel)}
 🗓 Bron vaqti: ${booking.bookedAt}
 📅 Kirish sanasi: ${booking.checkInDate}
 ⏰ Kirish vaqti: ${booking.checkInTime}

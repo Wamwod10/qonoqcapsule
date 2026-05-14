@@ -12,6 +12,30 @@ dotenv.config();
 
 const { Pool } = pkg;
 
+const TELEGRAM_CHAT_IDS = {
+  airport: process.env.CHAT_ID_AIRPORT || "-1003037735123",
+  city: process.env.CHAT_ID_CITY || "-1003824094612",
+  north: process.env.CHAT_ID_NORTH || "-1003345024745",
+  samarkand_airport: process.env.CHAT_ID_CITY || "-1003824094612",
+  samarkand_railway: process.env.CHAT_ID_NORTH || "-1003345024745",
+  tashkent_airport: process.env.CHAT_ID_AIRPORT || "-1003037735123",
+};
+
+const getTelegramChatIdForBranch = (branch) => {
+  const normalizedBranch = String(branch || "").trim().toLowerCase();
+  const branchKeyMap = {
+    samarkand_airport: "city",
+    "samarkand-airport": "city",
+    samarkand_railway: "north",
+    "samarkand-railway": "north",
+    tashkent_airport: "airport",
+    "tashkent-airport": "airport",
+  };
+
+  const mappedKey = branchKeyMap[normalizedBranch] || normalizedBranch;
+  return TELEGRAM_CHAT_IDS[mappedKey] || process.env.CHAT_ID;
+};
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -478,7 +502,7 @@ async function finalizePayment(orderId, callbackPayload) {
         await axios.post(
           `https://api.telegram.org/bot${process.env.BOOKING_BOT_TOKEN}/sendMessage`,
           {
-            chat_id: process.env.CHAT_ID,
+            chat_id: getTelegramChatIdForBranch(item.branch),
             text,
           },
         );
@@ -815,11 +839,7 @@ app.post("/notify/booking", async (req, res) => {
   try {
     const { booking } = req.body;
 
-    let chatId = process.env.CHAT_ID;
-
-    if (booking.locationLabel === "sam") {
-      chatId = process.env.CHAT_ID_S;
-    }
+    const chatId = getTelegramChatIdForBranch(booking.branch || booking.locationLabel);
 
     const text = `📢 Yangi bron qabul qilindi
 
@@ -827,7 +847,7 @@ app.post("/notify/booking", async (req, res) => {
 📧 Email: ${booking.email}
 📞 Telefon: ${booking.phone}
 
-📍 Filial: ${booking.locationLabel}
+📍 Filial: ${booking.branch}
 🗓 Bron vaqti: ${booking.bookedAt}
 📅 Kirish sanasi: ${booking.checkInDate}
 ⏰ Kirish vaqti: ${booking.checkInTime}

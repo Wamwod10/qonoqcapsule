@@ -88,6 +88,68 @@ const getTelegramBranchLabel = (branch) => {
   return branchLabelMap[normalizedBranch] || branch || "";
 };
 
+const formatTelegramDateTime = (value) => {
+  const date = value ? new Date(value) : new Date();
+
+  if (Number.isNaN(date.getTime())) {
+    return value || new Date().toLocaleString("en-US");
+  }
+
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: process.env.BOOKING_TIME_ZONE || "Asia/Tashkent",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+  }).format(date);
+};
+
+const formatTelegramPrice = (price) =>
+  `${Number(price || 0).toLocaleString("en-US")} UZS`;
+
+const getTelegramCapsuleLabel = (capsuleType) =>
+  String(capsuleType || "").trim().toUpperCase();
+
+const buildTelegramBookingText = ({ rawItem, item, payment, orderId }) => {
+  const name =
+    rawItem.name ||
+    [rawItem.firstName, rawItem.lastName].filter(Boolean).join(" ") ||
+    payment.name ||
+    "";
+  const email = rawItem.email || payment.email || "";
+  const phone = rawItem.phone || payment.phone || "";
+  const bookedAt =
+    rawItem.bookedAt ||
+    rawItem.createdAt ||
+    payment.createdAt ||
+    payment.updatedAt ||
+    new Date().toISOString();
+
+  return `📢 Yangi bron qabul qilindi
+
+👤 Ism: ${name}
+📧 Email: ${email}
+📞 Telefon: ${phone}
+
+📍 Filial: ${getTelegramBranchLabel(item.branch || rawItem.locationLabel)}
+🗓 Bron vaqti: ${formatTelegramDateTime(bookedAt)}
+
+📅 Kirish sanasi: ${item.date}
+⏰ Kirish vaqti: ${item.time}
+🛏️ Capsula: ${getTelegramCapsuleLabel(item.capsuleType)}
+
+📆 Davomiylik: ${item.duration} soat
+💶 Narx: ${formatTelegramPrice(rawItem.price)}
+
+❕ @freemustafa Send an Invoice to the guest!
+✅ Mijoz kelganda, mavjud bo‘lgan ixtiyoriy bo‘sh kapsulaga joylashtiriladi
+🌐 Sayt: qonoqcapsule.uz
+
+💳 Order ID: ${orderId}`;
+};
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -540,16 +602,12 @@ async function finalizePayment(orderId, callbackPayload) {
     try {
       for (const rawItem of bookings) {
         const item = normalizeBookingItem(rawItem);
-
-        const text = `📢 Yangi bron qabul qilindi
-
-📍 Filial: ${getTelegramBranchLabel(item.branch)}
-🛏 Xona: ${item.capsuleType}
-📅 Sana: ${item.date}
-⏰ Vaqt: ${item.time}
-⏳ Davomiylik: ${item.duration} soat
-
-💳 Order ID: ${orderId}`;
+        const text = buildTelegramBookingText({
+          rawItem,
+          item,
+          payment,
+          orderId,
+        });
 
         await axios.post(
           `https://api.telegram.org/bot${process.env.BOOKING_BOT_TOKEN}/sendMessage`,

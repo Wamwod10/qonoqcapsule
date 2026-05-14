@@ -56,7 +56,10 @@
   &__numb-text {
     color: #718096;
     font-size: 14px;
-    width: 100px;
+    max-width: 145px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__numb-div {

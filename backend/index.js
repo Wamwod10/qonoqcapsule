@@ -277,9 +277,31 @@ if (!databaseUrl) {
   console.error("DATABASE_URL is not set. PostgreSQL features will fail until it is configured.");
 }
 
+function getDatabaseSslConfig(connectionString) {
+  if (!connectionString) return undefined;
+
+  try {
+    const parsedUrl = new URL(connectionString);
+    const sslMode = parsedUrl.searchParams.get("sslmode");
+
+    if (sslMode === "disable") return false;
+    if (sslMode) return { rejectUnauthorized: false };
+
+    const isLikelyRenderInternalHost =
+      parsedUrl.hostname.endsWith(".internal") ||
+      !parsedUrl.hostname.includes(".");
+
+    if (isLikelyRenderInternalHost) return false;
+  } catch (err) {
+    console.error("DATABASE_URL parse warning:", err.message);
+  }
+
+  return isProduction ? { rejectUnauthorized: false } : undefined;
+}
+
 const pool = new Pool({
   connectionString: databaseUrl,
-  ssl: isProduction ? { rejectUnauthorized: false } : undefined,
+  ssl: getDatabaseSslConfig(databaseUrl),
   max: Number(process.env.PG_POOL_MAX || 10),
   idleTimeoutMillis: Number(process.env.PG_IDLE_TIMEOUT_MS || 30000),
   connectionTimeoutMillis: Number(process.env.PG_CONNECTION_TIMEOUT_MS || 15000),

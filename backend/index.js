@@ -308,6 +308,7 @@ async function initDB() {
 
   await pool.query(`
   ALTER TABLE bookings
+  ADD COLUMN IF NOT EXISTS "capsuleType" TEXT,
   ADD COLUMN IF NOT EXISTS name TEXT,
   ADD COLUMN IF NOT EXISTS phone TEXT,
   ADD COLUMN IF NOT EXISTS email TEXT,
@@ -321,6 +322,20 @@ async function initDB() {
   ADD COLUMN IF NOT EXISTS "paymentMethod" TEXT,
   ADD COLUMN IF NOT EXISTS "paidAt" TEXT
 `);
+
+  await pool.query(`
+    DO $$
+    BEGIN
+      IF EXISTS (
+        SELECT 1
+        FROM information_schema.columns
+        WHERE table_name = 'bookings'
+          AND column_name = 'capsuletype'
+      ) THEN
+        EXECUTE 'UPDATE bookings SET "capsuleType" = COALESCE("capsuleType", capsuletype)';
+      END IF;
+    END $$;
+  `);
 
   await pool.query(`
     CREATE TABLE IF NOT EXISTS pending_payments (
@@ -1205,6 +1220,12 @@ async function finalizePayment(orderId, callbackPayload) {
 app.post("/api/check-availability", async (req, res) => {
   try {
     const { branch, capsuleType, date, time, duration } = req.body;
+
+    if (!branch || !capsuleType || !date || !time || !Number(duration)) {
+      return res.status(400).json({
+        error: "branch, capsuleType, date, time, duration are required",
+      });
+    }
 
     const result = await checkAvailability({
       branch,

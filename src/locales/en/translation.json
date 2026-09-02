@@ -130,6 +130,7 @@
   "footer_link_services": "Services",
   "footer_link_rules": "Rules",
   "footer_link_contact": "Contact",
+  "footer_link_directions": "Directions",
   "footer_link_my_booking": "My Booking",
 
   "footer_contact_title": "Contact Info",
@@ -415,6 +416,11 @@
   "service_12_desc": "Capsules are located directly inside the railway station for fast and easy access, making your journey more comfortable and convenient.",
   "service_12_tag": "On-Site Convenience",
 
+
+  "directions_title": "How to Find Us",
+  "directions_subtitle": "Follow these 4 simple steps to reach Qonoq Capsule.",
+  "directions_step": "Step {{number}}",
+  "directions_image_alt": "Step {{number}} directions to Qonoq Capsule",
 
   "empty": "Still Empty",
   "gallery": "Gallery — Our space, Our team"

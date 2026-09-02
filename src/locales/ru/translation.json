@@ -126,6 +126,7 @@
   "footer_link_services": "Услуги",
   "footer_link_rules": "Правила",
   "footer_link_contact": "Контакты",
+  "footer_link_directions": "Как к нам добраться",
   "footer_link_my_booking": "Моё бронирование",
 
   "footer_contact_title": "Контактная информация",
@@ -400,6 +401,11 @@
   "service_12_title": "Расположение на железнодорожном вокзале",
   "service_12_desc": "Капсулы расположены прямо внутри железнодорожного вокзала, обеспечивая быстрый и удобный доступ во время вашего путешествия.",
   "service_12_tag": "Удобство на месте",
+
+  "directions_title": "Как нас найти",
+  "directions_subtitle": "Следуйте этим 4 простым шагам, чтобы добраться до Qonoq Capsule.",
+  "directions_step": "Шаг {{number}}",
+  "directions_image_alt": "Шаг {{number}} маршрута до Qonoq Capsule",
 
   "empty": "Нет данных",
   "gallery": "Галерея — Наше пространство, Наша команда"

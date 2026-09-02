@@ -119,6 +119,7 @@
   "footer_link_services": "Xizmatlar",
   "footer_link_rules": "Qoidalar",
   "footer_link_contact": "Aloqa",
+  "footer_link_directions": "Yo‘nalish",
   "footer_link_my_booking": "Mening bronim",
   "footer_contact_title": "Aloqa ma’lumotlari",
   "footer_contact_address": "Toshkent xalqaro aeroporti ichida, 2-terminal yaqinida, Toshkent shahri",
@@ -339,6 +340,11 @@
   "service_12_title": "Temir yo‘l vokzalida joylashuv",
   "service_12_desc": "Kapsulalar to‘g‘ridan-to‘g‘ri temir yo‘l vokzali ichida joylashgan bo‘lib, sayohatingiz davomida tez va qulay foydalanish imkonini beradi.",
   "service_12_tag": "Joyida qulaylik",
+  "directions_title": "Bizni qanday topish mumkin",
+  "directions_subtitle": "Qonoq Capsule’ga yetib borish uchun ushbu 4 ta oddiy qadamga amal qiling.",
+  "directions_step": "Qadam {{number}}",
+  "directions_image_alt": "Qonoq Capsule’ga yo‘lning {{number}}-qadami",
+
   "empty": "Hozircha bo'sh",
   "gallery": "Galereya — Bizning makonimiz, Bizning jamoamiz"
 }

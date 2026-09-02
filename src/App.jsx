@@ -16,6 +16,7 @@ import Login from "./pages/admin/login/Login";
 import Data from "./pages/admin/data/Data";
 import CapsuleAdmin from "./pages/admin1/CapsuleAdmin";
 import CapsuleAdminLogin from "./pages/admin1/CapsuleAdminLogin";
+import Directions from "./pages/directions/Directions";
 
 import PaymentSuccess from "./pages/payment/PaymentSuccess";
 
@@ -51,6 +52,7 @@ function App() {
         <Route path="/rules" element={<Rules />} />
         <Route path="/services" element={<Service />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/directions" element={<Directions />} />
         <Route path="/my-booking" element={<MyBooking />} />
         <Route path="ad2007" element={<Login />} />
         <Route path="data1212" element={<Data />} />

@@ -3,18 +3,21 @@ import nodemailer from "nodemailer";
 let transporter;
 let missingCredentialsLogged = false;
 
+const getSmtpUser = () => process.env.SMTP_USER || process.env.EMAIL_USER;
+const getSmtpPass = () => process.env.SMTP_PASS || process.env.EMAIL_PASS;
+
 const getSmtpConfig = () => ({
   host: process.env.SMTP_HOST || "smtp.gmail.com",
   port: Number(process.env.SMTP_PORT) || 465,
-  secure: true,
+  secure: String(process.env.SMTP_SECURE ?? "true").toLowerCase() !== "false",
   auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
+    user: getSmtpUser(),
+    pass: getSmtpPass(),
   },
 });
 
 const assertSmtpCredentials = () => {
-  if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+  if (getSmtpUser() && getSmtpPass()) {
     return;
   }
 
@@ -36,22 +39,38 @@ const getTransporter = () => {
 };
 
 const getFromAddress = () =>
-  process.env.SMTP_FROM || `"Qonoq Capsule" <${process.env.SMTP_USER}>`;
+  process.env.SMTP_FROM || `"Qonoq Capsule" <${getSmtpUser()}>`;
 
 const formatPrice = (value) => Number(value || 0).toLocaleString("en-US");
 
-export const buildBookingConfirmationText = (booking) => `Thank you for choosing to stay with us via QonoqCapsule.uz!
+export const buildBookingConfirmationText = (booking) => `Thank you for choosing Qonoq Capsule via QonoqCapsule.uz!
 
-Please be informed that we are a SLEEP CAPSULE located inside the airport within the transit area.
-To stay with us, you must have a valid boarding pass departing from Tashkent Airport.
+Your booking and payment details are included in the attached invoice / payment receipt.
 
-IMPORTANT NOTE:
-We will never ask you for your credit card details or send links via QonoqCapsule.uz for online payments or booking confirmation.
+IMPORTANT INFORMATION
 
-If you have any doubts about your booking status, please check via the QonoqCapsule.uz website or app only,
-call us at +998 95 877 24 24 (tel/WhatsApp/Telegram),
-or email us at qonoqhotel@mail.ru
+Qonoq Capsule is NOT located in the Transit Zone.
 
+We are located in the Check-in / Registration Zone of Tashkent International Airport, Terminal 2.
+
+Please do NOT proceed to the Transit Zone.
+
+Before arriving, please visit QonoqCapsule.uz and open the "How to Find Us / Directions" section to review the step-by-step photo guide showing how to reach Qonoq Capsule from the airport entrance:
+https://qonoqcapsule.uz/directions
+
+We strongly recommend checking these directions in advance so you can easily find us upon arrival.
+
+CONTACT INFORMATION
+
+Phone / WhatsApp / Telegram: +998 95 232 24 24
+Email: qonoqcapsule@mail.ru
+Website: QonoqCapsule.uz
+
+IMPORTANT NOTE
+
+For your security, we will never ask you to send your credit card details by message or through unofficial links.
+
+If you have any questions about your booking, payment, or how to find us, please contact us using the details above or visit QonoqCapsule.uz.
 
 YOUR BOOKING DETAILS
 
@@ -66,7 +85,7 @@ Room Type: ${booking.roomType || ""}
 Duration: ${booking.duration || ""}
 Price: ${formatPrice(booking.price)} UZS
 
-Thank you for your reservation.
+Thank you for choosing Qonoq Capsule.
 We look forward to welcoming you!
 
 -- Qonoq Capsule Team`;
@@ -88,7 +107,7 @@ export const sendBookingConfirmationEmail = async ({
 
   return sendMail({
     to: booking.guestEmail,
-    subject: "Qonoq Capsule Booking Confirmation",
+    subject: "Qonoq Capsule - Booking Confirmation & Payment Receipt",
     text: buildBookingConfirmationText(booking),
     attachments: [
       {

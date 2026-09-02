@@ -63,6 +63,11 @@ const Footer = () => {
                   </a>
                 </li>
                 <li className="footer__item">
+                  <a href="/directions" className="footer__link">
+                    {t("footer_link_directions")}
+                  </a>
+                </li>
+                <li className="footer__item">
                   <a href="#" className="footer__link">
                     {t("footer_link_my_booking")}
                   </a>

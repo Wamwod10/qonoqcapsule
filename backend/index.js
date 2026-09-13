@@ -1998,5 +1998,5 @@ ${booking.duration}`,
 /* ================= START ================= */
 
 app.listen(PORT, () => {
-  console.log(`HTTP server listening on port ${PORT}`);
+  console.log(`HTTP server listening on main port ${PORT}`);
 });

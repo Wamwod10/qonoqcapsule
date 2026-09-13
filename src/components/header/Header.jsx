@@ -103,19 +103,29 @@ const Header = () => {
         const data = await response.json().catch(() => ({}));
 
         if (!response.ok) {
-          throw new Error(data?.error || "Availability request failed");
+          const requestError = new Error(
+            data?.error || "Availability request failed",
+          );
+          requestError.status = response.status;
+          throw requestError;
         }
 
         return data;
       } catch (error) {
         lastError = error;
 
-        if (attempt === 0) {
+        const isNetworkError = error instanceof TypeError;
+        const isGatewayError = [502, 504].includes(error?.status);
+        const shouldRetry = isNetworkError || isGatewayError;
+
+        if (attempt === 0 && shouldRetry) {
           await fetch(API_BASE, {
             method: "GET",
             mode: "no-cors",
             cache: "no-store",
           }).catch(() => {});
+        } else {
+          break;
         }
       } finally {
         window.clearTimeout(timeoutId);

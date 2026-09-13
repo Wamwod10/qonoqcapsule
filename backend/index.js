@@ -415,27 +415,97 @@ async function initDB() {
 }
 
 let dbReady = false;
+let dbInitializationPromise = null;
+let lastDatabaseError = null;
 
-initDB()
-  .then(() => {
-    dbReady = true;
-  })
-  .catch((err) => {
-    dbReady = false;
-    console.error("DB INIT ERROR:", {
-      message: err.message,
-      code: err.code,
-      detail: err.detail,
-      hint: err.hint,
-      host: err.address,
-      port: err.port,
-    });
-  });
+function getDatabaseErrorDetails(err) {
+  return {
+    message: err?.message || "Unknown database error",
+    code: err?.code,
+    detail: err?.detail,
+    hint: err?.hint,
+    host: err?.address,
+    port: err?.port,
+  };
+}
+
+async function ensureDatabaseReady() {
+  if (dbReady) return;
+
+  if (!databaseUrl) {
+    const error = new Error("DATABASE_URL is not configured");
+    error.code = "DATABASE_URL_MISSING";
+    throw error;
+  }
+
+  if (!dbInitializationPromise) {
+    dbInitializationPromise = initDB()
+      .then(() => {
+        dbReady = true;
+        lastDatabaseError = null;
+      })
+      .catch((err) => {
+        dbReady = false;
+        lastDatabaseError = getDatabaseErrorDetails(err);
+        console.error("DB INIT ERROR:", lastDatabaseError);
+        throw err;
+      })
+      .finally(() => {
+        dbInitializationPromise = null;
+      });
+  }
+
+  await dbInitializationPromise;
+}
+
+function markDatabaseUnavailable(err) {
+  dbReady = false;
+  lastDatabaseError = getDatabaseErrorDetails(err);
+}
+
+// Connect immediately. Failed initialization can be retried by later requests.
+ensureDatabaseReady().catch(() => {});
 
 /* ================= TEST ================= */
 
 app.get("/", (req, res) => {
   res.send("Backend working ✅");
+});
+
+app.get("/health", async (req, res) => {
+  try {
+    await ensureDatabaseReady();
+    await pool.query("SELECT 1");
+
+    return res.json({ status: "ok", database: "connected" });
+  } catch (err) {
+    markDatabaseUnavailable(err);
+
+    return res.status(503).json({
+      status: "unavailable",
+      database: "disconnected",
+      code:
+        lastDatabaseError?.code || err?.code || "DATABASE_UNAVAILABLE",
+      message: databaseUrl
+        ? "The database connection is unavailable"
+        : "DATABASE_URL is not configured",
+    });
+  }
+});
+
+app.use("/api", async (req, res, next) => {
+  try {
+    await ensureDatabaseReady();
+    next();
+  } catch (err) {
+    markDatabaseUnavailable(err);
+    console.error("DATABASE READINESS ERROR:", getDatabaseErrorDetails(err));
+
+    res.status(503).json({
+      error: "Service is temporarily unavailable",
+      code: err?.code || "DATABASE_UNAVAILABLE",
+    });
+  }
 });
 
 /* ================= HELPERS ================= */
@@ -1249,6 +1319,8 @@ app.post("/api/check-availability", async (req, res) => {
       });
     }
 
+    await ensureDatabaseReady();
+
     const result = await checkAvailability({
       branch,
       capsuleType,
@@ -1259,8 +1331,12 @@ app.post("/api/check-availability", async (req, res) => {
 
     res.json(result);
   } catch (err) {
-    console.error("AVAILABILITY ERROR:", err);
-    res.status(500).json({ error: "Server error" });
+    markDatabaseUnavailable(err);
+    console.error("AVAILABILITY ERROR:", getDatabaseErrorDetails(err));
+    res.status(503).json({
+      error: "Availability service is temporarily unavailable",
+      code: err?.code || "DATABASE_UNAVAILABLE",
+    });
   }
 });
 
@@ -1922,5 +1998,5 @@ ${booking.duration}`,
 /* ================= START ================= */
 
 app.listen(PORT, () => {
-  console.log("🚀 Server is top top running everything is okay", PORT);
+  console.log(`HTTP server listening on port ${PORT}`);
 });

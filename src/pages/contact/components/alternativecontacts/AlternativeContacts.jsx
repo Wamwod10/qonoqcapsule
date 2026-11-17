@@ -16,7 +16,7 @@ const AlternativeContacts = () => {
 
           <div className="alternative__box-div">
             <a
-              href="https://wa.me/998958772424"
+              href="https://wa.me/998952322424"
               className="alternative__messages"
             >
               <div>

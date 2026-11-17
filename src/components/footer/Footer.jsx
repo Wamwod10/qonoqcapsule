@@ -87,9 +87,9 @@ const Footer = () => {
                 {t("footer_contact_phone_label")}{" "}
               </p>
               <div className="footer__phones">
-                <a href="tel:+998958772424">Tashkent Airport: +998 95 232 24 24 <IoIosCall /></a>
-                <a href="tel:+998958772424">Samarkand Airport: +998 95 662 24 14 <IoIosCall /></a>
-                <a href="tel:+998958772424">Samarkand Railway: +998 95 236 24 14 <IoIosCall /></a>
+                <a href="tel:+998952322424">Tashkent Airport: +998 95 232 24 24 <IoIosCall /></a>
+                <a href="tel:+998956622414">Samarkand Airport: +998 95 662 24 14 <IoIosCall /></a>
+                <a href="tel:+998952362414">Samarkand Railway: +998 95 236 24 14 <IoIosCall /></a>
               </div>
               <p className="footer__card-contact">
                 {t("footer_contact_email_label")}{" "}
